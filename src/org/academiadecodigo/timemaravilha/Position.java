@@ -1,2 +1,6 @@
-package org.academiadecodigo.timemaravilha;public class Position {
+package org.academiadecodigo.timemaravilha;
+
+public class Position {
+
+
 }

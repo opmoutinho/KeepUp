@@ -33,7 +33,7 @@ public class CollisionBox implements Collidable{
 
     @Override
     public boolean collidedWith(Collidable other) {
-        for (int i=0; i<dimensionX; i++){
+        for (int i=0; i<getDimensionX(); i++){
 
         }
         return false;
