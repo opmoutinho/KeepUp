@@ -18,11 +18,11 @@ public class SimpleGfxGrid extends AbstractGrid{
     }
 
     public int colToX(int col){
-        return getCols() * SIZE + PADDING;
+        return (getCols() * SIZE) + PADDING;
     }
 
     public int rowToY(int row){
-        return getRows() * SIZE + PADDING;
+        return (getRows() * SIZE) + PADDING;
     }
 }
 

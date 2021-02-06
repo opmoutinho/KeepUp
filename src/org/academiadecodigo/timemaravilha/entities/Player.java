@@ -31,24 +31,4 @@ public class Player extends Entities{
             this.sick = true;
         }
     }
-
-    @Override
-    public void collide(){};
-
-    @Override
-    public GridPosition getPosition(){
-        return playerPos;
-    };
-
-    @Override
-    public int getDimensionX(){
-        return
-    };
-
-    @Override
-    public int getDimensionY(){};
-
-    @Override
-    public boolean collidedWith(Collidable other){};
-
 }
