@@ -7,7 +7,7 @@ public abstract class Entities {
 
     public Entities (GridPosition position,int x, int y){
         this.position = position;
-        collisionBox = (x,y);
+        collisionBox = (GridPosition grid,x,y);
 
     }
 
