@@ -14,8 +14,8 @@ public abstract class DespawnableEntities extends Entities implements Despawnabl
 
 
     @Override
-    public void collidedWith(Entities other) {
-
+    public boolean collidedWith(Entities other) {
+        return false;
     }
 
     @Override

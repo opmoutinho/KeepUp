@@ -1,5 +1,6 @@
 package org.academiadecodigo.timemaravilha.entities;
 
+import org.academiadecodigo.timemaravilha.collision.CollisionDetector;
 import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
 import java.util.ArrayList;
@@ -8,9 +9,11 @@ import java.util.List;
 public class EntityManager {
     private static EntityManager instance;
     private List <Entities> entities;
+    private CollisionDetector collisionDetector;
 
     private EntityManager () {
         entities = new ArrayList<Entities>();
+        this.collisionDetector = new CollisionDetector(entities);
     }
 
     public static EntityManager getInstance(){
@@ -34,6 +37,7 @@ public class EntityManager {
     public void moveAll () {
         for (Entities entity : entities) {
             entity.move();
+            collisionDetector.checkCollision(entity);
         }
     }
 }

@@ -1,6 +1,5 @@
 package org.academiadecodigo.timemaravilha.entities;
 
-import org.academiadecodigo.timemaravilha.CollisionBox;
 import org.academiadecodigo.timemaravilha.grid.Direction;
 import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
@@ -20,9 +19,8 @@ public class Covidinhos extends DespawnableEntities{
         }
 
     @Override
-    public void collidedWith(Entities other) {
-        if(getCollisionBox().collidedWith(other.getCollisionBox())){
-            System.out.println("Collided");
-        }
+    public boolean collidedWith(Entities other) {
+        return getCollisionBox().collidedWith(other.getCollisionBox());
+
     }
 }

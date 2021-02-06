@@ -1,4 +1,4 @@
-package org.academiadecodigo.timemaravilha;
+package org.academiadecodigo.timemaravilha.collision;
 
 import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 

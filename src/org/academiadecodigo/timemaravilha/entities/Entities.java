@@ -1,6 +1,6 @@
 package org.academiadecodigo.timemaravilha.entities;
 
-import org.academiadecodigo.timemaravilha.CollisionBox;
+import org.academiadecodigo.timemaravilha.collision.CollisionBox;
 import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
 public abstract class Entities {
@@ -19,7 +19,7 @@ public abstract class Entities {
 
     public abstract void move();
 
-    public abstract void collidedWith(Entities other);
+    public abstract boolean collidedWith(Entities other);
 
     public CollisionBox getCollisionBox() {
         return collisionBox;

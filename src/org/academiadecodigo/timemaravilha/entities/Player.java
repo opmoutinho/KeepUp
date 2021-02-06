@@ -1,8 +1,6 @@
 package org.academiadecodigo.timemaravilha.entities;
 
-import org.academiadecodigo.timemaravilha.Collidable;
 import org.academiadecodigo.timemaravilha.grid.Direction;
-import org.academiadecodigo.timemaravilha.grid.Grid;
 import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
 public class Player extends Entities{
@@ -38,11 +36,8 @@ public class Player extends Entities{
     }
 
     @Override
-    public void collidedWith(Entities other) {
-        if(getCollisionBox().collidedWith(other.getCollisionBox())){
-            System.out.println("Collided");
-        }
-
+    public boolean collidedWith(Entities other) {
+        return getCollisionBox().collidedWith(other.getCollisionBox());
     }
 
     public void setArmor(){
