@@ -1,6 +1,8 @@
 package org.academiadecodigo.timemaravilha.grid;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
+import org.academiadecodigo.timemaravilha.grid.position.SimpleGfxPosition;
 
 public class SimpleGfxGrid extends AbstractGrid{
 
@@ -23,6 +25,14 @@ public class SimpleGfxGrid extends AbstractGrid{
 
     public int rowToY(int row){
         return (row * SIZE) + PADDING;
+    }
+
+    @Override
+    public GridPosition getRandomPos() {
+        int randomCol = (int) (Math.random()*getCols());
+        int randomRow = (int) (Math.random()*getRows());
+
+        return new SimpleGfxPosition(randomCol,randomRow,this);
     }
 }
 

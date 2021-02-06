@@ -38,7 +38,10 @@ public class Player extends Entities{
     }
 
     @Override
-    public void collideWith(Entities other) {
+    public void collidedWith(Entities other) {
+        if(getCollisionBox().collidedWith(other.getCollisionBox())){
+            System.out.println("Collided");
+        }
 
     }
 
@@ -55,5 +58,9 @@ public class Player extends Entities{
         if (!armor) {
             this.sick = true;
         }
+    }
+
+    public void setHealth() {
+
     }
 }

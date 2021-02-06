@@ -39,9 +39,6 @@ public class CollisionBox implements Collidable {
         return position.getRow()+dimensionY-1;
     }
 
-    @Override
-    public void collide() {
-    }
 
     @Override
     public boolean collidedWith(Collidable other) {

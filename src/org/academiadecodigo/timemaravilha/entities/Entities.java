@@ -19,7 +19,9 @@ public abstract class Entities {
 
     public abstract void move();
 
-    public abstract void collideWith(Entities other);
+    public abstract void collidedWith(Entities other);
 
-
+    public CollisionBox getCollisionBox() {
+        return collisionBox;
+    }
 }
