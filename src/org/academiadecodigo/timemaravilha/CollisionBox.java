@@ -1,6 +1,8 @@
 package org.academiadecodigo.timemaravilha;
 
-public class CollisionBox implements Collidable{
+import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
+
+public class CollisionBox implements Collidable {
 
     private GridPosition position;
     private int dimensionX;

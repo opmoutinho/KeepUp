@@ -1,7 +1,7 @@
-package org.academiadecodigo.timemaravilha.Entities;
+package org.academiadecodigo.timemaravilha.entities;
 
 import org.academiadecodigo.timemaravilha.Despawnable;
-import org.academiadecodigo.timemaravilha.GridPosition;
+import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
 public class DespawnableEntities extends Entities implements Despawnable {
 

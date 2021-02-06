@@ -1,5 +1,7 @@
 package org.academiadecodigo.timemaravilha;
 
+import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
+
 public interface Collidable {
 
     public void collide();

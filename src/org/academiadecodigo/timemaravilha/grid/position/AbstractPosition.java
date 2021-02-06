@@ -1,4 +1,7 @@
-package org.academiadecodigo.timemaravilha;
+package org.academiadecodigo.timemaravilha.grid.position;
+
+import org.academiadecodigo.timemaravilha.grid.Direction;
+import org.academiadecodigo.timemaravilha.grid.Grid;
 
 public abstract class AbstractPosition implements GridPosition {
 

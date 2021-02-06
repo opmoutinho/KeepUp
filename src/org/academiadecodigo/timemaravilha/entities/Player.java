@@ -1,9 +1,7 @@
-package org.academiadecodigo.timemaravilha.Entities;
+package org.academiadecodigo.timemaravilha.entities;
 
 import org.academiadecodigo.timemaravilha.Collidable;
-import org.academiadecodigo.timemaravilha.CollisionBox;
-import org.academiadecodigo.timemaravilha.Grid;
-import org.academiadecodigo.timemaravilha.GridPosition;
+import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
 public class Player extends Entities{
 

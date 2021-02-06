@@ -1,4 +1,4 @@
-package org.academiadecodigo.timemaravilha;
+package org.academiadecodigo.timemaravilha.grid.position;
 
 public interface GridPosition {
 
