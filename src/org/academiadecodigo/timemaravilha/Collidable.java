@@ -10,6 +10,10 @@ public interface Collidable {
 
     public int getDimensionY();
 
+    public int getMaxX();
+
+    public int getMaxY();
+
     public boolean collidedWith(Collidable other);
 
 }
