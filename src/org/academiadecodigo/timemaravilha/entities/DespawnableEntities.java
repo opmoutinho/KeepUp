@@ -3,19 +3,15 @@ package org.academiadecodigo.timemaravilha.entities;
 import org.academiadecodigo.timemaravilha.Despawnable;
 import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
-public class DespawnableEntities extends Entities implements Despawnable {
+public abstract class DespawnableEntities extends Entities implements Despawnable {
 
     private boolean spawned;
 
-    public DespawnableEntities(GridPosition position, int positionX, int positionY) {
-        super(position,positionX,positionY);
+    public DespawnableEntities(GridPosition position, int dimensionX, int dimensionY) {
+        super(position,dimensionX,dimensionY);
         setSpawned();
     }
 
-    @Override
-    public void move() {
-
-    }
 
     @Override
     public void collideWith(Entities other) {
