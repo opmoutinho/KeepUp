@@ -13,6 +13,16 @@ public class DespawnableEntities extends Entities implements Despawnable {
     }
 
     @Override
+    public void move() {
+
+    }
+
+    @Override
+    public void collideWith(Entities other) {
+
+    }
+
+    @Override
     public void setSpawned() {
         this.spawned = true;
     }

@@ -6,7 +6,7 @@ public class SimpleGfxGrid extends AbstractGrid{
 
     private Rectangle rectangle;
     public static final int PADDING = 10;
-    public static final int SIZE = 10;
+    public static final int SIZE = 30;
 
     public SimpleGfxGrid(int cols, int rows){
         super(cols, rows);
@@ -18,11 +18,11 @@ public class SimpleGfxGrid extends AbstractGrid{
     }
 
     public int colToX(int col){
-        return (getCols() * SIZE) + PADDING;
+        return (col* SIZE) + PADDING;
     }
 
     public int rowToY(int row){
-        return (getRows() * SIZE) + PADDING;
+        return (row * SIZE) + PADDING;
     }
 }
 

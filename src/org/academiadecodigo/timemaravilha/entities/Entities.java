@@ -8,12 +8,18 @@ public abstract class Entities {
     private CollisionBox collisionBox;
     private GridPosition position;
 
-    public Entities (GridPosition position,int positionX, int positionY){
+    public Entities (GridPosition position,int dimensionX, int dimensionY){
         this.position = position;
-        collisionBox = new CollisionBox (position,positionX,positionY);
+        collisionBox = new CollisionBox (position,dimensionX,dimensionY);
     }
 
+    public GridPosition getPosition(){
+        return position;
+    }
 
+    public abstract void move();
+
+    public abstract void collideWith(Entities other);
 
 
 }
