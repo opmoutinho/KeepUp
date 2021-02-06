@@ -10,9 +10,9 @@ public interface Collidable {
 
     public int getDimensionY();
 
-    public int getMaxX();
+    public int getMaxCol();
 
-    public int getMaxY();
+    public int getMaxRow();
 
     public boolean collidedWith(Collidable other);
 

@@ -28,12 +28,12 @@ public class CollisionBox implements Collidable{
     }
 
     @Override
-    public int getMaxX() {
+    public int getMaxCol() {
         return position.getCol()+dimensionX-1;
     }
 
     @Override
-    public int getMaxY() {
+    public int getMaxRow() {
         return position.getRow()+dimensionY-1;
     }
 
@@ -45,10 +45,10 @@ public class CollisionBox implements Collidable{
     public boolean collidedWith(Collidable other) {
         boolean result = true;
 
-        if(position.getRow() < other.getMaxY() || other.getPosition().getRow() < getMaxY())
+        if(position.getRow() < other.getMaxRow() || other.getPosition().getRow() < getMaxRow())
             result = false;
 
-        if(other.getMaxX() < position.getCol() || getMaxX() < other.getPosition().getCol())
+        if(other.getMaxCol() < position.getCol() || getMaxCol() < other.getPosition().getCol())
             result = false;
 
         return result;
