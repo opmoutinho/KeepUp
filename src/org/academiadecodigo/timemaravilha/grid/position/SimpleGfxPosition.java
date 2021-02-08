@@ -1,5 +1,6 @@
 package org.academiadecodigo.timemaravilha.grid.position;
 
+import org.academiadecodigo.simplegraphics.graphics.Canvas;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
@@ -32,6 +33,15 @@ public class SimpleGfxPosition extends AbstractPosition{
 
     public void setColor(Color color){
         rectangle.setColor(color);
+    }
+
+    @Override
+    public void show() {
+        rectangle.fill();
+    }
+
+    public void hide(){
+        Canvas.getInstance().hide(rectangle);
     }
 
     @Override

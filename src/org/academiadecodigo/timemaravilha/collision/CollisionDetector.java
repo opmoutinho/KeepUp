@@ -1,25 +1,29 @@
 package org.academiadecodigo.timemaravilha.collision;
 
-import org.academiadecodigo.timemaravilha.entities.Entities;
+import org.academiadecodigo.timemaravilha.entities.Entity;
+import org.academiadecodigo.timemaravilha.entities.Player;
 
 import java.util.List;
 
 public class CollisionDetector {
 
-     private List <Entities> entities;
+     private List <Entity> entities;
 
-     public CollisionDetector (List <Entities> entities){
+     public CollisionDetector (List <Entity> entities){
           this.entities = entities;
      }
 
-     public void checkCollision (Entities entity){
-          for (Entities e : entities){
+     public void checkCollision (Entity entity){
+          for (Entity e : entities){
                if (e == entity) {
                     continue;
                }
 
                if (e.collidedWith(entity)){
-                    System.out.println("Collided!!");
+                    if(entity instanceof Player)
+                         System.out.println("Player");
+                    e.collide(entity);
+                    entity.collide(e);
                }
 
           }

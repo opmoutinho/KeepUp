@@ -13,4 +13,7 @@ public interface GridPosition {
 
     public void setColor(Color color);
 
+    public void show();
+    public void hide();
+
 }
