@@ -11,6 +11,7 @@ public abstract class Entity {
 
     public Entity(GridPosition position, int dimensionX, int dimensionY){
         this.position = position;
+        this.position.setDimension(dimensionX,dimensionY);
         collisionBox = new CollisionBox (position,dimensionX,dimensionY);
     }
 
@@ -20,7 +21,9 @@ public abstract class Entity {
 
     public abstract void move();
 
-    public abstract boolean collidedWith(Entity other);
+    public boolean collidedWith(Entity other){
+        return getCollisionBox().collidedWith(other.getCollisionBox());
+    }
 
     public CollisionBox getCollisionBox() {
         return collisionBox;

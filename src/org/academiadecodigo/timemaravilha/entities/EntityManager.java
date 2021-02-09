@@ -28,6 +28,10 @@ public class EntityManager {
         return instance;
     }
 
+    public void add(Entity entity){
+        entities.add(entity);
+    }
+
     public void createEntity (EntityType entityType, GridPosition gridPosition){
         switch(entityType){
             case COVIDINHO:

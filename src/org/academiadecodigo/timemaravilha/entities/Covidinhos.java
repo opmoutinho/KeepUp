@@ -21,12 +21,6 @@ public class Covidinhos extends DespawnableEntity {
         }
     }
 
-    @Override
-    public boolean collidedWith(Entity other) {
-        return getCollisionBox().collidedWith(other.getCollisionBox());
-
-    }
-
     public void collide(Entity other){
         if(other instanceof Player){
             despawn();

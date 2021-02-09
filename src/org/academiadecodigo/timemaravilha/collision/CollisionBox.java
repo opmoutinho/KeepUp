@@ -44,11 +44,12 @@ public class CollisionBox implements Collidable {
     public boolean collidedWith(Collidable other) {
         boolean result = true;
 
-        if(position.getRow() < other.getMaxRow() || other.getPosition().getRow() < getMaxRow())
+        if(position.getRow() > other.getMaxRow() || other.getPosition().getRow() > getMaxRow()) {
             result = false;
-
-        if(other.getMaxCol() < position.getCol() || getMaxCol() < other.getPosition().getCol())
+        }
+        if(other.getMaxCol() < position.getCol() || getMaxCol() < other.getPosition().getCol()) {
             result = false;
+        }
 
         return result;
     }

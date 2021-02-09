@@ -48,11 +48,6 @@ public class Player extends Entity {
         EntityManager.getInstance().checkPlayerCollision(this);
     }
 
-    @Override
-    public boolean collidedWith(Entity other) {
-        return getCollisionBox().collidedWith(other.getCollisionBox());
-    }
-
     public void collide(Entity other){
         if(other instanceof Covidinhos){
             if(!mask)
