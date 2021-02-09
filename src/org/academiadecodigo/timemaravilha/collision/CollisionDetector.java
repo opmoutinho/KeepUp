@@ -19,14 +19,13 @@ public class CollisionDetector {
                     continue;
                }
 
-               if(e.isDead())
+               if(e.isDead() || entity.isDead())
                     continue;
 
                if (e.collidedWith(entity)){
                     if(e instanceof Player) {
                          System.out.println(e);
                          System.out.println(entity);
-                         System.out.flush();
                     }
                     e.collide(entity);
                     entity.collide(e);

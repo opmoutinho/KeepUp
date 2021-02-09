@@ -10,12 +10,6 @@ public abstract class DespawnableEntity extends Entity implements Despawnable {
         super(position,dimensionX,dimensionY);
     }
 
-
-    @Override
-    public boolean collidedWith(Entity other) {
-        return false;
-    }
-
     public void despawn(){
         getPosition().hide();
         kill();

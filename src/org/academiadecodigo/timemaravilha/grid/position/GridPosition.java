@@ -8,6 +8,8 @@ public interface GridPosition {
 
     public int getCol();
     public int getRow();
+    public int getDimX();
+    public int getDimY();
 
     public void setDimension(int dimX, int dimY);
 

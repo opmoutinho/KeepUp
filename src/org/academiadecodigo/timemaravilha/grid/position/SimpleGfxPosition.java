@@ -27,8 +27,24 @@ public class SimpleGfxPosition extends AbstractPosition{
     }
 
     private void drawRectangle () {
-        rectangle = new Rectangle(simpleGfxGrid.colToX(getCol()),simpleGfxGrid.rowToY(getRow()), SimpleGfxGrid.SIZE,SimpleGfxGrid.SIZE);
+        rectangle = new Rectangle(simpleGfxGrid.colToX(getCol()),simpleGfxGrid.rowToY(getRow()), getDimX()* SimpleGfxGrid.SIZE,getDimY()* SimpleGfxGrid.SIZE);
         rectangle.fill();
+    }
+
+    @Override
+    public void setDimension(int dimX, int dimY) {
+        super.setDimension(dimX, dimY);
+        Color color = rectangle.getColor();
+        resetPosition();
+        drawRectangle();
+        rectangle.setColor(color);
+    }
+
+    private void resetPosition(){
+        move(Direction.UP,1);
+        move(Direction.DOWN,1);
+        move(Direction.RIGHT,1);
+        move(Direction.LEFT,1);
     }
 
     public void setColor(Color color){

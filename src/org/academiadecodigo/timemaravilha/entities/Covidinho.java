@@ -4,9 +4,9 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.timemaravilha.grid.Direction;
 import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
-public class Covidinhos extends DespawnableEntity {
+public class Covidinho extends DespawnableEntity {
 
-    public Covidinhos(GridPosition position, int dimensionX, int dimensionY) {
+    public Covidinho(GridPosition position, int dimensionX, int dimensionY) {
         super(position,dimensionX,dimensionY);
     }
 
@@ -19,6 +19,7 @@ public class Covidinhos extends DespawnableEntity {
             Direction direction = directions[random];
             getPosition().move(direction, 1);
         }
+        EntityManager.getInstance().checkCollision(this);
     }
 
     public void collide(Entity other){

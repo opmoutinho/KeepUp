@@ -8,6 +8,7 @@ public class Player extends Entity {
 
     private int health = 3;
     private boolean mask;
+    private boolean[] keysPressed;
     private boolean immunity;
     private boolean sick;
 
@@ -15,41 +16,27 @@ public class Player extends Entity {
         super(playerPos,dimensonX,dimensionY);
     }
 
+    public void setKeysPressed(boolean[] keysPressed) {
+        this.keysPressed = keysPressed;
+    }
+
     @Override
     public void move() {
-
-    }
-
-    public void moveUp(){
         if(isDead())
             return;
-        getPosition().move(Direction.UP,1);
-        EntityManager.getInstance().checkPlayerCollision(this);
-    }
-
-    public void moveDown(){
-        if(isDead())
-            return;
-        getPosition().move(Direction.DOWN,1);
-        EntityManager.getInstance().checkPlayerCollision(this);
-    }
-
-    public void moveLeft(){
-        if(isDead())
-            return;
-        getPosition().move(Direction.LEFT,1);
-        EntityManager.getInstance().checkPlayerCollision(this);
-    }
-
-    public void moveRight(){
-        if(isDead())
-            return;
-        getPosition().move(Direction.RIGHT,1);
-        EntityManager.getInstance().checkPlayerCollision(this);
+        if(keysPressed[0])
+            getPosition().move(Direction.UP,1);
+        if(keysPressed[1])
+            getPosition().move(Direction.DOWN,1);
+        if(keysPressed[2])
+            getPosition().move(Direction.LEFT,1);
+        if(keysPressed[3])
+            getPosition().move(Direction.RIGHT,1);
+        EntityManager.getInstance().checkCollision(this);
     }
 
     public void collide(Entity other){
-        if(other instanceof Covidinhos){
+        if(other instanceof Covidinho){
             if(!mask)
                 health--;
             else

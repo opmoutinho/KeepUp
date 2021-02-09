@@ -4,7 +4,6 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.timemaravilha.collision.CollisionDetector;
 import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -36,20 +35,20 @@ public class EntityManager {
         switch(entityType){
             case COVIDINHO:
                 gridPosition.setColor(Color.GREEN);
-                entities.add(new Covidinhos(gridPosition,1,1));
+                entities.add(new Covidinho(gridPosition,3,3));
                 break;
             case PLAYER:
                 entities.add(new Player(gridPosition,1,1));
                 break;
             case MASK:
                 gridPosition.setColor(Color.BLUE);
-                entities.add(new Mask (gridPosition,1,1));
+                entities.add(new Mask (gridPosition,3,3));
 
         }
     }
 
-    public void checkPlayerCollision(Player player){
-        collisionDetector.checkCollision(player);
+    public void checkCollision(Entity entity){
+        collisionDetector.checkCollision(entity);
     }
 
     public void moveAll () {

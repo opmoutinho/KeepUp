@@ -16,6 +16,7 @@ public class Mask extends DespawnableEntity{
             Direction direction = directions[random];
             getPosition().move(direction, 1);
         }
+        EntityManager.getInstance().checkCollision(this);
     }
 
     @Override
@@ -29,7 +30,7 @@ public class Mask extends DespawnableEntity{
             despawn();
             System.out.println("Mask collided with Player");
 
-        } else if (other instanceof Covidinhos){
+        } else if (other instanceof Covidinho){
             despawn();
             System.out.println("Mask Collided with Covidinhos");
 

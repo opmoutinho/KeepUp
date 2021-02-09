@@ -33,6 +33,16 @@ public abstract class AbstractPosition implements GridPosition {
         dimensionY = dimY;
     }
 
+    @Override
+    public int getDimX() {
+        return dimensionX;
+    }
+
+    @Override
+    public int getDimY() {
+        return dimensionY;
+    }
+
     public void move(Direction dir, int units){
         switch (dir){
             case UP:

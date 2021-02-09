@@ -8,7 +8,7 @@ public class SimpleGfxGrid extends AbstractGrid{
 
     private Rectangle rectangle;
     public static final int PADDING = 10;
-    public static final int SIZE = 30;
+    public static final int SIZE = 10;
 
     public SimpleGfxGrid(int cols, int rows){
         super(cols, rows);
