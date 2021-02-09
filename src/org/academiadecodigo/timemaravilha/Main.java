@@ -21,6 +21,7 @@ public class Main {
         m1.init();
 
         EntityManager entityManager = EntityManager.getInstance();
+        entityManager.add(player);
 
         entityManager.createEntity(EntityType.COVIDINHO, g1.getRandomPos());
         entityManager.createEntity(EntityType.COVIDINHO, g1.getRandomPos());

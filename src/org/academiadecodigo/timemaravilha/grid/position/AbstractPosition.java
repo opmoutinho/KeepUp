@@ -7,6 +7,8 @@ public abstract class AbstractPosition implements GridPosition {
 
     private int col;
     private int row;
+    private int dimensionX;
+    private int dimensionY;
     private Grid grid;
 
     public AbstractPosition(int col, int row, Grid grid){
@@ -23,6 +25,12 @@ public abstract class AbstractPosition implements GridPosition {
     @Override
     public int getRow() {
         return row;
+    }
+
+    @Override
+    public void setDimension(int dimX, int dimY){
+        dimensionX = dimX;
+        dimensionY = dimY;
     }
 
     public void move(Direction dir, int units){
@@ -51,7 +59,7 @@ public abstract class AbstractPosition implements GridPosition {
     private void moveDown(int units){
         if(units < 0)
             return;
-        row = Math.min(grid.getRows()-1, row+units);
+        row = Math.min(grid.getRows()-dimensionY, row+units);
     }
 
     private void moveLeft(int units){
@@ -61,6 +69,6 @@ public abstract class AbstractPosition implements GridPosition {
     }
 
     private void moveRight(int units){
-        col = Math.min(grid.getCols()-1, col+units);
+        col = Math.min(grid.getCols()-dimensionX, col+units);
     }
 }

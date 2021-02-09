@@ -9,6 +9,8 @@ public interface GridPosition {
     public int getCol();
     public int getRow();
 
+    public void setDimension(int dimX, int dimY);
+
     public void move(Direction dir, int units);
 
     public void setColor(Color color);
