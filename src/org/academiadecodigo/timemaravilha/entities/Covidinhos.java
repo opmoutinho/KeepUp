@@ -24,8 +24,13 @@ public class Covidinhos extends DespawnableEntity {
     public void collide(Entity other){
         if(other instanceof Player){
             despawn();
-        } else {
-            System.out.println("Collided with Covidinho");
+            System.out.println("Covidinho Collided with Player");
+        } else if (other instanceof Mask){
+            despawn();
+            System.out.println("Covidinho Collided with Mask");
+
+        }else{
+            System.out.println("Covidinho Collided with another Covidinho");
         }
     }
 }

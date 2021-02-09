@@ -61,8 +61,13 @@ public class Player extends Entity {
                 kill();
                 EntityManager.getInstance().setInactive(this);
             }
-        } else {
-            System.out.println("Collided with Player");
+            System.out.println("Player Collided with Covidinho");
+        } else if (other instanceof Mask){
+            mask = true;
+            System.out.println("Player Collided with Mask");
+
+        }else {
+            System.out.println("Player Didn't collided!? :O ");
         }
     }
 

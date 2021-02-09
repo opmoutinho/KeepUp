@@ -12,7 +12,7 @@ import org.academiadecodigo.timemaravilha.grid.position.SimpleGfxPosition;
 public class Main {
 
     public static void main(String[] args) throws InterruptedException{
-        SimpleGfxGrid g1 = new SimpleGfxGrid(30,30);
+        SimpleGfxGrid g1 = new SimpleGfxGrid(20,20);
         g1.init();
 
         Player player = new Player(g1.getRandomPos(),1,1);
@@ -28,6 +28,7 @@ public class Main {
         entityManager.createEntity(EntityType.COVIDINHO, g1.getRandomPos());
         entityManager.createEntity(EntityType.COVIDINHO, g1.getRandomPos());
         entityManager.createEntity(EntityType.COVIDINHO, g1.getRandomPos());
+        entityManager.createEntity(EntityType.MASK, g1.getRandomPos());
 
 
         while (true) {

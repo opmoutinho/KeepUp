@@ -3,10 +3,11 @@ package org.academiadecodigo.timemaravilha.entities;
 import org.academiadecodigo.timemaravilha.collision.CollisionBox;
 import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
+
 public abstract class Entity {
 
     private CollisionBox collisionBox;
-    private GridPosition position;
+    private  GridPosition position;
     private boolean dead;
 
     public Entity(GridPosition position, int dimensionX, int dimensionY){

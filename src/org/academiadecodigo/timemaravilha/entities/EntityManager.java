@@ -41,6 +41,10 @@ public class EntityManager {
             case PLAYER:
                 entities.add(new Player(gridPosition,1,1));
                 break;
+            case MASK:
+                gridPosition.setColor(Color.BLUE);
+                entities.add(new Mask (gridPosition,1,1));
+
         }
     }
 
