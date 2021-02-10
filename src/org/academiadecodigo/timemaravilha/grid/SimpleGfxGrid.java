@@ -7,12 +7,13 @@ import org.academiadecodigo.timemaravilha.grid.position.SimpleGfxPosition;
 public class SimpleGfxGrid extends AbstractGrid{
 
     private Rectangle rectangle;
-    public static final int PADDING = 10;
+    public static final int PADDINGX = 10;
+    public static final int PADDINGY = 250;
     public static final int SIZE = 10;
 
     public SimpleGfxGrid(int cols, int rows){
         super(cols, rows);
-        rectangle = new Rectangle(PADDING, PADDING, cols*SIZE, rows*SIZE);
+        rectangle = new Rectangle(PADDINGX, PADDINGY, cols*SIZE, rows*SIZE);
     }
 
     public void init (){
@@ -20,11 +21,11 @@ public class SimpleGfxGrid extends AbstractGrid{
     }
 
     public int colToX(int col){
-        return (col* SIZE) + PADDING;
+        return (col* SIZE) + PADDINGX;
     }
 
     public int rowToY(int row){
-        return (row * SIZE) + PADDING;
+        return (row * SIZE) + PADDINGY;
     }
 
     @Override

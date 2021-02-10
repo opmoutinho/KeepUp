@@ -1,5 +1,10 @@
-package org.academiadecodigo.timemaravilha.entities;
+package org.academiadecodigo.timemaravilha.entities.despawnable.powerup;
 
+import org.academiadecodigo.timemaravilha.entities.Entity;
+import org.academiadecodigo.timemaravilha.entities.EntityManager;
+import org.academiadecodigo.timemaravilha.entities.Player;
+import org.academiadecodigo.timemaravilha.entities.despawnable.DespawnableEntity;
+import org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.AbstractCovidinho;
 import org.academiadecodigo.timemaravilha.grid.Direction;
 import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
@@ -31,16 +36,15 @@ public class Immunity extends DespawnableEntity {
             despawn();
             System.out.println("Immunity collided with Player");
 
-        } else if (other instanceof Covidinho) {
+        }else if (other instanceof AbstractCovidinho) {
             despawn();
-            System.out.println("Immunity Collided with Covidinhos");
+            System.out.println("Immunity Collided with Covidinho");
 
         }else if (other instanceof Vaccine){
-                despawn();
-                System.out.println("Immunity Collided with Vaccine");
+            System.out.println("Immunity Collided with Vaccine");
 
         }else{
-            System.out.println("Immunity Collided with another Immunity");
+            System.out.println("Immunity Collided with Immunity");
         }
     }
 }

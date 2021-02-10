@@ -1,6 +1,11 @@
 package org.academiadecodigo.timemaravilha.entities;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.AbstractCovidinho;
+import org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.SimpleCovidinho;
+import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Immunity;
+import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Mask;
+import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Vaccine;
 import org.academiadecodigo.timemaravilha.grid.Direction;
 import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
@@ -36,7 +41,7 @@ public class Player extends Entity {
     }
 
     public void collide(Entity other){
-        if(other instanceof Covidinho){
+        if(other instanceof AbstractCovidinho){
             if(!mask)
                 health--;
             else
@@ -49,9 +54,18 @@ public class Player extends Entity {
                 EntityManager.getInstance().setInactive(this);
             }
             System.out.println("Player Collided with Covidinho");
-        } else if (other instanceof Mask){
+
+        } else if (other instanceof Mask) {
             mask = true;
             System.out.println("Player Collided with Mask");
+
+        }else if (other instanceof Vaccine){
+            // vaccine=true
+            System.out.println("Player Collided with Vaccine");
+
+        }else if (other instanceof Immunity){
+            // immunity=true;
+            System.out.println("Player Collided with Immunity");
 
         }else {
             System.out.println("Player Didn't collided!? :O ");

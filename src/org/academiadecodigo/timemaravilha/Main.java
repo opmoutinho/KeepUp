@@ -1,13 +1,9 @@
 package org.academiadecodigo.timemaravilha;
 
-import org.academiadecodigo.timemaravilha.entities.Covidinho;
 import org.academiadecodigo.timemaravilha.entities.EntityManager;
 import org.academiadecodigo.timemaravilha.entities.EntityType;
 import org.academiadecodigo.timemaravilha.entities.Player;
-import org.academiadecodigo.timemaravilha.grid.Direction;
 import org.academiadecodigo.timemaravilha.grid.SimpleGfxGrid;
-import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
-import org.academiadecodigo.timemaravilha.grid.position.SimpleGfxPosition;
 
 public class Main {
 
@@ -16,16 +12,18 @@ public class Main {
         main.init();
         while(true){
             EntityManager.getInstance().moveAll();
-            Thread.sleep(30);
-        }
 
+            Thread.sleep(50);
+        }
     }
 
     public void init(){
-        SimpleGfxGrid g1 = new SimpleGfxGrid(80,62);
+
+        SimpleGfxGrid g1 = new SimpleGfxGrid(80,40);
+
         g1.init();
 
-        Player player = new Player(g1.getRandomPos(),3, 3);
+        Player player = new Player(g1.getRandomPos(),1, 2);
 
         MyKeyboard m1 = new MyKeyboard();
         m1.init();
@@ -35,11 +33,16 @@ public class Main {
         EntityManager entityManager = EntityManager.getInstance();
         entityManager.add(player);
 
-        entityManager.createEntity(EntityType.COVIDINHO, g1.getRandomPos());
-        entityManager.createEntity(EntityType.COVIDINHO, g1.getRandomPos());
-        entityManager.createEntity(EntityType.COVIDINHO, g1.getRandomPos());
-        entityManager.createEntity(EntityType.COVIDINHO, g1.getRandomPos());
-        entityManager.createEntity(EntityType.COVIDINHO, g1.getRandomPos());
+        entityManager.createEntity(EntityType.COVIDINHOSIMPLES, g1.getRandomPos());
+        entityManager.createEntity(EntityType.COVIDINHOSIMPLES, g1.getRandomPos());
+        entityManager.createEntity(EntityType.COVIDINHOSIMPLES, g1.getRandomPos());
+        entityManager.createEntity(EntityType.COVIDINHOSIMPLES, g1.getRandomPos());
+        entityManager.createEntity(EntityType.COVIDINHOSIMPLES, g1.getRandomPos());
+        entityManager.createEntity(EntityType.COVIDINHOTARGET, g1.getRandomPos());
         entityManager.createEntity(EntityType.MASK, g1.getRandomPos());
+        entityManager.createEntity(EntityType.MASK, g1.getRandomPos());
+        entityManager.createEntity(EntityType.VACCINE, g1.getRandomPos());
+        entityManager.createEntity(EntityType.IMMUNITY, g1.getRandomPos());
+
     }
 }
