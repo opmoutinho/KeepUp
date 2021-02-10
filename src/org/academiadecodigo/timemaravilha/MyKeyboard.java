@@ -62,6 +62,10 @@ public class MyKeyboard implements KeyboardHandler {
         keyboard.addEventListener(event);
     }
 
+    public void initDifficulty(){
+
+    }
+
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
         if(keyboardEvent.getKey() == KeyboardEvent.KEY_UP){

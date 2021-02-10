@@ -1,6 +1,9 @@
 package org.academiadecodigo.timemaravilha.entities;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.AbstractCovidinho;
+import org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.SimpleCovidinho;
+import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Mask;
 import org.academiadecodigo.timemaravilha.grid.Direction;
 import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
@@ -36,7 +39,7 @@ public class Player extends Entity {
     }
 
     public void collide(Entity other){
-        if(other instanceof Covidinho){
+        if(other instanceof AbstractCovidinho){
             if(!mask)
                 health--;
             else

@@ -1,9 +1,14 @@
-package org.academiadecodigo.timemaravilha.entities;
+package org.academiadecodigo.timemaravilha.entities.despawnable.powerup;
 
+import org.academiadecodigo.timemaravilha.entities.Entity;
+import org.academiadecodigo.timemaravilha.entities.EntityManager;
+import org.academiadecodigo.timemaravilha.entities.Player;
+import org.academiadecodigo.timemaravilha.entities.despawnable.DespawnableEntity;
+import org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.SimpleCovidinho;
 import org.academiadecodigo.timemaravilha.grid.Direction;
 import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
-public class Mask extends DespawnableEntity{
+public class Mask extends DespawnableEntity {
     public Mask (GridPosition position, int dimensionX, int dimensionY) {
         super(position,dimensionX,dimensionY);
     }
@@ -30,7 +35,7 @@ public class Mask extends DespawnableEntity{
             despawn();
             System.out.println("Mask collided with Player");
 
-        } else if (other instanceof Covidinho){
+        } else if (other instanceof SimpleCovidinho){
             despawn();
             System.out.println("Mask Collided with Covidinhos");
 
