@@ -16,13 +16,13 @@ public class Main {
         main.init();
         while(true){
             EntityManager.getInstance().moveAll();
-            Thread.sleep(100);
+            Thread.sleep(30);
         }
 
     }
 
     public void init(){
-        SimpleGfxGrid g1 = new SimpleGfxGrid(60,60);
+        SimpleGfxGrid g1 = new SimpleGfxGrid(80,62);
         g1.init();
 
         Player player = new Player(g1.getRandomPos(),3, 3);
