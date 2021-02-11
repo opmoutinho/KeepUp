@@ -8,33 +8,11 @@ import org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.Abstrac
 import org.academiadecodigo.timemaravilha.grid.Direction;
 import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
-public class Immunity extends DespawnableEntity {
+public class Immunity extends AbstractPowerUp {
 
     public Immunity (GridPosition position, int dimensionX, int dimensionY) {
         super(position,dimensionX,dimensionY);
     }
 
-    @Override
-    public boolean collidedWith(Entity other) {
-        return getCollisionBox().collidedWith(other.getCollisionBox());
-
-    }
-
-    public void collide(Entity other){
-        if(other instanceof Player){
-            despawn();
-            System.out.println("Immunity collided with Player");
-
-        }else if (other instanceof AbstractCovidinho) {
-            despawn();
-            System.out.println("Immunity Collided with Covidinho");
-
-        }else if (other instanceof Vaccine){
-            System.out.println("Immunity Collided with Vaccine");
-
-        }else{
-            System.out.println("Immunity Collided with Immunity");
-        }
-    }
 }
 

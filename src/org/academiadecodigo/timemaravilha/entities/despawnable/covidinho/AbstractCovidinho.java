@@ -4,6 +4,7 @@ import org.academiadecodigo.timemaravilha.entities.Entity;
 import org.academiadecodigo.timemaravilha.entities.EntityManager;
 import org.academiadecodigo.timemaravilha.entities.Player;
 import org.academiadecodigo.timemaravilha.entities.despawnable.DespawnableEntity;
+import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.AbstractPowerUp;
 import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Immunity;
 import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Mask;
 import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Vaccine;
@@ -28,7 +29,11 @@ public abstract class AbstractCovidinho extends DespawnableEntity {
         EntityManager.getInstance().checkCollision(this);
     }
 
-    public Direction chooseDir(){
+    protected Direction chooseDir(){
+        return randomDir();
+    }
+
+    protected Direction randomDir(){
         Direction dir;
         if(getDirection() == Direction.NEUTRAL) {
             Direction[] directions = Direction.values();
@@ -51,18 +56,9 @@ public abstract class AbstractCovidinho extends DespawnableEntity {
         if(other instanceof Player){
             despawn();
             System.out.println("Covidinho Collided with Player");
-
         } else if (other instanceof Mask){
             rooted = true;
-            System.out.println("Covidinho Collided with Mask");
-
-        }else if (other instanceof Immunity){
-            System.out.println("Covidinho Collided with Immunity");
-
-        }else if (other instanceof Vaccine){
-            System.out.println("Covidinho Collided with Vaccine");
-
-        }else{
+        } else {
             System.out.println("Covidinho Collided with another Covidinho");
         }
     }

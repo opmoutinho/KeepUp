@@ -2,6 +2,7 @@ package org.academiadecodigo.timemaravilha.entities;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.timemaravilha.collision.CollisionDetector;
+import org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.PatrollingCovidinho;
 import org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.SimpleCovidinho;
 import org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.TargetCovidinho;
 import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Immunity;
@@ -45,6 +46,11 @@ public class EntityManager {
             case COVIDINHOTARGET:
                 gridPosition.setColor(Color.MAGENTA);
                 entities.add(new TargetCovidinho(gridPosition,20,20));
+                ((TargetCovidinho) entities.get(entities.size()-1)).setTarget(entities.get(0).getPosition());
+                break;
+            case COVIDINHOPATROLLING:
+                gridPosition.setColor(Color.WHITE);
+                entities.add(new PatrollingCovidinho(gridPosition,20,20));
                 ((TargetCovidinho) entities.get(entities.size()-1)).setTarget(entities.get(0).getPosition());
                 break;
             case PLAYER:

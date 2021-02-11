@@ -18,7 +18,7 @@ public abstract class DespawnableEntity extends Entity implements Despawnable {
     }
 
     @Override
-    public Direction chooseDir() {
+    protected Direction chooseDir() {
         return null;
     }
 

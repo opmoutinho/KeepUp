@@ -9,7 +9,7 @@ import java.util.List;
 
 public class TargetCovidinho extends AbstractCovidinho {
 
-    GridPosition target;
+    protected GridPosition target;
 
     public TargetCovidinho(GridPosition position, int dimensionX, int dimensionY) {
         super(position, dimensionX, dimensionY);
@@ -20,7 +20,7 @@ public class TargetCovidinho extends AbstractCovidinho {
     }
 
     @Override
-    public Direction chooseDir() {
+    protected Direction chooseDir() {
         List<Direction> possibleDir = new LinkedList<>();
         if(getPosition().getCol() > target.getCol()){
             possibleDir.add(Direction.LEFT);

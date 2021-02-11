@@ -38,7 +38,7 @@ public class Main {
         entityManager.createEntity(EntityType.COVIDINHOSIMPLES, g1.getRandomPos());
         entityManager.createEntity(EntityType.COVIDINHOSIMPLES, g1.getRandomPos());
         entityManager.createEntity(EntityType.COVIDINHOSIMPLES, g1.getRandomPos());
-        entityManager.createEntity(EntityType.COVIDINHOSIMPLES, g1.getRandomPos());
+        entityManager.createEntity(EntityType.COVIDINHOPATROLLING, g1.getRandomPos());
         entityManager.createEntity(EntityType.COVIDINHOTARGET, g1.getRandomPos());
         entityManager.createEntity(EntityType.MASK, g1.getRandomPos());
         entityManager.createEntity(EntityType.MASK, g1.getRandomPos());

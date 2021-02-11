@@ -25,7 +25,7 @@ public abstract class Entity {
 
     public abstract void move();
 
-    public abstract Direction chooseDir();
+    protected abstract Direction chooseDir();
 
     public boolean onBorder(){
         return getPosition().onBorder();
