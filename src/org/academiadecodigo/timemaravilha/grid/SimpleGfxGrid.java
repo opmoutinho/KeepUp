@@ -16,7 +16,7 @@ public class SimpleGfxGrid extends AbstractGrid{
     public SimpleGfxGrid(int cols, int rows){
         super(cols, rows);
         rectangle = new Rectangle(PADDINGX, PADDINGY, cols*SIZE, rows*SIZE);
-        pic = new Picture(PADDINGX,0, "Background1.png");
+        pic = new Picture(PADDINGX,0, "background/Background1.png");
     }
 
     public void init (){

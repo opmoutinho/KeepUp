@@ -13,7 +13,7 @@ public class PatrollingCovidinho extends TargetCovidinho{
     protected Direction chooseDir(){
         double distance = Math.sqrt(Math.pow(target.getCol()- getPosition().getCol(),2) +
                 Math.pow(target.getRow() - getPosition().getRow(), 2));
-        Direction dir = Direction.NEUTRAL;
+        Direction dir;
         if(distance < 150){
             dir = super.chooseDir();
         } else {
