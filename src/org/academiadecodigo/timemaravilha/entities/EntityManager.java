@@ -2,28 +2,37 @@ package org.academiadecodigo.timemaravilha.entities;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.timemaravilha.collision.CollisionDetector;
+import org.academiadecodigo.timemaravilha.entities.despawnable.DespawnableEntity;
 import org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.PatrollingCovidinho;
 import org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.SimpleCovidinho;
 import org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.TargetCovidinho;
+import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.AbstractPowerUp;
 import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Immunity;
 import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Mask;
 import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Vaccine;
+import org.academiadecodigo.timemaravilha.grid.Grid;
 import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class EntityManager {
     private static EntityManager instance;
     private List <Entity> entities;
     private List <Entity> inactiveEntities;
+    private Grid grid;
     private CollisionDetector collisionDetector;
+    private Timer timer;
 
 
     private EntityManager () {
-        entities = new LinkedList<>();
+        entities = new LinkedList<Entity>();
         inactiveEntities = new LinkedList<>();
         this.collisionDetector = new CollisionDetector(entities);
+        timer = new Timer();
+    }
+
+    public void setGrid(Grid grid) {
+        this.grid = grid;
     }
 
     public static EntityManager getInstance(){
@@ -37,37 +46,56 @@ public class EntityManager {
         entities.add(entity);
     }
 
-    public void createEntity (EntityType entityType, GridPosition gridPosition){
+    public void init(){
+        setSpawnTimer(10000,EntityType.COVIDINHOSIMPLES);
+        setSpawnTimer(5000,EntityType.COVIDINHOSIMPLES);
+        setSpawnTimer(15000,EntityType.COVIDINHOPATROLLING);
+        setSpawnTimer(20000,EntityType.COVIDINHOPATROLLING);
+        setSpawnTimer(25000,EntityType.COVIDINHOTARGET);
+        setSpawnTimer(15000,EntityType.MASK);
+        setSpawnTimer(10000,EntityType.IMMUNITY);
+    }
+
+    public synchronized void createEntity (EntityType entityType){
+        final Entity entity;
+        GridPosition position = grid.getRandomPos();
         switch(entityType){
-            case COVIDINHOSIMPLES:
-                gridPosition.setColor(Color.DARK_GRAY);
-                entities.add(new SimpleCovidinho(gridPosition,20,20));
-                break;
             case COVIDINHOTARGET:
-                gridPosition.setColor(Color.MAGENTA);
-                entities.add(new TargetCovidinho(gridPosition,20,20));
-                ((TargetCovidinho) entities.get(entities.size()-1)).setTarget(entities.get(0).getPosition());
+                position.setColor(Color.MAGENTA);
+                entity = new TargetCovidinho(position,20,20);
+                ((TargetCovidinho) entity).setTarget(entities.get(0).getPosition());
                 break;
             case COVIDINHOPATROLLING:
-                gridPosition.setColor(Color.WHITE);
-                entities.add(new PatrollingCovidinho(gridPosition,20,20));
-                ((TargetCovidinho) entities.get(entities.size()-1)).setTarget(entities.get(0).getPosition());
+                position.setColor(Color.WHITE);
+                entity = new PatrollingCovidinho(position,20,20);
+                ((TargetCovidinho) entity).setTarget(entities.get(0).getPosition());
                 break;
             case PLAYER:
-                entities.add(new Player(gridPosition,10,10));
+                entity = new Player(position,10,10);
                 break;
             case MASK:
-                gridPosition.setColor(Color.BLUE);
-                entities.add(new Mask(gridPosition,20,10));
+                position.setColor(Color.BLUE);
+                entity = new Mask(position,20,10);
                 break;
             case IMMUNITY:
-                gridPosition.setColor(Color.PINK);
-                entities.add(new Immunity(gridPosition,20,20));
+                position.setColor(Color.PINK);
+                entity = new Immunity(position,20,20);
                 break;
             case VACCINE:
-                gridPosition.setColor(Color.YELLOW);
-                entities.add(new Vaccine(gridPosition,20,20));
+                position.setColor(Color.YELLOW);
+                entity = new Vaccine(position,20,20);
                 break;
+            default:
+                position.setColor(Color.DARK_GRAY);
+                entity = new SimpleCovidinho(position,20,20);
+                break;
+        }
+        entities.add(entity);
+
+        if(entity instanceof AbstractPowerUp){
+            setDespawnTimer(6000,15000, (DespawnableEntity) entity);
+        } else if(entity instanceof DespawnableEntity){
+            setDespawnTimer(30000,60000,(DespawnableEntity) entity);
         }
     }
 
@@ -75,16 +103,34 @@ public class EntityManager {
         collisionDetector.checkCollision(entity);
     }
 
-    public void moveAll () {
-        for (Entity entity : entities) {
-            entity.move();
-            collisionDetector.checkCollision(entity);
-        }
-        entities.removeAll(inactiveEntities);
-        inactiveEntities.clear();
+    public synchronized void moveAll () {
+            for (Entity entity : entities) {
+                entity.move();
+                collisionDetector.checkCollision(entity);
+            }
+            entities.removeAll(inactiveEntities);
+            inactiveEntities.clear();
     }
 
     public void setInactive(Entity entity) {
         inactiveEntities.add(entity);
+    }
+
+    private void setDespawnTimer(long min, long max, final DespawnableEntity entity){
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                entity.despawn();
+            }
+        }, (long) (Math.random()*(max-min+1)+min));
+    }
+
+    private void setSpawnTimer(long spawnTimer, final EntityType type){
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                createEntity(type);
+            }
+        },0,spawnTimer);
     }
 }

@@ -22,4 +22,6 @@ public interface GridPosition {
     public void show();
     public void hide();
 
+    public boolean equals(GridPosition other);
+
 }

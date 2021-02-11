@@ -21,7 +21,7 @@ public class SimpleGfxGrid extends AbstractGrid{
 
     public void init (){
        rectangle.draw();
-       //pic.draw();
+       pic.draw();
     }
 
     public int colToX(int col){

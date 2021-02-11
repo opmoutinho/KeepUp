@@ -87,4 +87,9 @@ public abstract class AbstractPosition implements GridPosition {
     private void moveRight(int units){
         col = Math.min(grid.getCols()-dimensionX, col+units);
     }
+
+    @Override
+    public boolean equals(GridPosition other) {
+        return col == other.getCol() && row == other.getRow();
+    }
 }

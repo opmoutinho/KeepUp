@@ -32,18 +32,9 @@ public class Main {
         player.setKeysPressed(m1.getKeysPressed());
 
         EntityManager entityManager = EntityManager.getInstance();
+        entityManager.setGrid(g1);
+        entityManager.init();
         entityManager.add(player);
-
-        entityManager.createEntity(EntityType.COVIDINHOSIMPLES, g1.getRandomPos());
-        entityManager.createEntity(EntityType.COVIDINHOSIMPLES, g1.getRandomPos());
-        entityManager.createEntity(EntityType.COVIDINHOSIMPLES, g1.getRandomPos());
-        entityManager.createEntity(EntityType.COVIDINHOSIMPLES, g1.getRandomPos());
-        entityManager.createEntity(EntityType.COVIDINHOPATROLLING, g1.getRandomPos());
-        entityManager.createEntity(EntityType.COVIDINHOTARGET, g1.getRandomPos());
-        entityManager.createEntity(EntityType.MASK, g1.getRandomPos());
-        entityManager.createEntity(EntityType.MASK, g1.getRandomPos());
-        entityManager.createEntity(EntityType.VACCINE, g1.getRandomPos());
-        entityManager.createEntity(EntityType.IMMUNITY, g1.getRandomPos());
 
     }
 }
