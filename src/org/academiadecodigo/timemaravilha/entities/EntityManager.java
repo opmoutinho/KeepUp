@@ -39,28 +39,28 @@ public class EntityManager {
     public void createEntity (EntityType entityType, GridPosition gridPosition){
         switch(entityType){
             case COVIDINHOSIMPLES:
-                gridPosition.setColor(Color.GREEN);
-                entities.add(new SimpleCovidinho(gridPosition,2,2));
+                gridPosition.setColor(Color.DARK_GRAY);
+                entities.add(new SimpleCovidinho(gridPosition,20,20));
                 break;
             case COVIDINHOTARGET:
                 gridPosition.setColor(Color.MAGENTA);
-                entities.add(new TargetCovidinho(gridPosition,2,2));
+                entities.add(new TargetCovidinho(gridPosition,20,20));
                 ((TargetCovidinho) entities.get(entities.size()-1)).setTarget(entities.get(0).getPosition());
                 break;
             case PLAYER:
-                entities.add(new Player(gridPosition,1,1));
+                entities.add(new Player(gridPosition,10,10));
                 break;
             case MASK:
                 gridPosition.setColor(Color.BLUE);
-                entities.add(new Mask(gridPosition,2,1));
+                entities.add(new Mask(gridPosition,20,10));
                 break;
             case IMMUNITY:
                 gridPosition.setColor(Color.ORANGE);
-                entities.add(new Immunity(gridPosition,2,2));
+                entities.add(new Immunity(gridPosition,20,20));
                 break;
             case VACCINE:
                 gridPosition.setColor(Color.YELLOW);
-                entities.add(new Vaccine(gridPosition,2,2));
+                entities.add(new Vaccine(gridPosition,20,20));
                 break;
         }
     }

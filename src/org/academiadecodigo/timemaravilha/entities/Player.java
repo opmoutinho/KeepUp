@@ -29,13 +29,13 @@ public class Player extends Entity {
         if(isDead())
             return;
         if(keysPressed[0])
-            getPosition().move(Direction.UP,1);
+            getPosition().move(Direction.UP,2);
         if(keysPressed[1])
-            getPosition().move(Direction.DOWN,1);
+            getPosition().move(Direction.DOWN,2);
         if(keysPressed[2])
-            getPosition().move(Direction.LEFT,1);
+            getPosition().move(Direction.LEFT,2);
         if(keysPressed[3])
-            getPosition().move(Direction.RIGHT,1);
+            getPosition().move(Direction.RIGHT,2);
         EntityManager.getInstance().checkCollision(this);
     }
 

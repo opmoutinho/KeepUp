@@ -1,5 +1,6 @@
 package org.academiadecodigo.timemaravilha;
 
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.timemaravilha.entities.EntityManager;
 import org.academiadecodigo.timemaravilha.entities.EntityType;
 import org.academiadecodigo.timemaravilha.entities.Player;
@@ -13,17 +14,17 @@ public class Main {
         while(true){
             EntityManager.getInstance().moveAll();
 
-            Thread.sleep(50);
+            Thread.sleep(17);
         }
     }
 
     public void init(){
 
-        SimpleGfxGrid g1 = new SimpleGfxGrid(80,40);
+        SimpleGfxGrid g1 = new SimpleGfxGrid(800,400);
 
         g1.init();
 
-        Player player = new Player(g1.getRandomPos(),1, 2);
+        Player player = new Player(g1.getRandomPos(),10, 20);
 
         MyKeyboard m1 = new MyKeyboard();
         m1.init();

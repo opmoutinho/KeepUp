@@ -11,7 +11,7 @@ public class SimpleGfxGrid extends AbstractGrid{
     private Picture pic;
     public static final int PADDINGX = 10;
     public static final int PADDINGY = 275;
-    public static final int SIZE = 10;
+    public static final int SIZE = 1;
 
     public SimpleGfxGrid(int cols, int rows){
         super(cols, rows);
@@ -21,7 +21,7 @@ public class SimpleGfxGrid extends AbstractGrid{
 
     public void init (){
        rectangle.draw();
-       pic.draw();
+       //pic.draw();
     }
 
     public int colToX(int col){
