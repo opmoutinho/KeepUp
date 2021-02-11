@@ -55,7 +55,7 @@ public class EntityManager {
                 entities.add(new Mask(gridPosition,20,10));
                 break;
             case IMMUNITY:
-                gridPosition.setColor(Color.ORANGE);
+                gridPosition.setColor(Color.PINK);
                 entities.add(new Immunity(gridPosition,20,20));
                 break;
             case VACCINE:

@@ -39,6 +39,11 @@ public class Player extends Entity {
         EntityManager.getInstance().checkCollision(this);
     }
 
+    @Override
+    public Direction chooseDir() {
+        return null;
+    }
+
     public void collide(Entity other){
         if(other instanceof AbstractCovidinho){
             if(!mask)

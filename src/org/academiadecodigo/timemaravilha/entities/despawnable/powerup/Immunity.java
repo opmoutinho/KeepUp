@@ -15,17 +15,6 @@ public class Immunity extends DespawnableEntity {
     }
 
     @Override
-    public void move() {
-        if (!isDead()) {
-            Direction[] directions = Direction.values();
-            int random = (int) (Math.random() * directions.length);
-            Direction direction = directions[random];
-            getPosition().move(direction, 1);
-        }
-        EntityManager.getInstance().checkCollision(this);
-    }
-
-    @Override
     public boolean collidedWith(Entity other) {
         return getCollisionBox().collidedWith(other.getCollisionBox());
 

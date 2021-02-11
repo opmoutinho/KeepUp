@@ -23,14 +23,28 @@ public abstract class AbstractCovidinho extends DespawnableEntity {
         if (!isDead() && !rooted) {
             Direction direction = chooseDir();
             getPosition().move(direction, 1);
+            setDirection(direction);
         }
         EntityManager.getInstance().checkCollision(this);
     }
 
     public Direction chooseDir(){
-        Direction[] directions = Direction.values();
-        int random = (int) (Math.random() * directions.length);
-        return directions[random];
+        Direction dir;
+        if(getDirection() == Direction.NEUTRAL) {
+            Direction[] directions = Direction.values();
+            int random = (int) (Math.random() * directions.length);
+            dir = directions[random];
+        } else if(Math.random() > 0.1){
+            if(onBorder())
+                dir = getDirection().opposite();
+            else
+                dir = getDirection();
+        } else {
+            Direction[] directions = getDirection().changePlane();
+            int random = (int) (Math.random() * directions.length);
+            dir = directions[random];
+        }
+        return dir;
     }
 
     public void collide(Entity other){

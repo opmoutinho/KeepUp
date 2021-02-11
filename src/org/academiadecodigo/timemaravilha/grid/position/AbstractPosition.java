@@ -28,6 +28,12 @@ public abstract class AbstractPosition implements GridPosition {
     }
 
     @Override
+    public boolean onBorder() {
+        return col == 0 || col == grid.getCols()-dimensionX ||
+                row == 0 || row == grid.getRows()-dimensionY;
+    }
+
+    @Override
     public void setDimension(int dimX, int dimY){
         dimensionX = dimX;
         dimensionY = dimY;

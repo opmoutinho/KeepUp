@@ -11,6 +11,8 @@ public interface GridPosition {
     public int getDimX();
     public int getDimY();
 
+    public boolean onBorder();
+
     public void setDimension(int dimX, int dimY);
 
     public void move(Direction dir, int units);
