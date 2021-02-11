@@ -14,11 +14,10 @@ public class Player extends Entity {
     private int health = 3;
     private boolean mask;
     private boolean[] keysPressed;
-    private boolean immunity;
-    private boolean sick;
+    private int vaccineCounter;
 
-    public Player (GridPosition playerPos,int dimensonX, int dimensionY){
-        super(playerPos,dimensonX,dimensionY);
+    public Player (GridPosition playerPos,int dimensionX, int dimensionY){
+        super(playerPos,dimensionX,dimensionY);
     }
 
     public void setKeysPressed(boolean[] keysPressed) {
@@ -59,35 +58,17 @@ public class Player extends Entity {
             mask = true;
             System.out.println("Player Collided with Mask");
 
-        }else if (other instanceof Vaccine){
-            // vaccine=true
-            System.out.println("Player Collided with Vaccine");
-
         }else if (other instanceof Immunity){
-            // immunity=true;
+            health ++;
             System.out.println("Player Collided with Immunity");
+
+        }else if (other instanceof Vaccine){
+            vaccineCounter++;
+            System.out.println("Player Collided with Vaccine");
 
         }else {
             System.out.println("Player Didn't collided!? :O ");
         }
     }
 
-    public void setArmor(){
-        //for a certain amount of time
-        this.mask = true;
-    }
-
-    public void setImmunity(){
-        this.immunity = true;
-    }
-
-    public void isSick(){
-        if (!mask) {
-            this.sick = true;
-        }
-    }
-
-    public void setHealth() {
-
-    }
 }
