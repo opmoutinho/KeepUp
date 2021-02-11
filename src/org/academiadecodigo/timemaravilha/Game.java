@@ -2,6 +2,7 @@ package org.academiadecodigo.timemaravilha;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.timemaravilha.GUI.Animations;
 import org.academiadecodigo.timemaravilha.GUI.Difficulty;
 import org.academiadecodigo.timemaravilha.GUI.GameState;
@@ -27,9 +28,8 @@ public class Game {
     public void gameInit() {
         MyKeyboard m1 = new MyKeyboard();
         setKeysPressed(m1.getKeysPressed());
-            Rectangle r1 = new Rectangle(1, 1, 800, 800);
-            r1.setColor(Color.BLACK);
-            r1.fill();
+        Picture p1 = new Picture(1,1,"menustart1.png");
+        p1.draw();
             while (gameState == GameState.INITIAL_MENU){
                 m1.gameInit();
                 try { Thread.sleep(10); } catch (Exception e) {}
@@ -89,24 +89,10 @@ public class Game {
                 SimpleGfxGrid g1 = new SimpleGfxGrid(800,400);
                 g1.init();
                 m1.playerMovementInit();
-=======
-                try { Thread.sleep(10); } catch (Exception e) {}
-                if (keysPressed[4]){
-                    Animations a1 = new Animations();
-                    setGameState(GameState.GAME);
-                }
-            }
-
-            if(gameState == GameState.GAME){
-                m1.playerMovementInit();
-                SimpleGfxGrid g1 = new SimpleGfxGrid(800,400);
-                g1.init();
->>>>>>> acc0543 (Merged GUI to the master, and tested Succeffuly)
                 Player player = new Player(g1.getRandomPos(),10, 20);
                 player.setKeysPressed(m1.getKeysPressed());
                 EntityManager entityManager = EntityManager.getInstance();
                 entityManager.setGrid(g1);
-<<<<<<< HEAD
                 entityManager.add(player);
                 entityManager.init();
                 while(!player.isDead()){
@@ -115,7 +101,5 @@ public class Game {
                     }
                     }
                 }
-            }
-
 }
 
