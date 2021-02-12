@@ -42,7 +42,6 @@ public class Game {
                          setGameState(GameState.PLAYER_PICK);
                          System.out.println("W");
                          try { Thread.sleep(1000); } catch (Exception e) {} }
-
                     if (keysPressed[6]) {
                          setDifficulty(Difficulty.HARD);
                          setGameState(GameState.PLAYER_PICK);
@@ -90,10 +89,24 @@ public class Game {
                 SimpleGfxGrid g1 = new SimpleGfxGrid(800,400);
                 g1.init();
                 m1.playerMovementInit();
+=======
+                try { Thread.sleep(10); } catch (Exception e) {}
+                if (keysPressed[4]){
+                    Animations a1 = new Animations();
+                    setGameState(GameState.GAME);
+                }
+            }
+
+            if(gameState == GameState.GAME){
+                m1.playerMovementInit();
+                SimpleGfxGrid g1 = new SimpleGfxGrid(800,400);
+                g1.init();
+>>>>>>> acc0543 (Merged GUI to the master, and tested Succeffuly)
                 Player player = new Player(g1.getRandomPos(),10, 20);
                 player.setKeysPressed(m1.getKeysPressed());
                 EntityManager entityManager = EntityManager.getInstance();
                 entityManager.setGrid(g1);
+<<<<<<< HEAD
                 entityManager.add(player);
                 entityManager.init();
                 while(!player.isDead()){
