@@ -61,12 +61,10 @@ public class EntityManager {
         GridPosition position = grid.getRandomPos();
         switch(entityType){
             case COVIDINHOTARGET:
-                position.setColor(Color.MAGENTA);
                 entity = new TargetCovidinho(position,20,20);
                 ((TargetCovidinho) entity).setTarget(entities.get(0).getPosition());
                 break;
             case COVIDINHOPATROLLING:
-                position.setColor(Color.WHITE);
                 entity = new PatrollingCovidinho(position,20,20);
                 ((TargetCovidinho) entity).setTarget(entities.get(0).getPosition());
                 break;
@@ -74,19 +72,15 @@ public class EntityManager {
                 entity = new Player(position,10,10);
                 break;
             case MASK:
-                position.setColor(Color.BLUE);
                 entity = new Mask(position,20,10);
                 break;
             case IMMUNITY:
-                position.setColor(Color.PINK);
                 entity = new Immunity(position,20,20);
                 break;
             case VACCINE:
-                position.setColor(Color.YELLOW);
                 entity = new Vaccine(position,20,20);
                 break;
             default:
-                position.setColor(Color.DARK_GRAY);
                 entity = new SimpleCovidinho(position,20,20);
                 break;
         }
@@ -110,6 +104,12 @@ public class EntityManager {
             }
             entities.removeAll(inactiveEntities);
             inactiveEntities.clear();
+    }
+
+    public synchronized void updateFrame(){
+        for(Entity entity : entities) {
+            entity.loadNextFrame();
+        }
     }
 
     public void setInactive(Entity entity) {

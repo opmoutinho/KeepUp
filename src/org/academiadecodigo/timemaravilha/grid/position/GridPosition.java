@@ -13,6 +13,9 @@ public interface GridPosition {
 
     public boolean onBorder();
 
+    public void loadNextFrame(String name);
+    public void flip();
+
     public void setDimension(int dimX, int dimY);
 
     public void move(Direction dir, int units);

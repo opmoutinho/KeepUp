@@ -11,14 +11,18 @@ public class Main {
     public static void main(String[] args) throws InterruptedException{
         Main main = new Main();
         main.init();
+
         while(true){
             EntityManager.getInstance().moveAll();
-
-            Thread.sleep(17);
+            EntityManager.getInstance().updateFrame();
+            Thread.sleep(10);
         }
     }
 
     public void init(){
+
+        SpriteManager.SpriteMap map = SpriteManager.SpriteMap.getInstance();
+        map.setPlayer(PlayerType.RENATA);
 
         SimpleGfxGrid g1 = new SimpleGfxGrid(800,400);
 

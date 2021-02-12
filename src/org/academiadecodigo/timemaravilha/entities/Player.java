@@ -17,7 +17,7 @@ public class Player extends Entity {
     private int vaccineCounter;
 
     public Player (GridPosition playerPos,int dimensionX, int dimensionY){
-        super(playerPos,dimensionX,dimensionY);
+        super(playerPos,dimensionX,dimensionY,EntityType.PLAYER);
     }
 
     public void setKeysPressed(boolean[] keysPressed) {
