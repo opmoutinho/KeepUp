@@ -27,67 +27,82 @@ public class Game {
     public void gameInit() {
         MyKeyboard m1 = new MyKeyboard();
         setKeysPressed(m1.getKeysPressed());
-
-
             Rectangle r1 = new Rectangle(1, 1, 800, 800);
             r1.setColor(Color.BLACK);
             r1.fill();
             while (gameState == GameState.INITIAL_MENU){
                 m1.gameInit();
-               try { Thread.sleep(10); }
-               catch (Exception e) {}
+                try { Thread.sleep(10); } catch (Exception e) {}
                     if (keysPressed[4]) {
                         setDifficulty(Difficulty.EASY);
                         setGameState(GameState.PLAYER_PICK);
                         try { Thread.sleep(1000); } catch (Exception e) {} }
-                     if (keysPressed[5]) {
+                    if (keysPressed[5]) {
                          setDifficulty(Difficulty.MEDIUM);
                          setGameState(GameState.PLAYER_PICK);
                          System.out.println("W");
                          try { Thread.sleep(1000); } catch (Exception e) {} }
-                    }
 
-                     if (keysPressed[6]) {
+                    if (keysPressed[6]) {
                          setDifficulty(Difficulty.HARD);
                          setGameState(GameState.PLAYER_PICK);
                          System.out.println("E");
                          try { Thread.sleep(1000); } catch (Exception e) {} }
-                     if (keysPressed[7]) {
+                    if (keysPressed[7]) {
                         setDifficulty(Difficulty.CARCRASH);
                         setGameState(GameState.PLAYER_PICK);
                         System.out.println("R" + getGameState().toString());
                          try { Thread.sleep(1000); } catch (Exception e) {}
             }
-        if (gameState == GameState.PLAYER_PICK)
-        {
-            Rectangle r2 = new Rectangle(1,1,800,800);
+            }
+        if (gameState == GameState.PLAYER_PICK) {
+            Rectangle r2 = new Rectangle(1, 1, 800, 800);
             r2.setColor(Color.RED);
             r2.fill();
             while (gameState == GameState.PLAYER_PICK) {
                 m1.playerPickInit();
-                try { Thread.sleep(10); } catch (Exception e) {}
-                if (keysPressed[4]){
-                    Animations a1 = new Animations();
-                    setGameState(GameState.GAME);
+                try {
+                    Thread.sleep(10);
+                } catch (Exception e) {
                 }
-            }
-
-            if(gameState == GameState.GAME){
-                m1.playerMovementInit();
-                SimpleGfxGrid g1 = new SimpleGfxGrid(800,400);
-                g1.init();
-                Player player = new Player(g1.getRandomPos(),10, 20);
-                player.setKeysPressed(m1.getKeysPressed());
-                EntityManager entityManager = EntityManager.getInstance();
-                entityManager.setGrid(g1);
-                entityManager.init();
-                entityManager.add(player);
-                while(true){
-                    EntityManager.getInstance().moveAll();
-                    try { Thread.sleep(17); } catch (Exception e) {}
+                if (keysPressed[4]) {
+                    setGameState(GameState.GAME);
+                    r2.delete();
+                    SimpleGfxGrid g1 = new SimpleGfxGrid(800,400);
+                    g1.init();
+                }
+                if (keysPressed[5]){
+                    setGameState(GameState.GAME);
+                    r2.delete();
+                    SimpleGfxGrid g1 = new SimpleGfxGrid(800,400);
+                    g1.init();
+                }
+                if (keysPressed[6]){
+                    setGameState(GameState.GAME);
+                    r2.delete();
+                    SimpleGfxGrid g1 = new SimpleGfxGrid(800,400);
+                    g1.init();
                 }
             }
         }
 
-    }
+        if(gameState == GameState.GAME){
+                SimpleGfxGrid g1 = new SimpleGfxGrid(800,400);
+                g1.init();
+                m1.playerMovementInit();
+                Player player = new Player(g1.getRandomPos(),10, 20);
+                player.setKeysPressed(m1.getKeysPressed());
+                EntityManager entityManager = EntityManager.getInstance();
+                entityManager.setGrid(g1);
+                entityManager.add(player);
+                entityManager.init();
+                while(!player.isDead()){
+                    EntityManager.getInstance().moveAll();
+                    try { Thread.sleep(17); } catch (Exception e) {}
+                    }
+                    }
+                }
+            }
+
 }
+

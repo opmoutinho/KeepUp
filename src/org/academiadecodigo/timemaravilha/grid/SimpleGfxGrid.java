@@ -20,8 +20,12 @@ public class SimpleGfxGrid extends AbstractGrid{
     }
 
     public void init (){
-       rectangle.draw();
-       //pic.draw();
+       //rectangle.draw();
+       pic.draw();
+    }
+
+    public void reset(){
+        pic.delete();
     }
 
     public int colToX(int col){
