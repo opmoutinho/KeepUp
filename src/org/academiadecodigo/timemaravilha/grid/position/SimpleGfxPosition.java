@@ -18,20 +18,21 @@ public class SimpleGfxPosition extends AbstractPosition{
     public SimpleGfxPosition(int col, int row, Grid grid){
         super(col, row, grid);
         simpleGfxGrid = (SimpleGfxGrid) grid;
-        picture = new Picture(simpleGfxGrid.colToX(col), simpleGfxGrid.rowToY(row));
+        picture = new Picture(simpleGfxGrid.colToX(col)-10, simpleGfxGrid.rowToY(row)-5);
         drawRectangle();
     }
 
     @Override
     public void loadNextFrame(String name) {
-        Picture prev = picture;
-        picture = new Picture(simpleGfxGrid.colToX(getCol()),simpleGfxGrid.rowToY(getRow()),name);
-        prev.delete();
+        picture.load(name);
+        move(Direction.NEUTRAL,0);
         picture.draw();
+        rectangle.delete();
     }
 
     public void flip(){
         picture.grow(-picture.getWidth(), 0);
+
     }
 
     private void drawRectangle () {
@@ -66,14 +67,14 @@ public class SimpleGfxPosition extends AbstractPosition{
     }
 
     public void hide(){
-        Canvas.getInstance().hide(rectangle);
-        Canvas.getInstance().hide(picture);
+        rectangle.delete();
+        picture.delete();
     }
 
     @Override
     public void move(Direction dir, int units) {
         super.move(dir, units);
-        picture.translate(simpleGfxGrid.colToX(getCol())-rectangle.getX(), simpleGfxGrid.rowToY(getRow())-rectangle.getY());
+        picture.translate(simpleGfxGrid.colToX(getCol())-(picture.getWidth() < 0 ? -20:10)-picture.getX(), simpleGfxGrid.rowToY(getRow())-5-picture.getY());
         rectangle.translate(simpleGfxGrid.colToX(getCol())-rectangle.getX(), simpleGfxGrid.rowToY(getRow())-rectangle.getY());
     }
 }

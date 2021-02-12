@@ -32,10 +32,20 @@ public class Player extends Entity {
             getPosition().move(Direction.UP,2);
         if(keysPressed[1])
             getPosition().move(Direction.DOWN,2);
-        if(keysPressed[2])
-            getPosition().move(Direction.LEFT,2);
-        if(keysPressed[3])
-            getPosition().move(Direction.RIGHT,2);
+        if(keysPressed[2]) {
+            getPosition().move(Direction.LEFT, 2);
+            if(!spriteManager.isFlipped()) {
+                getPosition().flip();
+                spriteManager.setFlipped(true);
+            }
+        }
+        if(keysPressed[3]) {
+            getPosition().move(Direction.RIGHT, 2);
+            if(spriteManager.isFlipped()) {
+                getPosition().flip();
+                spriteManager.setFlipped(false);
+            }
+        }
         EntityManager.getInstance().checkCollision(this);
     }
 

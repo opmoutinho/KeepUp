@@ -20,7 +20,6 @@ public class SimpleGfxGrid extends AbstractGrid{
     }
 
     public void init (){
-       rectangle.draw();
        pic.draw();
     }
 

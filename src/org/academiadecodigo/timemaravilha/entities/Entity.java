@@ -13,7 +13,7 @@ public abstract class Entity {
     private  GridPosition position;
     private boolean dead;
     private Direction direction;
-    private SpriteManager spriteManager;
+    protected SpriteManager spriteManager;
 
     public Entity(GridPosition position, int dimensionX, int dimensionY, EntityType type){
         this.position = position;
@@ -64,8 +64,9 @@ public abstract class Entity {
         dead = true;
     }
 
-    public void loadNextFrame(){
-        if(spriteManager != null)
+    public void loadNextFrame() {
+        if(spriteManager != null && !dead) {
             spriteManager.loadNextFrame(0);
+        }
     }
 }

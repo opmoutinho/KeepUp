@@ -24,7 +24,9 @@ public abstract class DespawnableEntity extends Entity implements Despawnable {
     }
 
     public void despawn(){
-        getPosition().hide();
+        synchronized (getPosition()) {
+            getPosition().hide();
+        }
         kill();
         EntityManager.getInstance().setInactive(this);
     }

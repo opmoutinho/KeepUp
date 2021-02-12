@@ -17,16 +17,17 @@ import java.util.*;
 
 public class EntityManager {
     private static EntityManager instance;
-    private List <Entity> entities;
-    private List <Entity> inactiveEntities;
+    private Player player;
+    private Set <Entity> entities;
+    private Set <Entity> inactiveEntities;
     private Grid grid;
     private CollisionDetector collisionDetector;
     private Timer timer;
 
 
     private EntityManager () {
-        entities = new LinkedList<Entity>();
-        inactiveEntities = new LinkedList<>();
+        entities = new HashSet<>();
+        inactiveEntities = new HashSet<>();
         this.collisionDetector = new CollisionDetector(entities);
         timer = new Timer();
     }
@@ -44,6 +45,7 @@ public class EntityManager {
 
     public void add(Entity entity){
         entities.add(entity);
+        player = (Player)entity;
     }
 
     public void init(){
@@ -62,11 +64,11 @@ public class EntityManager {
         switch(entityType){
             case COVIDINHOTARGET:
                 entity = new TargetCovidinho(position,20,20);
-                ((TargetCovidinho) entity).setTarget(entities.get(0).getPosition());
+                ((TargetCovidinho) entity).setTarget(player.getPosition());
                 break;
             case COVIDINHOPATROLLING:
                 entity = new PatrollingCovidinho(position,20,20);
-                ((TargetCovidinho) entity).setTarget(entities.get(0).getPosition());
+                ((TargetCovidinho) entity).setTarget(player.getPosition());
                 break;
             case PLAYER:
                 entity = new Player(position,10,10);
@@ -103,6 +105,10 @@ public class EntityManager {
                 collisionDetector.checkCollision(entity);
             }
             entities.removeAll(inactiveEntities);
+            for(Entity entity : inactiveEntities){
+                if(entity instanceof DespawnableEntity)
+                    ((DespawnableEntity) entity).despawn();
+            }
             inactiveEntities.clear();
     }
 
@@ -113,6 +119,7 @@ public class EntityManager {
     }
 
     public void setInactive(Entity entity) {
+
         inactiveEntities.add(entity);
     }
 

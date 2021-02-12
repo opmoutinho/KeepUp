@@ -10,7 +10,7 @@ public class SpriteManager {
 
     private String[][] spriteArr;
     private GridPosition position;
-    private boolean mirror;
+    private boolean flipped;
     private int index;
 
     public SpriteManager(EntityType type, GridPosition position){
@@ -20,9 +20,15 @@ public class SpriteManager {
 
     public void loadNextFrame(int state){
         position.loadNextFrame(spriteArr[0][index]);
-        if(mirror)
-            position.flip();
         index = (index+1)%spriteArr[0].length;
+    }
+
+    public boolean isFlipped(){
+        return flipped;
+    }
+
+    public void setFlipped(boolean flipped) {
+        this.flipped = flipped;
     }
 
     public static class SpriteMap{
