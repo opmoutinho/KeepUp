@@ -4,5 +4,6 @@ public interface Despawnable {
 
 
     public void despawn();
+    public void checkDespawn();
 
 }

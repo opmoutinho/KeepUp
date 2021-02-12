@@ -12,12 +12,12 @@ public class TargetCovidinho extends AbstractCovidinho {
 
     protected GridPosition target;
 
-    public TargetCovidinho(GridPosition position, int dimensionX, int dimensionY) {
-        super(position, dimensionX, dimensionY, EntityType.COVIDINHOTARGET);
+    public TargetCovidinho(GridPosition position, int dimensionX, int dimensionY, long despawnTime) {
+        super(position, dimensionX, dimensionY, EntityType.COVIDINHOTARGET, despawnTime);
     }
 
-    public TargetCovidinho(GridPosition position, int dimensionX, int dimensionY, EntityType type){
-        super(position,dimensionX,dimensionY,type);
+    public TargetCovidinho(GridPosition position, int dimensionX, int dimensionY, EntityType type, long despawnTime){
+        super(position,dimensionX,dimensionY,type, despawnTime);
     }
 
     public void setTarget(GridPosition target) {

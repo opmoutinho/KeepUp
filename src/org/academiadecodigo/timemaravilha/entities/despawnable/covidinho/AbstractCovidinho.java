@@ -16,8 +16,8 @@ public abstract class AbstractCovidinho extends DespawnableEntity {
 
     private boolean rooted;
 
-    public AbstractCovidinho(GridPosition position, int dimensionX, int dimensionY, EntityType type) {
-        super(position, dimensionX, dimensionY, type);
+    public AbstractCovidinho(GridPosition position, int dimensionX, int dimensionY, EntityType type, long despawnTime) {
+        super(position, dimensionX, dimensionY, type, despawnTime);
     }
 
     @Override

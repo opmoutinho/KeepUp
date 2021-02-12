@@ -22,8 +22,6 @@ public interface GridPosition {
 
     public void move(Direction dir, int units);
 
-    public void setColor(Color color);
-
     public void show();
     public void hide();
 

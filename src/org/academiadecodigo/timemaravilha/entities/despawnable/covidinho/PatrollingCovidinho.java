@@ -6,8 +6,8 @@ import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
 public class PatrollingCovidinho extends TargetCovidinho{
 
-    public PatrollingCovidinho(GridPosition position, int dimensionX, int dimensionY) {
-        super(position, dimensionX, dimensionY, EntityType.COVIDINHOPATROLLING);
+    public PatrollingCovidinho(GridPosition position, int dimensionX, int dimensionY,long despawnTime) {
+        super(position, dimensionX, dimensionY, EntityType.COVIDINHOPATROLLING, despawnTime);
     }
 
     @Override

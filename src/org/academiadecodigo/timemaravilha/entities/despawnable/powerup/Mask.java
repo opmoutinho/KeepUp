@@ -12,8 +12,8 @@ import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
 public class Mask extends AbstractPowerUp {
 
-    public Mask (GridPosition position, int dimensionX, int dimensionY) {
-        super(position,dimensionX,dimensionY, EntityType.MASK);
+    public Mask (GridPosition position, int dimensionX, int dimensionY, long despawnTime) {
+        super(position,dimensionX,dimensionY, EntityType.MASK, despawnTime);
     }
 
 }

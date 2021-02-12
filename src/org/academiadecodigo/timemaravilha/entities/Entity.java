@@ -20,10 +20,8 @@ public abstract class Entity {
         this.position.setDimension(dimensionX,dimensionY);
         collisionBox = new CollisionBox (position,dimensionX,dimensionY);
         direction = Direction.NEUTRAL;
-        if(!(this instanceof AbstractPowerUp)) {
-            spriteManager = new SpriteManager(type, position);
-            spriteManager.loadNextFrame(0);
-        }
+        spriteManager = new SpriteManager(type, position);
+        spriteManager.loadNextFrame(0);
     }
 
     public GridPosition getPosition(){

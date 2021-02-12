@@ -11,8 +11,8 @@ import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
 public class Immunity extends AbstractPowerUp {
 
-    public Immunity (GridPosition position, int dimensionX, int dimensionY) {
-        super(position,dimensionX,dimensionY, EntityType.IMMUNITY);
+    public Immunity (GridPosition position, int dimensionX, int dimensionY, long despawnTime) {
+        super(position,dimensionX,dimensionY, EntityType.IMMUNITY, despawnTime);
     }
 
 }
