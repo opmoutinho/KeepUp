@@ -4,12 +4,13 @@ import org.academiadecodigo.timemaravilha.entities.Entity;
 import org.academiadecodigo.timemaravilha.entities.Player;
 
 import java.util.List;
+import java.util.Set;
 
 public class CollisionDetector {
 
-     private List <Entity> entities;
+     private Set <Entity> entities;
 
-     public CollisionDetector (List <Entity> entities){
+     public CollisionDetector (Set<Entity> entities){
           this.entities = entities;
      }
 

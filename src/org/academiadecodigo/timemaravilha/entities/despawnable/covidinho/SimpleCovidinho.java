@@ -9,7 +9,7 @@ import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 public class SimpleCovidinho extends AbstractCovidinho {
 
     public SimpleCovidinho(GridPosition position, int dimensionX, int dimensionY) {
-        super(position,dimensionX,dimensionY);
+        super(position,dimensionX,dimensionY,EntityType.COVIDINHOSIMPLES);
     }
 
 }

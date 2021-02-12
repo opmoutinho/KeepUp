@@ -17,16 +17,17 @@ import java.util.*;
 
 public class EntityManager {
     private static EntityManager instance;
-    private List <Entity> entities;
-    private List <Entity> inactiveEntities;
+    private Player player;
+    private Set <Entity> entities;
+    private Set <Entity> inactiveEntities;
     private Grid grid;
     private CollisionDetector collisionDetector;
     private Timer timer;
 
 
     private EntityManager () {
-        entities = new LinkedList<Entity>();
-        inactiveEntities = new LinkedList<>();
+        entities = new HashSet<>();
+        inactiveEntities = new HashSet<>();
         this.collisionDetector = new CollisionDetector(entities);
         timer = new Timer();
     }
@@ -44,6 +45,7 @@ public class EntityManager {
 
     public void add(Entity entity){
         entities.add(entity);
+        player = (Player)entity;
     }
 
     public void init(){
@@ -61,32 +63,26 @@ public class EntityManager {
         GridPosition position = grid.getRandomPos();
         switch(entityType){
             case COVIDINHOTARGET:
-                position.setColor(Color.MAGENTA);
                 entity = new TargetCovidinho(position,20,20);
-                ((TargetCovidinho) entity).setTarget(entities.get(0).getPosition());
+                ((TargetCovidinho) entity).setTarget(player.getPosition());
                 break;
             case COVIDINHOPATROLLING:
-                position.setColor(Color.WHITE);
                 entity = new PatrollingCovidinho(position,20,20);
-                ((TargetCovidinho) entity).setTarget(entities.get(0).getPosition());
+                ((TargetCovidinho) entity).setTarget(player.getPosition());
                 break;
             case PLAYER:
                 entity = new Player(position,10,10);
                 break;
             case MASK:
-                position.setColor(Color.BLUE);
                 entity = new Mask(position,20,10);
                 break;
             case IMMUNITY:
-                position.setColor(Color.PINK);
                 entity = new Immunity(position,20,20);
                 break;
             case VACCINE:
-                position.setColor(Color.YELLOW);
                 entity = new Vaccine(position,20,20);
                 break;
             default:
-                position.setColor(Color.DARK_GRAY);
                 entity = new SimpleCovidinho(position,20,20);
                 break;
         }
@@ -109,10 +105,21 @@ public class EntityManager {
                 collisionDetector.checkCollision(entity);
             }
             entities.removeAll(inactiveEntities);
+            for(Entity entity : inactiveEntities){
+                if(entity instanceof DespawnableEntity)
+                    ((DespawnableEntity) entity).despawn();
+            }
             inactiveEntities.clear();
     }
 
+    public synchronized void updateFrame(){
+        for(Entity entity : entities) {
+            entity.loadNextFrame();
+        }
+    }
+
     public void setInactive(Entity entity) {
+
         inactiveEntities.add(entity);
     }
 

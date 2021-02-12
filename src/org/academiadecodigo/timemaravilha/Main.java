@@ -1,24 +1,47 @@
 package org.academiadecodigo.timemaravilha;
 
+import org.academiadecodigo.simplegraphics.graphics.Canvas;
+import org.academiadecodigo.simplegraphics.graphics.Shape;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.timemaravilha.entities.EntityManager;
-import org.academiadecodigo.timemaravilha.entities.EntityType;
 import org.academiadecodigo.timemaravilha.entities.Player;
 import org.academiadecodigo.timemaravilha.grid.SimpleGfxGrid;
 
+import java.util.List;
+
 public class Main {
 
+    private static Thread threadMove;
+
     public static void main(String[] args) throws InterruptedException{
+
         Main main = new Main();
         main.init();
-        while(true){
-            EntityManager.getInstance().moveAll();
 
-            Thread.sleep(17);
+        threadMove = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(true) {
+                    EntityManager.getInstance().moveAll();
+                    try {
+                        Thread.sleep(17);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }, "Move");
+        threadMove.start();
+        while(true){
+            EntityManager.getInstance().updateFrame();
+            Thread.sleep(250);
         }
     }
 
     public void init(){
+
+        SpriteManager.SpriteMap map = SpriteManager.SpriteMap.getInstance();
+        map.setPlayer(PlayerType.RENATA);
 
         SimpleGfxGrid g1 = new SimpleGfxGrid(800,400);
 

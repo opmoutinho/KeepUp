@@ -2,6 +2,7 @@ package org.academiadecodigo.timemaravilha.entities.despawnable.covidinho;
 
 import org.academiadecodigo.timemaravilha.entities.Entity;
 import org.academiadecodigo.timemaravilha.entities.EntityManager;
+import org.academiadecodigo.timemaravilha.entities.EntityType;
 import org.academiadecodigo.timemaravilha.entities.Player;
 import org.academiadecodigo.timemaravilha.entities.despawnable.DespawnableEntity;
 import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.AbstractPowerUp;
@@ -15,8 +16,8 @@ public abstract class AbstractCovidinho extends DespawnableEntity {
 
     private boolean rooted;
 
-    public AbstractCovidinho(GridPosition position, int dimensionX, int dimensionY) {
-        super(position, dimensionX, dimensionY);
+    public AbstractCovidinho(GridPosition position, int dimensionX, int dimensionY, EntityType type) {
+        super(position, dimensionX, dimensionY, type);
     }
 
     @Override

@@ -1,12 +1,13 @@
 package org.academiadecodigo.timemaravilha.entities.despawnable.covidinho;
 
+import org.academiadecodigo.timemaravilha.entities.EntityType;
 import org.academiadecodigo.timemaravilha.grid.Direction;
 import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
 public class PatrollingCovidinho extends TargetCovidinho{
 
     public PatrollingCovidinho(GridPosition position, int dimensionX, int dimensionY) {
-        super(position, dimensionX, dimensionY);
+        super(position, dimensionX, dimensionY, EntityType.COVIDINHOPATROLLING);
     }
 
     @Override

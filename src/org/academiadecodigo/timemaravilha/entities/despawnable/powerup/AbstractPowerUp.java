@@ -1,6 +1,7 @@
 package org.academiadecodigo.timemaravilha.entities.despawnable.powerup;
 
 import org.academiadecodigo.timemaravilha.entities.Entity;
+import org.academiadecodigo.timemaravilha.entities.EntityType;
 import org.academiadecodigo.timemaravilha.entities.Player;
 import org.academiadecodigo.timemaravilha.entities.despawnable.DespawnableEntity;
 import org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.AbstractCovidinho;
@@ -8,8 +9,8 @@ import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
 public class AbstractPowerUp extends DespawnableEntity {
 
-    public AbstractPowerUp(GridPosition position, int dimensionX, int dimensionY) {
-        super(position, dimensionX, dimensionY);
+    public AbstractPowerUp(GridPosition position, int dimensionX, int dimensionY, EntityType type) {
+        super(position, dimensionX, dimensionY, type);
     }
 
     @Override
