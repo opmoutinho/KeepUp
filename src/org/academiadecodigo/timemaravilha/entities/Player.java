@@ -17,7 +17,7 @@ public class Player extends Entity {
     private int vaccineCounter;
 
     public Player (GridPosition playerPos,int dimensionX, int dimensionY){
-        super(playerPos,dimensionX,dimensionY);
+        super(playerPos,dimensionX,dimensionY,EntityType.PLAYER);
     }
 
     public void setKeysPressed(boolean[] keysPressed) {
@@ -32,11 +32,18 @@ public class Player extends Entity {
             getPosition().move(Direction.UP,2);
         if(keysPressed[1])
             getPosition().move(Direction.DOWN,2);
-        if(keysPressed[2])
-            getPosition().move(Direction.LEFT,2);
-        if(keysPressed[3])
-            getPosition().move(Direction.RIGHT,2);
-        EntityManager.getInstance().checkCollision(this);
+        if(keysPressed[2]) {
+            getPosition().move(Direction.LEFT, 2);
+            if(!spriteManager.isFlipped()) {
+                spriteManager.setFlipped(true);
+            }
+        }
+        if(keysPressed[3]) {
+            getPosition().move(Direction.RIGHT, 2);
+            if(spriteManager.isFlipped()) {
+                spriteManager.setFlipped(false);
+            }
+        }
     }
 
     @Override

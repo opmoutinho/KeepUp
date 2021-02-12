@@ -11,19 +11,34 @@ import org.academiadecodigo.timemaravilha.grid.SimpleGfxGrid;
 
 public class SimpleGfxPosition extends AbstractPosition{
 
-    private Picture[] pictures;
+    private Picture picture;
     private Rectangle rectangle;
     private SimpleGfxGrid simpleGfxGrid;
 
     public SimpleGfxPosition(int col, int row, Grid grid){
         super(col, row, grid);
         simpleGfxGrid = (SimpleGfxGrid) grid;
+        picture = new Picture(simpleGfxGrid.colToX(col)-10, simpleGfxGrid.rowToY(row)-5);
         drawRectangle();
     }
 
-    public void setPictures(Picture[] pictures) {
-        this.pictures = pictures;
-        this.pictures[0].draw();
+    @Override
+    public void loadNextFrame(Picture picture) {
+        Picture prev = this.picture;
+        this.picture = picture;
+        move(Direction.NEUTRAL,0);
+        picture.draw();
+        prev.delete();
+        //rectangle.delete();
+    }
+
+    public void flip(){
+        picture.grow(-picture.getWidth(), 0);
+
+    }
+
+    public void grow(double x, double y){
+        picture.grow(x,y);
     }
 
     private void drawRectangle () {
@@ -54,15 +69,18 @@ public class SimpleGfxPosition extends AbstractPosition{
     @Override
     public void show() {
         rectangle.fill();
+        picture.draw();
     }
 
     public void hide(){
-        Canvas.getInstance().hide(rectangle);
+        rectangle.delete();
+        picture.delete();
     }
 
     @Override
     public void move(Direction dir, int units) {
         super.move(dir, units);
-        rectangle.translate(simpleGfxGrid.colToX(getCol())-rectangle.getX(), simpleGfxGrid.rowToY(getRow())-rectangle.getY());
+        if(picture != null)picture.translate(simpleGfxGrid.colToX(getCol())-(picture.getWidth() < 0 ? -20:10)-picture.getX(), simpleGfxGrid.rowToY(getRow())-5-picture.getY());
+        if(rectangle != null)rectangle.translate(simpleGfxGrid.colToX(getCol())-rectangle.getX(), simpleGfxGrid.rowToY(getRow())-rectangle.getY());
     }
 }
