@@ -55,9 +55,9 @@ public class Game {
             }
             }
         if (gameState == GameState.PLAYER_PICK) {
-            Rectangle r2 = new Rectangle(1, 1, 800, 800);
-            r2.setColor(Color.RED);
-            r2.fill();
+            p1.delete();
+            Picture p2 = new Picture(1,1,"menustart2v3.png");
+            p2.draw();
             while (gameState == GameState.PLAYER_PICK) {
                 m1.playerPickInit();
                 try {
@@ -66,19 +66,16 @@ public class Game {
                 }
                 if (keysPressed[4]) {
                     setGameState(GameState.GAME);
-                    r2.delete();
                     SimpleGfxGrid g1 = new SimpleGfxGrid(800,400);
                     g1.init();
                 }
                 if (keysPressed[5]){
                     setGameState(GameState.GAME);
-                    r2.delete();
                     SimpleGfxGrid g1 = new SimpleGfxGrid(800,400);
                     g1.init();
                 }
-                if (keysPressed[6]){
+                if (keysPressed[7]){
                     setGameState(GameState.GAME);
-                    r2.delete();
                     SimpleGfxGrid g1 = new SimpleGfxGrid(800,400);
                     g1.init();
                 }
