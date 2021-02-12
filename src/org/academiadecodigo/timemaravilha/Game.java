@@ -96,6 +96,10 @@ public class Game {
                     EntityManager.getInstance().moveAll();
                     try { Thread.sleep(17); } catch (Exception e) {}
                     }
+                if(player.isDead()){
+                    Picture p3 = new Picture(0,0,"lost.png");
+                    p3.draw();
+                }
                     }
                 }
 }
