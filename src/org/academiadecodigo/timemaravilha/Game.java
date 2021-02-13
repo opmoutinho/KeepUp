@@ -38,7 +38,7 @@ public class Game {
         SpriteManager.SpriteMap map = SpriteManager.SpriteMap.getInstance();
         MyKeyboard m1 = new MyKeyboard();
         setKeysPressed(m1.getKeysPressed());
-        Picture p1 = new Picture(1, 1, "menustart1.png");
+        Picture p1 = new Picture(1, 1, "background/menustart1.png");
         p1.draw();
         while (gameState == GameState.INITIAL_MENU) {
             m1.gameInit();
@@ -135,7 +135,7 @@ public class Game {
                 }
             }
             if (player.isDead()) {
-                Picture p3 = new Picture(0, 0, "lost.png");
+                Picture p3 = new Picture(0, 0, "background/lost.png");
                 p3.draw();
             }
         }
