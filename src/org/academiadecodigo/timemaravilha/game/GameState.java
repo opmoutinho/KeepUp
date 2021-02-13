@@ -1,4 +1,4 @@
-package org.academiadecodigo.timemaravilha.GUI;
+package org.academiadecodigo.timemaravilha.game;
 
 public enum GameState {
     INSTRUCTION_MENU,

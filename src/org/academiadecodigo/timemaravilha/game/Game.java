@@ -1,12 +1,7 @@
-package org.academiadecodigo.timemaravilha;
+package org.academiadecodigo.timemaravilha.game;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
-import org.academiadecodigo.timemaravilha.GUI.Difficulty;
-import org.academiadecodigo.timemaravilha.GUI.GameState;
-import org.academiadecodigo.timemaravilha.MyKeyboard;
-import org.academiadecodigo.timemaravilha.PlayerType;
 import org.academiadecodigo.timemaravilha.entities.EntityManager;
-import org.academiadecodigo.timemaravilha.entities.Player;
 import org.academiadecodigo.timemaravilha.grid.Grid;
 import org.academiadecodigo.timemaravilha.grid.SimpleGfxGrid;
 import org.academiadecodigo.timemaravilha.sprite.SpriteManager;
@@ -23,10 +18,13 @@ public class Game {
     private boolean quit;
     private boolean gameOver;
 
+    private Timer timer;
+
     public void init(){
         manager = EntityManager.getInstance();
         grid = new SimpleGfxGrid(800,400);
         map = SpriteManager.SpriteMap.getInstance(); //start the spritemap
+        timer = new Timer(200000);
         keyboard = new MyKeyboard(); //keyboard
         keyboard.init();
         keysPressed = keyboard.getKeysPressed();
@@ -37,31 +35,34 @@ public class Game {
                 gameState = GameState.INITIAL_MENU;
             Thread.yield();
         }
-        sleep(200);
+        sleep(500);
+        start();
     }
 
     public void start() {
         while(!quit) {
             startInit();
             keyboard.movementInit();
+            timer.reset();
+            manager.init(difficulty);
             while (!gameOver) {
                 manager.moveAll();
                 manager.checkDespawn();
                 manager.checkSpawn();
                 sleep(17);
-                if (manager.vaccines() || manager.playerDead())
+                if (manager.vaccines() || manager.playerDead() || timer.timerOver())
                     gameOver = true;
             }
             gameState = GameState.GAME_OVER;
             Picture pic = null;
-            if (manager.playerDead()) {
+            if (manager.playerDead() || timer.timerOver()) {
                 pic = new Picture(0, 0, "background/gameover.png");
                 pic.draw();
             } else {
                 pic = new Picture(0,0,"background/playerwon.png");
                 pic.draw();
             }
-            sleep(200);
+            sleep(500);
             keyboard.resetInit();
             while (gameState == GameState.GAME_OVER) {
                 if (keysPressed[0]) {
@@ -130,6 +131,26 @@ public class Game {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public static class Timer{
+
+        private long startTime;
+        private final long timeInterval;
+
+        public Timer(long timeInterval){
+            this.startTime = System.currentTimeMillis();
+            this.timeInterval = timeInterval;
+        }
+
+        public boolean timerOver(){
+            return System.currentTimeMillis()-startTime > timeInterval;
+        }
+
+        public void reset(){
+            startTime = System.currentTimeMillis();
+        }
+
     }
 }
 
