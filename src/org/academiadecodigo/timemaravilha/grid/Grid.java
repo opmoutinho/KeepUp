@@ -8,6 +8,7 @@ public interface Grid {
     public int getRows();
     public GridPosition getRandomPos();
     public void setPic(String string);
-
+    public void setOver(String s);
+    public void resetOver();
 
 }

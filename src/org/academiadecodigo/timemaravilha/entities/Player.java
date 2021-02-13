@@ -69,7 +69,7 @@ public class Player extends Entity {
             System.out.println("Player Collided with Mask");
 
         }else if (other instanceof Immunity){
-            health ++;
+            health = Math.min(4, health+1);
             System.out.println("Player Collided with Immunity");
 
         }else if (other instanceof Vaccine){

@@ -1,7 +1,8 @@
 package org.academiadecodigo.timemaravilha.sprite;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
-import org.academiadecodigo.timemaravilha.PlayerType;
+import org.academiadecodigo.timemaravilha.game.Game;
+import org.academiadecodigo.timemaravilha.game.PlayerType;
 import org.academiadecodigo.timemaravilha.entities.EntityType;
 import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
@@ -9,24 +10,33 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The SpriteManager
+ *
+ * Responsible for changing the sprites in our entities.
+ */
 public class SpriteManager {
 
-    private Picture[][] spriteArr;
-    private GridPosition position;
-    private boolean flipped;
+    /**
+     * The attributes
+     */
+    private Picture[][] spriteArr; //Our sprites
+    private GridPosition position; //The position (has the sprite)
+    private boolean flipped; //If it's supposed to be flipped or not
     private int index;
-    private long changed = System.currentTimeMillis();
+    private Game.Timer timer;
 
     public SpriteManager(EntityType type, GridPosition position){
         init(type);
         this.position = position;
+        timer = new Game.Timer(125);
     }
 
     public void loadNextFrame(int state){
-        if(System.currentTimeMillis()-changed > 125) {
+        if(timer.timerOver()) {
             position.loadNextFrame(spriteArr[state][index]);
             index = (index + 1) % spriteArr[state].length;
-            changed = System.currentTimeMillis();
+            timer.reset();
         }
     }
 
@@ -46,7 +56,7 @@ public class SpriteManager {
     private void init(EntityType type){
         int i = 0;
         int j = 0;
-        String[][] aux = SpriteMap.instance.map.get(type);
+        String[][] aux = SpriteMap.map.get(type);
         spriteArr = new Picture[aux.length][];
         for(String[] s: aux){
             spriteArr[i] = new Picture[aux[i].length];
@@ -74,7 +84,7 @@ public class SpriteManager {
         private static final String POWERUP = "Sprites/Powerups/PowerUP.png";
         private static final String VACCINE = "Sprites/Powerups/Vaccine.png";
 
-        public final Map<EntityType, String[][]> map = new HashMap<>();
+        public static final Map<EntityType, String[][]> map = new HashMap<>();
         private static SpriteMap instance;
         private boolean playerSet;
 

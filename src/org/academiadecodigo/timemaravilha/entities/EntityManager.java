@@ -8,6 +8,8 @@ import org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.TargetC
 import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Immunity;
 import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Mask;
 import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Vaccine;
+import org.academiadecodigo.timemaravilha.game.Difficulty;
+import org.academiadecodigo.timemaravilha.game.Game;
 import org.academiadecodigo.timemaravilha.grid.Grid;
 import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
@@ -21,23 +23,28 @@ public class EntityManager {
     private Grid grid;
     private CollisionDetector collisionDetector;
 
-    private final long MASK_DESPAWN = 15000;
-    private final long IMMUNITY_DESPAWN = 15000;
-    private final long VACCINE_DESPAWN = 10000;
-    private final long COVIDINHO_DESPAWN = 60000;
+    private long maskDespawn;
+    private long immunityDespawn;
+    private long vaccineDespawn;
+    private long covidinhoDespawn;
 
-    private long maskSpawnTime = System.currentTimeMillis();
-    private final long MASK_INTERVAL = 5000;
-    private long immunitySpawnTime = System.currentTimeMillis();
-    private final long IMMUNITY_INTERVAL = 7500;
-    private long vaccineSpawnTime = System.currentTimeMillis();
-    private final long VACCINE_INTERVAL = 30000;
-    private long scovidinhoSpawnTime = System.currentTimeMillis();
-    private final long SCOVIDINHO_INTERVAL = 10000;
-    private long pcovidinhoSpawnTime = System.currentTimeMillis();
-    private final long PCOVIDINHO_INTERVAL = 12000;
-    private long tcovidinhoSpawnTime = System.currentTimeMillis();
-    private final long TCOVIDINHO_INTERVAL = 15000;
+    private long maskInterval;
+    private Game.Timer maskTimer;
+
+    private long immunityInterval;
+    private Game.Timer immunityTimer;
+
+    private long vaccineInterval;
+    private Game.Timer vaccineTimer;
+
+    private long scovidinhoInterval;
+    private Game.Timer scovidinhoTimer;
+
+    private long pcovidinhoInterval;
+    private Game.Timer pcovidinhoTimer;
+
+    private long tcovidinhoInterval;
+    private Game.Timer tcovidinhoTimer;
 
 
     private EntityManager () {
@@ -57,12 +64,35 @@ public class EntityManager {
         return instance;
     }
 
-    public void init(){
-        createEntity(EntityType.COVIDINHOSIMPLES);
-        createEntity(EntityType.COVIDINHOSIMPLES);
-        createEntity(EntityType.COVIDINHOSIMPLES);
-        createEntity(EntityType.COVIDINHOTARGET);
-        createEntity(EntityType.MASK);
+    public void init(Difficulty difficulty){
+        loadSettings(difficulty);
+        maskTimer = new Game.Timer(maskInterval);
+        vaccineTimer = new Game.Timer(vaccineInterval);
+        immunityTimer = new Game.Timer(immunityInterval);
+        scovidinhoTimer = new Game.Timer(scovidinhoInterval);
+        pcovidinhoTimer = new Game.Timer(pcovidinhoInterval);
+        tcovidinhoTimer = new Game.Timer(tcovidinhoInterval);
+    }
+
+    private void loadSettings(Difficulty difficulty){
+        long[] mask = difficulty.maskSetting();
+        long[] immunity = difficulty.immunitySetting();
+        long[] vaccine = difficulty.vaccineSetting();
+        long[] covidinho = difficulty.covidinhoSetting();
+
+        maskDespawn = mask[0];
+        maskInterval = mask[1];
+
+        immunityDespawn = immunity[0];
+        immunityInterval = immunity[1];
+
+        vaccineDespawn = vaccine[0];
+        vaccineInterval = vaccine[1];
+
+        covidinhoDespawn = covidinho[0];
+        scovidinhoInterval = covidinho[1];
+        pcovidinhoInterval = covidinho[2];
+        tcovidinhoInterval = covidinho[3];
     }
 
     private void createEntity (EntityType entityType){
@@ -72,30 +102,30 @@ public class EntityManager {
         GridPosition position = grid.getRandomPos();
         switch(entityType){
             case COVIDINHOTARGET:
-                entity = new TargetCovidinho(position,20,20, COVIDINHO_DESPAWN);
+                entity = new TargetCovidinho(position,20,20, covidinhoDespawn);
                 ((TargetCovidinho) entity).setTarget(player.getPosition());
-                tcovidinhoSpawnTime = System.currentTimeMillis();
+                tcovidinhoTimer.reset();
                 break;
             case COVIDINHOPATROLLING:
-                entity = new PatrollingCovidinho(position,20,20, COVIDINHO_DESPAWN);
+                entity = new PatrollingCovidinho(position,20,20, covidinhoDespawn);
                 ((TargetCovidinho) entity).setTarget(player.getPosition());
-                pcovidinhoSpawnTime = System.currentTimeMillis();
+                pcovidinhoTimer.reset();
                 break;
             case MASK:
-                entity = new Mask(position,20,10, MASK_DESPAWN);
-                maskSpawnTime = System.currentTimeMillis();
+                entity = new Mask(position,20,10, maskDespawn);
+                maskTimer.reset();
                 break;
             case IMMUNITY:
-                entity = new Immunity(position,20,20, IMMUNITY_DESPAWN);
-                immunitySpawnTime = System.currentTimeMillis();
+                entity = new Immunity(position,20,20, immunityDespawn);
+                immunityTimer.reset();
                 break;
             case VACCINE:
-                entity = new Vaccine(position,20,20, VACCINE_DESPAWN);
-                vaccineSpawnTime = System.currentTimeMillis();
+                entity = new Vaccine(position,20,20, vaccineDespawn);
+                vaccineTimer.reset();
                 break;
             default:
-                entity = new SimpleCovidinho(position,20,20, COVIDINHO_DESPAWN);
-                scovidinhoSpawnTime = System.currentTimeMillis();
+                entity = new SimpleCovidinho(position,20,20, covidinhoDespawn);
+                scovidinhoTimer.reset();
                 break;
         }
         entities.add(entity);
@@ -137,22 +167,22 @@ public class EntityManager {
     }
 
     public void checkSpawn(){
-        if(System.currentTimeMillis() - scovidinhoSpawnTime > SCOVIDINHO_INTERVAL){
+        if(scovidinhoTimer.timerOver()){
             createEntity(EntityType.COVIDINHOSIMPLES);
         }
-        if(System.currentTimeMillis() - pcovidinhoSpawnTime > PCOVIDINHO_INTERVAL){
+        if(pcovidinhoTimer.timerOver()){
             createEntity(EntityType.COVIDINHOPATROLLING);
         }
-        if(System.currentTimeMillis() - tcovidinhoSpawnTime > TCOVIDINHO_INTERVAL){
+        if(tcovidinhoTimer.timerOver()){
             createEntity(EntityType.COVIDINHOTARGET);
         }
-        if(System.currentTimeMillis() - maskSpawnTime > MASK_INTERVAL){
+        if(maskTimer.timerOver()){
             createEntity(EntityType.MASK);
         }
-        if(System.currentTimeMillis() - immunitySpawnTime > IMMUNITY_INTERVAL){
+        if(immunityTimer.timerOver()){
             createEntity(EntityType.IMMUNITY);
         }
-        if(System.currentTimeMillis() - vaccineSpawnTime > VACCINE_INTERVAL){
+        if(vaccineTimer.timerOver()){
             createEntity(EntityType.VACCINE);
         }
     }

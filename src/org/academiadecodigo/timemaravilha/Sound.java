@@ -10,13 +10,14 @@ public class Sound {
 
     private Clip clip;
 
-    public void playSound(String MUSIC) {
+
+    public Sound() {
         AudioInputStream musicInputStream = null;
         try {
             File musicPath = new File(MUSIC);
             if (musicPath.exists()) {
                 musicInputStream = AudioSystem.getAudioInputStream(musicPath);
-                Clip clip = AudioSystem.getClip();
+                clip = AudioSystem.getClip();
                 clip.open(musicInputStream);
             }
         } catch(LineUnavailableException e){

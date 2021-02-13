@@ -7,7 +7,7 @@ import org.academiadecodigo.timemaravilha.grid.position.SimpleGfxPosition;
 
 public class SimpleGfxGrid extends AbstractGrid{
 
-    private Rectangle rectangle;
+    private Picture over;
     private Picture pic;
     public static final int PADDINGX = 10;
     public static final int PADDINGY = 275;
@@ -23,6 +23,16 @@ public class SimpleGfxGrid extends AbstractGrid{
         pic.draw();
         if(prev != null)
             prev.delete();
+    }
+
+    public void setOver(String name){
+        over = new Picture(0,0,name);
+        over.draw();
+    }
+
+    public void resetOver(){
+        over.delete();
+        over = null;
     }
 
     public int colToX(int col){
