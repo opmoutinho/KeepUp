@@ -88,6 +88,7 @@ public class Game {
         if (gameState == GameState.PLAYER_PICK) {
             p1.delete();
             Picture p2 = new Picture(1, 1, "menustart2v3.png");
+            p2.translate(10,0);
             p2.draw();
             while (gameState == GameState.PLAYER_PICK) {
                 m1.playerPickInit();
