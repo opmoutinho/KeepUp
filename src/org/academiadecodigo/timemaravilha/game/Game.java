@@ -22,6 +22,7 @@ public class Game {
     private SpriteManager.SpriteMap map; //The spritemap. Needs to be populated with the player picked
     private MyKeyboard keyboard; //Our keyboard
     private Grid grid; //The game grid
+    private GUI gui; //The game GUI sprites
     private boolean quit; //We need to quit
     private boolean gameOver; //The game is over
 
@@ -75,6 +76,7 @@ public class Game {
     private void startInit(){
         keyboard.gameInit();
         grid.setPic("background/difficulty.png");
+        gui = new GUI ((SimpleGfxGrid) grid,manager);
         initialMenuLoop();
         sleep(500);
         playerPickLoop();
@@ -155,6 +157,7 @@ public class Game {
      */
     private void gameLoop(){
         while (!gameOver) {
+            gui.reDraw();
             manager.moveAll(); //move everything
             manager.checkDespawn(); //check if there are entities to be despawned
             manager.checkSpawn(); //check if there are entities to be spawned
@@ -172,6 +175,7 @@ public class Game {
     private void retryLoop(){
         keyboard.resetInit();
         while (gameState == GameState.GAME_OVER) {
+            gui.reDrawOver();
             if (keysPressed[0]) {
                 quit = true;
                 break;
