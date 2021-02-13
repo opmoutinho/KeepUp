@@ -167,4 +167,12 @@ public class EntityManager {
         return player.isDead();
     }
 
+    public void reset(){
+        for(Entity entity: entities)
+            entity.reset();
+        entities.clear();
+        inactiveEntities.clear();
+        player = null;
+    }
+
 }

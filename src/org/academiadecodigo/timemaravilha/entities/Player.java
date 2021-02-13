@@ -84,4 +84,9 @@ public class Player extends Entity {
     public int getVaccineCounter() {
         return vaccineCounter;
     }
+
+    @Override
+    protected int loadCondition() {
+        return mask ? 1 : 0;
+    }
 }

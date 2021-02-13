@@ -15,30 +15,19 @@ public class SpriteManager {
     private GridPosition position;
     private boolean flipped;
     private int index;
+    private long changed = System.currentTimeMillis();
 
     public SpriteManager(EntityType type, GridPosition position){
-        int i = 0;
-        int j = 0;
-        String[][] aux = SpriteMap.map.get(type);
-        spriteArr = new Picture[aux.length][];
-        for(String[] s: aux){
-            spriteArr[i] = new Picture[aux[i].length];
-            for(String name : s){
-                if(name != null)
-                    spriteArr[i][j] = new Picture(0,0,name);
-                if(type == EntityType.PLAYER)
-                    spriteArr[i][j].grow(10,10);
-                j++;
-            }
-            i++;
-            j = 0;
-        }
+        init(type);
         this.position = position;
     }
 
     public void loadNextFrame(int state){
-        position.loadNextFrame(spriteArr[state][index]);
-        index = (index+1)%spriteArr[state].length;
+        if(System.currentTimeMillis()-changed > 125) {
+            position.loadNextFrame(spriteArr[state][index]);
+            index = (index + 1) % spriteArr[state].length;
+            changed = System.currentTimeMillis();
+        }
     }
 
     public boolean isFlipped(){
@@ -54,6 +43,25 @@ public class SpriteManager {
         this.flipped = flipped;
     }
 
+    private void init(EntityType type){
+        int i = 0;
+        int j = 0;
+        String[][] aux = SpriteMap.instance.map.get(type);
+        spriteArr = new Picture[aux.length][];
+        for(String[] s: aux){
+            spriteArr[i] = new Picture[aux[i].length];
+            for(String name : s){
+                if(name != null)
+                    spriteArr[i][j] = new Picture(0,0,name);
+                if(type == EntityType.PLAYER)
+                    spriteArr[i][j].grow(10,10);
+                j++;
+            }
+            i++;
+            j = 0;
+        }
+    }
+
     public static class SpriteMap{
 
         private static final String COVIDINHOF = "Sprites/covidinho/follow/";
@@ -66,7 +74,7 @@ public class SpriteManager {
         private static final String POWERUP = "Sprites/Powerups/PowerUP.png";
         private static final String VACCINE = "Sprites/Powerups/Vaccine.png";
 
-        public static final Map<EntityType, String[][]> map = new HashMap<>();
+        public final Map<EntityType, String[][]> map = new HashMap<>();
         private static SpriteMap instance;
         private boolean playerSet;
 
@@ -137,6 +145,11 @@ public class SpriteManager {
                 for(int j = 1; j <= arr[i].length; j++)
                     arr[i][j-1] = i==0?name+j+".png":name+"M"+j+".png";
             }
+        }
+
+        public void reset(){
+            map.remove(EntityType.PLAYER);
+            playerSet = false;
         }
 
     }

@@ -6,6 +6,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.timemaravilha.entities.Player;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -43,7 +44,7 @@ public class MyKeyboard implements KeyboardHandler {
     public void gameInit(){
         for(KeyboardEvent event : events)
             keyboard.removeEventListener(event);
-
+        Arrays.fill(keysPressed, false);
         KeyboardEvent event = new KeyboardEvent();
         event.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
         event.setKey(KeyboardEvent.KEY_Q);
@@ -96,7 +97,7 @@ public class MyKeyboard implements KeyboardHandler {
     public void movementInit(){
         for(KeyboardEvent event : events)
             keyboard.removeEventListener(event);
-
+        Arrays.fill(keysPressed, false);
         KeyboardEvent event = new KeyboardEvent();
         event.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
         event.setKey(KeyboardEvent.KEY_UP);
@@ -142,6 +143,35 @@ public class MyKeyboard implements KeyboardHandler {
         event = new KeyboardEvent();
         event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         event.setKey(KeyboardEvent.KEY_RIGHT);
+        keyboard.addEventListener(event);
+        events.add(event);
+    }
+
+    public void resetInit(){
+        for(KeyboardEvent event : events)
+            keyboard.removeEventListener(event);
+        Arrays.fill(keysPressed, false);
+        KeyboardEvent event = new KeyboardEvent();
+        event.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        event.setKey(KeyboardEvent.KEY_R);
+        keyboard.addEventListener(event);
+        events.add(event);
+
+        event = new KeyboardEvent();
+        event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        event.setKey(KeyboardEvent.KEY_R);
+        keyboard.addEventListener(event);
+        events.add(event);
+
+        event = new KeyboardEvent();
+        event.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        event.setKey(KeyboardEvent.KEY_Q);
+        keyboard.addEventListener(event);
+        events.add(event);
+
+        event = new KeyboardEvent();
+        event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        event.setKey(KeyboardEvent.KEY_Q);
         keyboard.addEventListener(event);
         events.add(event);
     }

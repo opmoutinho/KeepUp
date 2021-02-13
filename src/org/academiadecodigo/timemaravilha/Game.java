@@ -20,7 +20,7 @@ public class Game {
     private SpriteManager.SpriteMap map;
     private MyKeyboard keyboard;
     private Grid grid;
-    private boolean retry;
+    private boolean quit;
     private boolean gameOver;
 
     public void init(){
@@ -31,16 +31,60 @@ public class Game {
         keyboard.init();
         keysPressed = keyboard.getKeysPressed();
         manager.setGrid(grid);
-        grid.setPic("background/BKG02.png");
+        grid.setPic("background/instructions-menu.png");
         while(gameState == GameState.INSTRUCTION_MENU){
             if(keysPressed[0])
                 gameState = GameState.INITIAL_MENU;
             Thread.yield();
         }
-        sleep(50);
+        sleep(200);
     }
 
     public void start() {
+        while(!quit) {
+            startInit();
+            keyboard.movementInit();
+            while (!gameOver) {
+                if (!(gameState == GameState.PAUSED)) {
+                    manager.moveAll();
+                    manager.checkDespawn();
+                    manager.checkSpawn();
+                }
+                sleep(17);
+                if (manager.vaccines() || manager.playerDead())
+                    gameOver = true;
+            }
+            gameState = GameState.GAME_OVER;
+            Picture pic = null;
+            if (manager.playerDead()) {
+                pic = new Picture(0, 0, "background/lost.png");
+                pic.draw();
+            } else {
+                System.out.println("You win!");
+            }
+            sleep(200);
+            keyboard.resetInit();
+            while (gameState == GameState.GAME_OVER) {
+                if (keysPressed[0]) {
+                    quit = true;
+                    break;
+                }
+                if (keysPressed[3]) {
+                    gameState = GameState.INITIAL_MENU;
+                    manager.reset();
+                    map.reset();
+                    gameOver = false;
+                    difficulty = null;
+                    if(pic != null)
+                        pic.delete();
+                }
+                Thread.yield();
+            }
+            sleep(500);
+        }
+    }
+
+    private void startInit(){
         keyboard.gameInit();
         grid.setPic("background/menustart1.png");
         while (gameState == GameState.INITIAL_MENU) {
@@ -58,42 +102,27 @@ public class Game {
             }
             if(difficulty != null) {
                 gameState = GameState.PLAYER_PICK;
-                grid.setPic("background/menustart2v3.png");
+                grid.setPic("background/choose-player-menu.png");
             }
             Thread.yield();
         }
-        sleep(50);
+        sleep(200);
         while (gameState == GameState.PLAYER_PICK) {
             if (keysPressed[0]) {
                 map.setPlayer(PlayerType.ANDRE);
-            }
+            } else
             if (keysPressed[1]) {
                 map.setPlayer(PlayerType.PAULO);
-            }
+            } else
             if (keysPressed[3]) {
                 map.setPlayer(PlayerType.RENATA);
-            }
+            } else
             if(map.isPlayerSet()){
                 manager.createPlayer(keysPressed);
-                gameState = GameState.GAME;
                 grid.setPic("background/BKG01.png");
+                gameState = GameState.GAME;
             }
             Thread.yield();
-        }
-        keyboard.movementInit();
-        while (!gameOver) {
-            if(!(gameState == GameState.PAUSED)) {
-                manager.moveAll();
-                manager.checkDespawn();
-                manager.checkSpawn();
-            }
-            sleep(17);
-            if(manager.vaccines() || manager.playerDead())
-                gameOver = true;
-        }
-        if(manager.playerDead()){
-            Picture pic = new Picture(0,0,"background/lost.png");
-            pic.draw();
         }
     }
 

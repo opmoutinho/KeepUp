@@ -5,5 +5,6 @@ public enum GameState {
     INITIAL_MENU,
     PLAYER_PICK,
     GAME,
-    PAUSED;
+    PAUSED,
+    GAME_OVER;
 }

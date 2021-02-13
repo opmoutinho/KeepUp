@@ -63,8 +63,13 @@ public abstract class Entity {
     }
 
     public void loadNextFrame() {
-        if(spriteManager != null && !dead) {
-            spriteManager.loadNextFrame(0);
-        }
+        spriteManager.loadNextFrame(loadCondition());
+    }
+    protected int loadCondition(){
+        return 0;
+    }
+
+    public void reset(){
+        position.hide();
     }
 }

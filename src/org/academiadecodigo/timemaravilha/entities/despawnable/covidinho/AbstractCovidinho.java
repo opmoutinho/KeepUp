@@ -63,4 +63,8 @@ public abstract class AbstractCovidinho extends DespawnableEntity {
         }
     }
 
+    protected int loadCondition(){
+        return rooted ? 1 : 0;
+    }
+
 }
