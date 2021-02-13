@@ -84,18 +84,9 @@ public class Game {
         }
     }
 
-<<<<<<< HEAD
     private void startInit(){
         keyboard.gameInit();
         grid.setPic("background/menustart1.png");
-=======
-    public void gameInit() {
-        SpriteManager.SpriteMap map = SpriteManager.SpriteMap.getInstance();
-        MyKeyboard m1 = new MyKeyboard();
-        setKeysPressed(m1.getKeysPressed());
-        Picture p1 = new Picture(1, 1, "background/menustart1.png");
-        p1.draw();
->>>>>>> Master
         while (gameState == GameState.INITIAL_MENU) {
             if (keysPressed[0]) {
                 difficulty = Difficulty.EASY;
@@ -135,38 +126,11 @@ public class Game {
         }
     }
 
-<<<<<<< HEAD
     private void sleep(int value){
         try {
             Thread.sleep(value);
         } catch (InterruptedException e) {
             e.printStackTrace();
-=======
-        if (gameState == GameState.GAME) {
-
-            SimpleGfxGrid g1 = new SimpleGfxGrid(800, 400);
-            g1.init();
-            m1.playerMovementInit();
-            final Player player = new Player(g1.getRandomPos(), 20, 30);
-            player.setKeysPressed(m1.getKeysPressed());
-            final EntityManager entityManager = EntityManager.getInstance();
-            entityManager.setGrid(g1);
-            entityManager.add(player);
-            entityManager.init();
-            while (!player.isDead()) {
-                EntityManager.getInstance().moveAll();
-                EntityManager.getInstance().checkDespawn();
-                EntityManager.getInstance().checkSpawn();
-                try {
-                    Thread.sleep(17);
-                } catch (Exception e) {
-                }
-            }
-            if (player.isDead()) {
-                Picture p3 = new Picture(0, 0, "background/lost.png");
-                p3.draw();
-            }
->>>>>>> Master
         }
     }
 }
