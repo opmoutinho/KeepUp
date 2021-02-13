@@ -80,7 +80,7 @@ public class SimpleGfxPosition extends AbstractPosition{
     @Override
     public void move(Direction dir, int units) {
         super.move(dir, units);
-        if(picture != null)picture.translate(simpleGfxGrid.colToX(getCol())-(picture.getWidth() < 0 ? -20:10)-picture.getX(), simpleGfxGrid.rowToY(getRow())-5-picture.getY());
+        if(picture != null)picture.translate(simpleGfxGrid.colToX(getCol())-(picture.getWidth() < 0 ? -35:10)-picture.getX(), simpleGfxGrid.rowToY(getRow())-5-picture.getY());
         if(rectangle != null)rectangle.translate(simpleGfxGrid.colToX(getCol())-rectangle.getX(), simpleGfxGrid.rowToY(getRow())-rectangle.getY());
     }
 }

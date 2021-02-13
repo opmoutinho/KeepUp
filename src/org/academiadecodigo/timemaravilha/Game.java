@@ -1,14 +1,12 @@
 package org.academiadecodigo.timemaravilha;
 
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
-import org.academiadecodigo.timemaravilha.GUI.Animations;
 import org.academiadecodigo.timemaravilha.GUI.Difficulty;
 import org.academiadecodigo.timemaravilha.GUI.GameState;
 import org.academiadecodigo.timemaravilha.entities.EntityManager;
 import org.academiadecodigo.timemaravilha.entities.Player;
 import org.academiadecodigo.timemaravilha.grid.SimpleGfxGrid;
+import org.academiadecodigo.timemaravilha.sprite.SpriteManager;
 
 public class Game {
 
@@ -122,7 +120,7 @@ public class Game {
             SimpleGfxGrid g1 = new SimpleGfxGrid(800, 400);
             g1.init();
             m1.playerMovementInit();
-            final Player player = new Player(g1.getRandomPos(), 10, 20);
+            final Player player = new Player(g1.getRandomPos(), 20, 30);
             player.setKeysPressed(m1.getKeysPressed());
             final EntityManager entityManager = EntityManager.getInstance();
             entityManager.setGrid(g1);

@@ -1,6 +1,6 @@
 package org.academiadecodigo.timemaravilha.entities;
 
-import org.academiadecodigo.timemaravilha.SpriteManager;
+import org.academiadecodigo.timemaravilha.sprite.SpriteManager;
 import org.academiadecodigo.timemaravilha.collision.CollisionBox;
 import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.AbstractPowerUp;
 import org.academiadecodigo.timemaravilha.grid.Direction;

@@ -1,6 +1,7 @@
-package org.academiadecodigo.timemaravilha;
+package org.academiadecodigo.timemaravilha.sprite;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
+import org.academiadecodigo.timemaravilha.PlayerType;
 import org.academiadecodigo.timemaravilha.entities.EntityType;
 import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
@@ -23,8 +24,8 @@ public class SpriteManager {
             spriteArr[i] = new Picture[aux[i].length];
             for(String name : s){
                 spriteArr[i][j] = new Picture(0,0,name);
-                //if(type == EntityType.PLAYER)
-                    //spriteArr[i][j].grow(10,10);
+                if(type == EntityType.PLAYER)
+                    spriteArr[i][j].grow(10,10);
                 j++;
             }
             i++;

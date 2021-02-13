@@ -54,11 +54,11 @@ public class EntityManager {
     }
 
     public void init(){
-        setSpawnTimer(10000/2,EntityType.COVIDINHOSIMPLES);
-        setSpawnTimer(5000/2,EntityType.COVIDINHOSIMPLES);
-        setSpawnTimer(15000/2,EntityType.COVIDINHOPATROLLING);
-        setSpawnTimer(20000/2,EntityType.COVIDINHOPATROLLING);
-        setSpawnTimer(25000/2,EntityType.COVIDINHOTARGET);
+        setSpawnTimer(10000,EntityType.COVIDINHOSIMPLES);
+        setSpawnTimer(5000,EntityType.COVIDINHOSIMPLES);
+        setSpawnTimer(15000,EntityType.COVIDINHOPATROLLING);
+        setSpawnTimer(20000,EntityType.COVIDINHOPATROLLING);
+        setSpawnTimer(25000,EntityType.COVIDINHOTARGET);
         setSpawnTimer(15000,EntityType.MASK);
         setSpawnTimer(10000,EntityType.IMMUNITY);
     }
