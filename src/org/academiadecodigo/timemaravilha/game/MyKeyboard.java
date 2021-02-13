@@ -1,4 +1,4 @@
-package org.academiadecodigo.timemaravilha;
+package org.academiadecodigo.timemaravilha.game;
 
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
