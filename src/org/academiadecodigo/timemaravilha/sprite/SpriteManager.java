@@ -10,11 +10,19 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The SpriteManager
+ *
+ * Responsible for changing the sprites in our entities.
+ */
 public class SpriteManager {
 
-    private Picture[][] spriteArr;
-    private GridPosition position;
-    private boolean flipped;
+    /**
+     * The attributes
+     */
+    private Picture[][] spriteArr; //Our sprites
+    private GridPosition position; //The position (has the sprite)
+    private boolean flipped; //If it's supposed to be flipped or not
     private int index;
     private Game.Timer timer;
 
