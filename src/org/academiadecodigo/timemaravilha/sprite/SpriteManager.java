@@ -74,15 +74,15 @@ public class SpriteManager {
 
     public static class SpriteMap{
 
-        private static final String COVIDINHOF = "Sprites/covidinho/follow/";
-        private static final String COVIDINHOP = "Sprites/covidinho/patrolling/";
-        private static final String COVIDINHOR = "Sprites/covidinho/random/";
-        private static final String ANDRE = "Sprites/player/andre/";
-        private static final String RENATA = "Sprites/player/renata/";
-        private static final String PAULO = "Sprites/player/paulo/";
-        private static final String MASK = "Sprites/Powerups/Mask.png";
-        private static final String POWERUP = "Sprites/Powerups/PowerUP.png";
-        private static final String VACCINE = "Sprites/Powerups/Vaccine.png";
+        private static final String COVIDINHOF = "sprites/covidinho/follow/";
+        private static final String COVIDINHOP = "sprites/covidinho/patrolling/";
+        private static final String COVIDINHOR = "sprites/covidinho/random/";
+        private static final String ANDRE = "sprites/player/andre/";
+        private static final String RENATA = "sprites/player/renata/";
+        private static final String PAULO = "sprites/player/paulo/";
+        private static final String MASK = "sprites/Powerups/Mask.png";
+        private static final String POWERUP = "sprites/Powerups/PowerUP.png";
+        private static final String VACCINE = "sprites/Powerups/Vaccine.png";
 
         public static final Map<EntityType, String[][]> map = new HashMap<>();
         private static SpriteMap instance;

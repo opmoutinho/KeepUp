@@ -3,30 +3,29 @@ package org.academiadecodigo.timemaravilha;
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 public class Sound {
 
-    static final String MUSIC = "music/game-music.wav";
+    private static final String MUSIC = "music/gamemusic.wav";
 
     private Clip clip;
-
+    private URL soundURL;
 
     public Sound() {
         AudioInputStream musicInputStream = null;
+        soundURL = getClass().getClassLoader().getResource(MUSIC);
         try {
-            File musicPath = new File(MUSIC);
-            if (musicPath.exists()) {
-                musicInputStream = AudioSystem.getAudioInputStream(musicPath);
-                clip = AudioSystem.getClip();
-                clip.open(musicInputStream);
+            if(soundURL == null){
+                File file = new File("C:\\AcademiaDeCodigo\\KeepUp\\resources\\"+MUSIC);
+                soundURL = file.toURI().toURL();
             }
-        } catch(LineUnavailableException e){
+            musicInputStream = AudioSystem.getAudioInputStream(soundURL);
+            clip = AudioSystem.getClip();
+            clip.open(musicInputStream);
+        } catch(LineUnavailableException | UnsupportedAudioFileException | IOException e){
             e.printStackTrace();
-        } catch(UnsupportedAudioFileException e) {
-            e.printStackTrace();
-        } catch(IOException e){
-            e.printStackTrace();
-        }finally{
+        } finally {
             closeStream(musicInputStream);
         }
     }
@@ -54,8 +53,11 @@ public class Sound {
         clip.close();
     }
 
-    public void setLoop() {
-        clip.loop(Clip.LOOP_CONTINUOUSLY);
+    public void setLoop(boolean loop) {
+        if(loop)
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+        else
+            clip.loop(0);
     }
 
 }

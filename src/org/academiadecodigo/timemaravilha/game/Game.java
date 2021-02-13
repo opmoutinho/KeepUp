@@ -50,6 +50,7 @@ public class Game {
             retryLoop();
             sleep(500);
         }
+        sound.closeSound();
     }
 
     /**
@@ -61,14 +62,12 @@ public class Game {
         manager = EntityManager.getInstance();
         grid = new SimpleGfxGrid(800,400);
         map = SpriteManager.SpriteMap.getInstance(); //start the spritemap
-        timer = new Timer(200000);
+        timer = new Timer(202000);
         keyboard = new MyKeyboard(); //keyboard
         keyboard.init();
         keysPressed = keyboard.getKeysPressed();
         manager.setGrid(grid);
         grid.setPic("background/instructions.png");
-        sound = new Sound();
-        sound.playSound();
     }
 
     /**
@@ -88,6 +87,9 @@ public class Game {
      * The loop to choose show the Instruction menu
      */
     private void startMenuLoop(){
+        sound = new Sound();
+        sound.playSound();
+        sound.setLoop(true);
         while(gameState == GameState.INSTRUCTION_MENU){
             if(keysPressed[0])
                 gameState = GameState.INITIAL_MENU;
@@ -147,6 +149,8 @@ public class Game {
      * The game itself
      */
     private void game(){
+        sound.setLoop(false);
+        sound.playSound();
         keyboard.movementInit();
         timer.reset();
         manager.init(difficulty);
@@ -197,7 +201,7 @@ public class Game {
      */
     private void drawGameResult(){
         if(timer.timerOver()) {
-            grid.setOver("background/timesup");
+            grid.setOver("background/timesup.png");
         } else if (manager.playerDead()) {
             grid.setOver("background/youlost.png");
         } else {
