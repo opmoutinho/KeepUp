@@ -17,6 +17,7 @@ public class Game {
     private Grid grid;
     private boolean quit;
     private boolean gameOver;
+    private GUI gui;
 
     private Timer timer;
 
@@ -30,6 +31,7 @@ public class Game {
         keysPressed = keyboard.getKeysPressed();
         manager.setGrid(grid);
         grid.setPic("background/instructions.png");
+        gui = new GUI((SimpleGfxGrid) grid,manager);
         while(gameState == GameState.INSTRUCTION_MENU){
             if(keysPressed[0])
                 gameState = GameState.INITIAL_MENU;
@@ -46,6 +48,7 @@ public class Game {
             timer.reset();
             manager.init(difficulty);
             while (!gameOver) {
+                gui.reDraw();
                 manager.moveAll();
                 manager.checkDespawn();
                 manager.checkSpawn();
@@ -55,6 +58,7 @@ public class Game {
             }
             gameState = GameState.GAME_OVER;
             Picture pic = null;
+            gui.reDrawOver();
             if (manager.playerDead() || timer.timerOver()) {
                 pic = new Picture(0, 0, "background/gameover.png");
                 pic.draw();
