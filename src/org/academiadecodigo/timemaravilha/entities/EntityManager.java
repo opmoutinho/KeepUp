@@ -196,8 +196,16 @@ public class EntityManager {
         return player.getVaccineCounter() == 2;
     }
 
+    public int getPlayerVaccines(){
+        return player.getVaccineCounter();
+    }
+
     public boolean playerDead(){
         return player.isDead();
+    }
+
+    public int getHealth(){
+        return player.getHealth();
     }
 
     public void reset(){
