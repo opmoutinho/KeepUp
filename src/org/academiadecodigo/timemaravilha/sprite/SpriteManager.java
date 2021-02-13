@@ -68,6 +68,7 @@ public class SpriteManager {
 
         public static final Map<EntityType, String[][]> map = new HashMap<>();
         private static SpriteMap instance;
+        private boolean playerSet;
 
         private SpriteMap(){
             String[][] arr = new String[2][3];
@@ -118,6 +119,11 @@ public class SpriteManager {
                     break;
             }
             map.put(EntityType.PLAYER,arr);
+            playerSet = true;
+        }
+
+        public boolean isPlayerSet() {
+            return playerSet;
         }
 
         private void addInArr(String[][] arr, int max, String name){

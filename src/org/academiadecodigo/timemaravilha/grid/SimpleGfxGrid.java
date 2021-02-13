@@ -15,16 +15,14 @@ public class SimpleGfxGrid extends AbstractGrid{
 
     public SimpleGfxGrid(int cols, int rows){
         super(cols, rows);
-        rectangle = new Rectangle(PADDINGX, PADDINGY, cols*SIZE, rows*SIZE);
-        pic = new Picture(PADDINGX,0, "background/BKG01.png");
     }
 
-    public void init (){
-       pic.draw();
-    }
-
-    public void reset(){
-        pic.delete();
+    public void setPic(String name){
+        Picture prev = pic;
+        pic = new Picture(PADDINGX,0,name);
+        pic.draw();
+        if(prev != null)
+            prev.delete();
     }
 
     public int colToX(int col){

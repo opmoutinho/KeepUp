@@ -12,16 +12,15 @@ public class MyKeyboard implements KeyboardHandler {
     private Keyboard keyboard;
 
     public MyKeyboard(){
-        keyboard = new Keyboard(this);
         keysPressed = new boolean[8];
+        keyboard = new Keyboard(this);
     }
 
     public boolean[] getKeysPressed() {
         return keysPressed;
     }
 
-    public void playerMovementInit(){
-        keyboard = new Keyboard(this);
+    public void init(){
 
         KeyboardEvent event = new KeyboardEvent();
         event.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
@@ -62,11 +61,8 @@ public class MyKeyboard implements KeyboardHandler {
         event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         event.setKey(KeyboardEvent.KEY_RIGHT);
         keyboard.addEventListener(event);
-    }
 
-    public void gameInit(){
-
-        KeyboardEvent event = new KeyboardEvent();
+        event = new KeyboardEvent();
         event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         event.setKey(KeyboardEvent.KEY_Q);
         keyboard.addEventListener(event);
@@ -105,54 +101,6 @@ public class MyKeyboard implements KeyboardHandler {
         event.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
         event.setKey(KeyboardEvent.KEY_R);
         keyboard.addEventListener(event);
-
-    }
-
-    public void playerPickInit(){
-        KeyboardEvent event = new KeyboardEvent();
-        event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        event.setKey(KeyboardEvent.KEY_Q);
-        keyboard.addEventListener(event);
-
-        event = new KeyboardEvent();
-        event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        event.setKey(KeyboardEvent.KEY_W);
-        keyboard.addEventListener(event);
-
-        event = new KeyboardEvent();
-        event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        event.setKey(KeyboardEvent.KEY_E);
-        keyboard.addEventListener(event);
-
-        event = new KeyboardEvent();
-        event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        event.setKey(KeyboardEvent.KEY_R);
-        keyboard.addEventListener(event);
-
-        event = new KeyboardEvent();
-        event.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
-        event.setKey(KeyboardEvent.KEY_Q);
-        keyboard.addEventListener(event);
-
-        event = new KeyboardEvent();
-        event.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
-        event.setKey(KeyboardEvent.KEY_W);
-        keyboard.addEventListener(event);
-
-        event = new KeyboardEvent();
-        event.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
-        event.setKey(KeyboardEvent.KEY_E);
-        keyboard.addEventListener(event);
-
-        event = new KeyboardEvent();
-        event.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
-        event.setKey(KeyboardEvent.KEY_R);
-        keyboard.addEventListener(event);
-
-    }
-
-    public void initDifficulty(){
-
     }
 
     @Override
@@ -170,19 +118,23 @@ public class MyKeyboard implements KeyboardHandler {
         if(keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT){
             keysPressed[3] = true;
         }
-        //GAME MENU
+
         if(keyboardEvent.getKey() == KeyboardEvent.KEY_Q){
             keysPressed[4] = true;
         }
+
         if(keyboardEvent.getKey() == KeyboardEvent.KEY_W){
             keysPressed[5] = true;
         }
+
         if(keyboardEvent.getKey() == KeyboardEvent.KEY_E){
             keysPressed[6] = true;
         }
+
         if(keyboardEvent.getKey() == KeyboardEvent.KEY_R){
             keysPressed[7] = true;
         }
+
     }
 
     @Override
@@ -200,16 +152,19 @@ public class MyKeyboard implements KeyboardHandler {
         if(keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT){
             keysPressed[3] = false;
         }
-        //GAME MENU
+
         if(keyboardEvent.getKey() == KeyboardEvent.KEY_Q){
             keysPressed[4] = false;
         }
+
         if(keyboardEvent.getKey() == KeyboardEvent.KEY_W){
             keysPressed[5] = false;
         }
+
         if(keyboardEvent.getKey() == KeyboardEvent.KEY_E){
             keysPressed[6] = false;
         }
+
         if(keyboardEvent.getKey() == KeyboardEvent.KEY_R){
             keysPressed[7] = false;
         }

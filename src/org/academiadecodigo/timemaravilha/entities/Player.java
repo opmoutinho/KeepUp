@@ -81,4 +81,7 @@ public class Player extends Entity {
         }
     }
 
+    public int getVaccineCounter() {
+        return vaccineCounter;
+    }
 }

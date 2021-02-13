@@ -57,11 +57,6 @@ public class EntityManager {
         return instance;
     }
 
-    public void add(Entity entity){
-        entities.add(entity);
-        player = (Player)entity;
-    }
-
     public void init(){
         createEntity(EntityType.COVIDINHOSIMPLES);
         createEntity(EntityType.COVIDINHOSIMPLES);
@@ -71,6 +66,8 @@ public class EntityManager {
     }
 
     private void createEntity (EntityType entityType){
+        if(player == null)
+            return;
         Entity entity;
         GridPosition position = grid.getRandomPos();
         switch(entityType){
@@ -83,10 +80,6 @@ public class EntityManager {
                 entity = new PatrollingCovidinho(position,20,20, COVIDINHO_DESPAWN);
                 ((TargetCovidinho) entity).setTarget(player.getPosition());
                 pcovidinhoSpawnTime = System.currentTimeMillis();
-                break;
-            case PLAYER:
-                entity = new Player(position,10,10);
-                player = (Player) entity;
                 break;
             case MASK:
                 entity = new Mask(position,20,10, MASK_DESPAWN);
@@ -107,6 +100,14 @@ public class EntityManager {
         }
         entities.add(entity);
 
+    }
+
+    public void createPlayer(boolean[] keyspressed){
+        if(player != null)
+            return;
+        player = new Player(grid.getRandomPos(),20,30);
+        player.setKeysPressed(keyspressed);
+        entities.add(player);
     }
 
     public void checkCollision(Entity entity){
@@ -156,6 +157,10 @@ public class EntityManager {
     public void setInactive(Entity entity) {
 
         inactiveEntities.add(entity);
+    }
+
+    public boolean vaccines(){
+        return player.getVaccineCounter() == 2;
     }
 
 }
