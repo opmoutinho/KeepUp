@@ -45,11 +45,9 @@ public class Game {
             startInit();
             keyboard.movementInit();
             while (!gameOver) {
-                if (!(gameState == GameState.PAUSED)) {
-                    manager.moveAll();
-                    manager.checkDespawn();
-                    manager.checkSpawn();
-                }
+                manager.moveAll();
+                manager.checkDespawn();
+                manager.checkSpawn();
                 sleep(17);
                 if (manager.vaccines() || manager.playerDead())
                     gameOver = true;
@@ -57,10 +55,11 @@ public class Game {
             gameState = GameState.GAME_OVER;
             Picture pic = null;
             if (manager.playerDead()) {
-                pic = new Picture(0, 0, "background/lost.png");
+                pic = new Picture(0, 0, "background/gameover.png");
                 pic.draw();
             } else {
-                System.out.println("You win!");
+                pic = new Picture(0,0,"background/playerwon.png");
+                pic.draw();
             }
             sleep(200);
             keyboard.resetInit();
@@ -75,8 +74,7 @@ public class Game {
                     map.reset();
                     gameOver = false;
                     difficulty = null;
-                    if(pic != null)
-                        pic.delete();
+                    pic.delete();
                 }
                 Thread.yield();
             }

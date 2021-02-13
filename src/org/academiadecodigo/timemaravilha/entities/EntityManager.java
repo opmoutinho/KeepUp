@@ -120,6 +120,9 @@ public class EntityManager {
                 entity.loadNextFrame();
                 collisionDetector.checkCollision(entity);
             }
+            for (Entity entity : inactiveEntities){
+                entity.reset();
+            }
             entities.removeAll(inactiveEntities);
             inactiveEntities.clear();
     }

@@ -7,6 +7,6 @@ public class Main {
         Game game = new Game();
         game.init();
         game.start();
-
+        System.exit(0);
     }
 }
