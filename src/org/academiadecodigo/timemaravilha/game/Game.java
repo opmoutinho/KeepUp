@@ -55,11 +55,14 @@ public class Game {
             }
             gameState = GameState.GAME_OVER;
             Picture pic = null;
-            if (manager.playerDead() || timer.timerOver()) {
-                pic = new Picture(0, 0, "background/gameover.png");
+            if(timer.timerOver()) {
+                pic = new Picture(0, 0, "background/timesup.png");
+                pic.draw();
+            } else if (manager.playerDead()) {
+                pic = new Picture(0, 0, "background/youlost.png");
                 pic.draw();
             } else {
-                pic = new Picture(0,0,"background/playerwon.png");
+                pic = new Picture(0,0,"background/youwon.png");
                 pic.draw();
             }
             sleep(500);
