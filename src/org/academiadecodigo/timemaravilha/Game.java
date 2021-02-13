@@ -31,7 +31,7 @@ public class Game {
         keyboard.init();
         keysPressed = keyboard.getKeysPressed();
         manager.setGrid(grid);
-        grid.setPic("background/instructions-menu.png");
+        grid.setPic("background/instructions.png");
         while(gameState == GameState.INSTRUCTION_MENU){
             if(keysPressed[0])
                 gameState = GameState.INITIAL_MENU;
@@ -84,7 +84,7 @@ public class Game {
 
     private void startInit(){
         keyboard.gameInit();
-        grid.setPic("background/menustart1.png");
+        grid.setPic("background/difficulty.png");
         while (gameState == GameState.INITIAL_MENU) {
             if (keysPressed[0]) {
                 difficulty = Difficulty.EASY;
@@ -100,7 +100,7 @@ public class Game {
             }
             if(difficulty != null) {
                 gameState = GameState.PLAYER_PICK;
-                grid.setPic("background/choose-player-menu.png");
+                grid.setPic("background/chooseplayer.png");
             }
             Thread.yield();
         }
