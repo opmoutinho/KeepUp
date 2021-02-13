@@ -1,12 +1,10 @@
 package org.academiadecodigo.timemaravilha.entities;
 
-import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.timemaravilha.collision.CollisionDetector;
 import org.academiadecodigo.timemaravilha.entities.despawnable.DespawnableEntity;
 import org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.PatrollingCovidinho;
 import org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.SimpleCovidinho;
 import org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.TargetCovidinho;
-import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.AbstractPowerUp;
 import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Immunity;
 import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Mask;
 import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Vaccine;
@@ -22,14 +20,30 @@ public class EntityManager {
     private Set <Entity> inactiveEntities;
     private Grid grid;
     private CollisionDetector collisionDetector;
-    private Timer timer;
+
+    private final long MASK_DESPAWN = 15000;
+    private final long IMMUNITY_DESPAWN = 15000;
+    private final long VACCINE_DESPAWN = 10000;
+    private final long COVIDINHO_DESPAWN = 60000;
+
+    private long maskSpawnTime = System.currentTimeMillis();
+    private final long MASK_INTERVAL = 5000;
+    private long immunitySpawnTime = System.currentTimeMillis();
+    private final long IMMUNITY_INTERVAL = 7500;
+    private long vaccineSpawnTime = System.currentTimeMillis();
+    private final long VACCINE_INTERVAL = 30000;
+    private long scovidinhoSpawnTime = System.currentTimeMillis();
+    private final long SCOVIDINHO_INTERVAL = 10000;
+    private long pcovidinhoSpawnTime = System.currentTimeMillis();
+    private final long PCOVIDINHO_INTERVAL = 12000;
+    private long tcovidinhoSpawnTime = System.currentTimeMillis();
+    private final long TCOVIDINHO_INTERVAL = 15000;
 
 
     private EntityManager () {
         entities = new HashSet<>();
         inactiveEntities = new HashSet<>();
         this.collisionDetector = new CollisionDetector(entities);
-        timer = new Timer();
     }
 
     public void setGrid(Grid grid) {
@@ -48,79 +62,94 @@ public class EntityManager {
         player = (Player)entity;
     }
 
-    public void stopTimer(){
-        timer.cancel();
-        timer.purge();
-    }
-
     public void init(){
-        setSpawnTimer(10000,EntityType.COVIDINHOSIMPLES);
-        setSpawnTimer(5000,EntityType.COVIDINHOSIMPLES);
-        setSpawnTimer(15000,EntityType.COVIDINHOPATROLLING);
-        setSpawnTimer(20000,EntityType.COVIDINHOPATROLLING);
-        setSpawnTimer(25000,EntityType.COVIDINHOTARGET);
-        setSpawnTimer(15000,EntityType.MASK);
-        setSpawnTimer(10000,EntityType.IMMUNITY);
+        createEntity(EntityType.COVIDINHOSIMPLES);
+        createEntity(EntityType.COVIDINHOSIMPLES);
+        createEntity(EntityType.COVIDINHOSIMPLES);
+        createEntity(EntityType.COVIDINHOTARGET);
+        createEntity(EntityType.MASK);
     }
 
-    public synchronized void createEntity (EntityType entityType){
-        final Entity entity;
+    private void createEntity (EntityType entityType){
+        Entity entity;
         GridPosition position = grid.getRandomPos();
         switch(entityType){
             case COVIDINHOTARGET:
-                entity = new TargetCovidinho(position,20,20);
+                entity = new TargetCovidinho(position,20,20, COVIDINHO_DESPAWN);
                 ((TargetCovidinho) entity).setTarget(player.getPosition());
+                tcovidinhoSpawnTime = System.currentTimeMillis();
                 break;
             case COVIDINHOPATROLLING:
-                entity = new PatrollingCovidinho(position,20,20);
+                entity = new PatrollingCovidinho(position,20,20, COVIDINHO_DESPAWN);
                 ((TargetCovidinho) entity).setTarget(player.getPosition());
+                pcovidinhoSpawnTime = System.currentTimeMillis();
                 break;
             case PLAYER:
                 entity = new Player(position,10,10);
+                player = (Player) entity;
                 break;
             case MASK:
-                entity = new Mask(position,20,10);
+                entity = new Mask(position,20,10, MASK_DESPAWN);
+                maskSpawnTime = System.currentTimeMillis();
                 break;
             case IMMUNITY:
-                entity = new Immunity(position,20,20);
+                entity = new Immunity(position,20,20, IMMUNITY_DESPAWN);
+                immunitySpawnTime = System.currentTimeMillis();
                 break;
             case VACCINE:
-                entity = new Vaccine(position,20,20);
+                entity = new Vaccine(position,20,20, VACCINE_DESPAWN);
+                vaccineSpawnTime = System.currentTimeMillis();
                 break;
             default:
-                entity = new SimpleCovidinho(position,20,20);
+                entity = new SimpleCovidinho(position,20,20, COVIDINHO_DESPAWN);
+                scovidinhoSpawnTime = System.currentTimeMillis();
                 break;
         }
         entities.add(entity);
 
-        if(entity instanceof AbstractPowerUp){
-            setDespawnTimer(6000,15000, (DespawnableEntity) entity);
-        } else if(entity instanceof DespawnableEntity){
-            setDespawnTimer(30000,60000,(DespawnableEntity) entity);
-        }
     }
 
     public void checkCollision(Entity entity){
         collisionDetector.checkCollision(entity);
     }
 
-    public synchronized void moveAll () {
+    public void moveAll () {
             for (Entity entity : entities) {
                 entity.move();
                 entity.loadNextFrame();
                 collisionDetector.checkCollision(entity);
             }
             entities.removeAll(inactiveEntities);
-            for(Entity entity : inactiveEntities){
-                if(entity instanceof DespawnableEntity)
-                    ((DespawnableEntity) entity).despawn();
-            }
             inactiveEntities.clear();
     }
 
-    public synchronized void updateFrame(){
-        for(Entity entity : entities) {
-            entity.loadNextFrame();
+    public void checkDespawn(){
+        for(Entity entity: entities){
+            if(entity instanceof DespawnableEntity)
+                ((DespawnableEntity) entity).checkDespawn();
+        }
+        entities.removeAll(inactiveEntities);
+        inactiveEntities.clear();
+    }
+
+    public void checkSpawn(){
+        if(System.currentTimeMillis() - scovidinhoSpawnTime > SCOVIDINHO_INTERVAL){
+            createEntity(EntityType.COVIDINHOSIMPLES);
+        }
+        if(System.currentTimeMillis() - pcovidinhoSpawnTime > PCOVIDINHO_INTERVAL){
+            createEntity(EntityType.COVIDINHOPATROLLING);
+        }
+        if(System.currentTimeMillis() - tcovidinhoSpawnTime > TCOVIDINHO_INTERVAL){
+            createEntity(EntityType.COVIDINHOTARGET);
+        }
+        if(System.currentTimeMillis() - maskSpawnTime > MASK_INTERVAL){
+            createEntity(EntityType.MASK);
+        }
+        if(System.currentTimeMillis() - immunitySpawnTime > IMMUNITY_INTERVAL){
+            createEntity(EntityType.IMMUNITY);
+        }
+        if(System.currentTimeMillis() - vaccineSpawnTime > VACCINE_INTERVAL){
+            createEntity(EntityType.VACCINE);
         }
     }
 
@@ -129,21 +158,4 @@ public class EntityManager {
         inactiveEntities.add(entity);
     }
 
-    private void setDespawnTimer(long min, long max, final DespawnableEntity entity){
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                entity.despawn();
-            }
-        }, (long) (Math.random()*(max-min+1)+min));
-    }
-
-    private void setSpawnTimer(long spawnTimer, final EntityType type){
-        timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                createEntity(type);
-            }
-        },0,spawnTimer);
-    }
 }

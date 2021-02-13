@@ -9,8 +9,8 @@ import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
 public class AbstractPowerUp extends DespawnableEntity {
 
-    public AbstractPowerUp(GridPosition position, int dimensionX, int dimensionY, EntityType type) {
-        super(position, dimensionX, dimensionY, type);
+    public AbstractPowerUp(GridPosition position, int dimensionX, int dimensionY, EntityType type, long despawnTime) {
+        super(position, dimensionX, dimensionY, type, despawnTime);
     }
 
     @Override

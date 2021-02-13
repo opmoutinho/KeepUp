@@ -10,7 +10,6 @@ import org.academiadecodigo.timemaravilha.sprite.SpriteManager;
 
 public class Game {
 
-    private Thread movementThread;
     private GameState gameState = GameState.INITIAL_MENU;
     private Difficulty difficulty;
     public boolean[] keysPressed;
@@ -126,21 +125,10 @@ public class Game {
             entityManager.setGrid(g1);
             entityManager.add(player);
             entityManager.init();
-            movementThread = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    while (!player.isDead()) {
-
-                        try {
-                            Thread.sleep(100);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            }, "Movement");
             while (!player.isDead()) {
                 EntityManager.getInstance().moveAll();
+                EntityManager.getInstance().checkDespawn();
+                EntityManager.getInstance().checkSpawn();
                 try {
                     Thread.sleep(17);
                 } catch (Exception e) {
@@ -149,8 +137,6 @@ public class Game {
             if (player.isDead()) {
                 Picture p3 = new Picture(0, 0, "lost.png");
                 p3.draw();
-                movementThread.interrupt();
-                EntityManager.getInstance().stopTimer();
             }
         }
     }

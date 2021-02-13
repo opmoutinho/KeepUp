@@ -11,8 +11,8 @@ import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
 public class Vaccine extends AbstractPowerUp {
 
-    public Vaccine(GridPosition position, int dimensionX, int dimensionY) {
-        super(position, dimensionX, dimensionY, EntityType.VACCINE);
+    public Vaccine(GridPosition position, int dimensionX, int dimensionY, long despawnTime) {
+        super(position, dimensionX, dimensionY, EntityType.VACCINE, despawnTime);
     }
 
 }

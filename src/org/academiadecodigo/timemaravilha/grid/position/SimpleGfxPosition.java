@@ -12,14 +12,12 @@ import org.academiadecodigo.timemaravilha.grid.SimpleGfxGrid;
 public class SimpleGfxPosition extends AbstractPosition{
 
     private Picture picture;
-    private Rectangle rectangle;
     private SimpleGfxGrid simpleGfxGrid;
 
     public SimpleGfxPosition(int col, int row, Grid grid){
         super(col, row, grid);
         simpleGfxGrid = (SimpleGfxGrid) grid;
         picture = new Picture(simpleGfxGrid.colToX(col)-10, simpleGfxGrid.rowToY(row)-5);
-        drawRectangle();
     }
 
     @Override
@@ -28,8 +26,8 @@ public class SimpleGfxPosition extends AbstractPosition{
         this.picture = picture;
         move(Direction.NEUTRAL,0);
         picture.draw();
-        prev.delete();
-        //rectangle.delete();
+        if(prev != this.picture)
+            prev.delete();
     }
 
     public void flip(){
@@ -41,18 +39,10 @@ public class SimpleGfxPosition extends AbstractPosition{
         picture.grow(x,y);
     }
 
-    private void drawRectangle () {
-        rectangle = new Rectangle(simpleGfxGrid.colToX(getCol()),simpleGfxGrid.rowToY(getRow()), getDimX()* SimpleGfxGrid.SIZE,getDimY()* SimpleGfxGrid.SIZE);
-        rectangle.fill();
-    }
-
     @Override
     public void setDimension(int dimX, int dimY) {
         super.setDimension(dimX, dimY);
-        Color color = rectangle.getColor();
         resetPosition();
-        drawRectangle();
-        rectangle.setColor(color);
     }
 
     private void resetPosition(){
@@ -62,18 +52,12 @@ public class SimpleGfxPosition extends AbstractPosition{
         move(Direction.LEFT,1);
     }
 
-    public void setColor(Color color){
-        rectangle.setColor(color);
-    }
-
     @Override
     public void show() {
-        rectangle.fill();
         picture.draw();
     }
 
     public void hide(){
-        rectangle.delete();
         picture.delete();
     }
 
@@ -81,6 +65,5 @@ public class SimpleGfxPosition extends AbstractPosition{
     public void move(Direction dir, int units) {
         super.move(dir, units);
         if(picture != null)picture.translate(simpleGfxGrid.colToX(getCol())-(picture.getWidth() < 0 ? -35:10)-picture.getX(), simpleGfxGrid.rowToY(getRow())-5-picture.getY());
-        if(rectangle != null)rectangle.translate(simpleGfxGrid.colToX(getCol())-rectangle.getX(), simpleGfxGrid.rowToY(getRow())-rectangle.getY());
     }
 }

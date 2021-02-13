@@ -8,8 +8,8 @@ import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
 public class SimpleCovidinho extends AbstractCovidinho {
 
-    public SimpleCovidinho(GridPosition position, int dimensionX, int dimensionY) {
-        super(position,dimensionX,dimensionY,EntityType.COVIDINHOSIMPLES);
+    public SimpleCovidinho(GridPosition position, int dimensionX, int dimensionY, long despawnTime) {
+        super(position,dimensionX,dimensionY,EntityType.COVIDINHOSIMPLES, despawnTime);
     }
 
 }

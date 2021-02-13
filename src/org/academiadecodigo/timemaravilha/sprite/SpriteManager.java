@@ -5,6 +5,7 @@ import org.academiadecodigo.timemaravilha.PlayerType;
 import org.academiadecodigo.timemaravilha.entities.EntityType;
 import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,7 +24,8 @@ public class SpriteManager {
         for(String[] s: aux){
             spriteArr[i] = new Picture[aux[i].length];
             for(String name : s){
-                spriteArr[i][j] = new Picture(0,0,name);
+                if(name != null)
+                    spriteArr[i][j] = new Picture(0,0,name);
                 if(type == EntityType.PLAYER)
                     spriteArr[i][j].grow(10,10);
                 j++;
@@ -35,8 +37,8 @@ public class SpriteManager {
     }
 
     public void loadNextFrame(int state){
-        position.loadNextFrame(spriteArr[0][index]);
-        index = (index+1)%spriteArr[0].length;
+        position.loadNextFrame(spriteArr[state][index]);
+        index = (index+1)%spriteArr[state].length;
     }
 
     public boolean isFlipped(){
@@ -60,22 +62,40 @@ public class SpriteManager {
         private static final String ANDRE = "Sprites/player/andre/";
         private static final String RENATA = "Sprites/player/renata/";
         private static final String PAULO = "Sprites/player/paulo/";
+        private static final String MASK = "Sprites/Powerups/Mask.png";
+        private static final String POWERUP = "Sprites/Powerups/PowerUP.png";
+        private static final String VACCINE = "Sprites/Powerups/Vaccine.png";
 
         public static final Map<EntityType, String[][]> map = new HashMap<>();
         private static SpriteMap instance;
 
         private SpriteMap(){
-            String[][] arr = new String[1][3];
+            String[][] arr = new String[2][3];
             addInArr(arr,3,COVIDINHOF+"covidinhoFollow");
+            Arrays.fill(arr[1], COVIDINHOF + "Mask.png");
             map.put(EntityType.COVIDINHOTARGET,arr);
 
-            arr = new String[1][7];
+            arr = new String[2][7];
             addInArr(arr,7,COVIDINHOP+"covidinhoRandom");
+            Arrays.fill(arr[1], COVIDINHOP + "Mask.png");
             map.put(EntityType.COVIDINHOPATROLLING, arr);
 
-            arr = new String[1][8];
+            arr = new String[2][8];
             addInArr(arr,8,COVIDINHOR+"covidinhoStatic");
+            Arrays.fill(arr[1],COVIDINHOR+ "Mask.png");
             map.put(EntityType.COVIDINHOSIMPLES,arr);
+
+            arr = new String[1][1];
+            arr[0][0] = MASK;
+            map.put(EntityType.MASK,arr);
+
+            arr = new String[1][1];
+            arr[0][0] = POWERUP;
+            map.put(EntityType.IMMUNITY,arr);
+
+            arr = new String[1][1];
+            arr[0][0] = VACCINE;
+            map.put(EntityType.VACCINE,arr);
         }
 
         public static SpriteMap getInstance() {

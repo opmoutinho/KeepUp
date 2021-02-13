@@ -59,8 +59,6 @@ public class Player extends Entity {
                 mask = false;
 
             if(health == 0){
-                getPosition().setColor(Color.RED);
-                getPosition().show();
                 kill();
                 EntityManager.getInstance().setInactive(this);
             }
