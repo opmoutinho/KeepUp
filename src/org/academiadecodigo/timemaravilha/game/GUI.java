@@ -66,6 +66,10 @@ public class GUI {
                 Hearth = new Picture(1,1, "sprites/Powerups/Life0.png");
                 Hearth.translate(646,7);
                 Hearth.draw();
+                Lifecount = null;
+                Lifecount = new Picture(1,1,"sprites/Powerups/Life0b.png");
+                Lifecount.translate(672+SimpleGfxGrid.PADDINGX,9);
+                Lifecount.draw();
             }
         }
 }
