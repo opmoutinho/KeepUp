@@ -13,34 +13,47 @@ import org.academiadecodigo.timemaravilha.sprite.SpriteManager;
 
 public class Game {
 
-    private GameState gameState = GameState.INITIAL_MENU;
+    private GameState gameState = GameState.INSTRUCTION_MENU;
     private Difficulty difficulty = null;
-    public boolean[] keysPressed;
+    private boolean[] keysPressed;
+    private EntityManager manager;
+    private SpriteManager.SpriteMap map;
+    private MyKeyboard keyboard;
+    private Grid grid;
+    private boolean retry;
+    private boolean gameOver;
 
-    public Difficulty getDifficulty() {
-        return difficulty;
+    public void init(){
+        manager = EntityManager.getInstance();
+        grid = new SimpleGfxGrid(800,400);
+        map = SpriteManager.SpriteMap.getInstance(); //start the spritemap
+        keyboard = new MyKeyboard(); //keyboard
+        keyboard.init();
+        keysPressed = keyboard.getKeysPressed();
+        manager.setGrid(grid);
+        grid.setPic("background/BKG02.png");
+        while(gameState == GameState.INSTRUCTION_MENU){
+            if(keysPressed[0])
+                gameState = GameState.INITIAL_MENU;
+            Thread.yield();
+        }
+        sleep(50);
     }
 
     public void start() {
-        EntityManager manager = EntityManager.getInstance();
-        SpriteManager.SpriteMap map = SpriteManager.SpriteMap.getInstance(); //start the spritemap
-        MyKeyboard m1 = new MyKeyboard(); //keyboard
-        Grid grid = new SimpleGfxGrid(800,400);
-        manager.setGrid(grid);
-        m1.init();
-        keysPressed = m1.getKeysPressed(); //keyspressed
+        keyboard.gameInit();
         grid.setPic("background/menustart1.png");
         while (gameState == GameState.INITIAL_MENU) {
-            if (keysPressed[4]) {
+            if (keysPressed[0]) {
                 difficulty = Difficulty.EASY;
             }
-            if (keysPressed[5]) {
+            if (keysPressed[1]) {
                 difficulty = Difficulty.MEDIUM;
             }
-            if (keysPressed[6]) {
+            if (keysPressed[2]) {
                 difficulty = Difficulty.HARD;
             }
-            if (keysPressed[7]) {
+            if (keysPressed[3]) {
                 difficulty = Difficulty.CARCRASH;
             }
             if(difficulty != null) {
@@ -51,13 +64,13 @@ public class Game {
         }
         sleep(50);
         while (gameState == GameState.PLAYER_PICK) {
-            if (keysPressed[4]) {
+            if (keysPressed[0]) {
                 map.setPlayer(PlayerType.ANDRE);
             }
-            if (keysPressed[5]) {
+            if (keysPressed[1]) {
                 map.setPlayer(PlayerType.PAULO);
             }
-            if (keysPressed[7]) {
+            if (keysPressed[3]) {
                 map.setPlayer(PlayerType.RENATA);
             }
             if(map.isPlayerSet()){
@@ -67,8 +80,7 @@ public class Game {
             }
             Thread.yield();
         }
-        boolean gameOver = false;
-        boolean retry = false;
+        keyboard.movementInit();
         while (!gameOver) {
             if(!(gameState == GameState.PAUSED)) {
                 manager.moveAll();
@@ -76,8 +88,12 @@ public class Game {
                 manager.checkSpawn();
             }
             sleep(17);
-            if(manager.vaccines())
+            if(manager.vaccines() || manager.playerDead())
                 gameOver = true;
+        }
+        if(manager.playerDead()){
+            Picture pic = new Picture(0,0,"background/lost.png");
+            pic.draw();
         }
     }
 

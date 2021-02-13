@@ -163,4 +163,8 @@ public class EntityManager {
         return player.getVaccineCounter() == 2;
     }
 
+    public boolean playerDead(){
+        return player.isDead();
+    }
+
 }
