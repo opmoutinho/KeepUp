@@ -1,5 +1,6 @@
 package org.academiadecodigo.timemaravilha.game;
 
+import org.academiadecodigo.timemaravilha.Sound;
 import org.academiadecodigo.timemaravilha.entities.EntityManager;
 import org.academiadecodigo.timemaravilha.grid.Grid;
 import org.academiadecodigo.timemaravilha.grid.SimpleGfxGrid;
@@ -25,6 +26,7 @@ public class Game {
     private GUI gui; //The game GUI sprites
     private boolean quit; //We need to quit
     private boolean gameOver; //The game is over
+    private Sound sound;
 
     private Timer timer; //Internal timer
 
@@ -60,12 +62,15 @@ public class Game {
         manager = EntityManager.getInstance();
         grid = new SimpleGfxGrid(800,400);
         map = SpriteManager.SpriteMap.getInstance(); //start the spritemap
-        timer = new Timer(200000);
+        timer = new Timer(202000);
         keyboard = new MyKeyboard(); //keyboard
         keyboard.init();
         keysPressed = keyboard.getKeysPressed();
         manager.setGrid(grid);
         grid.setPic("background/instructions.png");
+        sound = new Sound();
+        sound.setLoop(true);
+        sound.playSound();
     }
 
     /**
@@ -145,6 +150,8 @@ public class Game {
      * The game itself
      */
     private void game(){
+        sound.setLoop(false);
+        sound.playSound();
         keyboard.movementInit();
         timer.reset();
         manager.init(difficulty);

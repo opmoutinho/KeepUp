@@ -2,10 +2,7 @@ package org.academiadecodigo.timemaravilha.game;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.timemaravilha.entities.EntityManager;
-import org.academiadecodigo.timemaravilha.entities.Player;
 import org.academiadecodigo.timemaravilha.grid.SimpleGfxGrid;
-
-import java.lang.invoke.SwitchPoint;
 
 public class GUI {
 
@@ -24,7 +21,7 @@ public class GUI {
     public void reDraw() {
         if (entityManager.getPlayerVaccines() == 1) {
             Vacine1 = null;
-            Vacine1 = new Picture(1, 1, "Sprites/Powerups/Vaccine.png");
+            Vacine1 = new Picture(1, 1, "sprites/Powerups/Vaccine.png");
             Vacine1.translate(636 + SimpleGfxGrid.PADDINGX, 38);
             Vacine1.draw();
         }
@@ -32,25 +29,25 @@ public class GUI {
 
                 case 3:
                     Lifecount = null;
-                    Lifecount = new Picture(1, 1, "Sprites/Powerups/LifeB2.png");
+                    Lifecount = new Picture(1, 1, "sprites/Powerups/LifeB2.png");
                     Lifecount.translate(672 + SimpleGfxGrid.PADDINGX, 9);
                     Lifecount.draw();
                     break;
                 case 2:
                     Lifecount = null;
-                    Lifecount = new Picture(1, 1, "Sprites/Powerups/LifeB1.png");
+                    Lifecount = new Picture(1, 1, "sprites/Powerups/LifeB1.png");
                     Lifecount.translate(672 + SimpleGfxGrid.PADDINGX, 9);
                     Lifecount.draw();
                     break;
                 case 4:
                     Lifecount = null;
-                    Lifecount = new Picture(1, 1, "Sprites/Powerups/LifeB3.png");
+                    Lifecount = new Picture(1, 1, "sprites/Powerups/LifeB3.png");
                     Lifecount.translate(672 + SimpleGfxGrid.PADDINGX, 9);
                     Lifecount.draw();
                     break;
                 case 1:
                     Lifecount = null;
-                    Lifecount = new Picture(1, 1, "Sprites/Powerups/Life1.png");
+                    Lifecount = new Picture(1, 1, "sprites/Powerups/Life1.png");
                     Lifecount.translate(672 + SimpleGfxGrid.PADDINGX, 9);
                     Lifecount.draw();
                     break;
@@ -60,13 +57,13 @@ public class GUI {
     public void reDrawOver(){
             if (entityManager.getPlayerVaccines() == 2) {
                 Vacine2 = null;
-                Vacine2 = new Picture(1, 1, "Sprites/Powerups/Vaccine.png");
+                Vacine2 = new Picture(1, 1, "sprites/Powerups/Vaccine.png");
                 Vacine2.translate(637 + SimpleGfxGrid.PADDINGX, 72);
                 Vacine2.draw();
             }
             if (entityManager.playerDead()){
                 Hearth = null;
-                Hearth = new Picture(1,1,"Sprites/Powerups/Life0.png");
+                Hearth = new Picture(1,1, "sprites/Powerups/Life0.png");
                 Hearth.translate(646,7);
                 Hearth.draw();
             }
