@@ -10,6 +10,7 @@ public class Sound {
 
     private static final String GAMEMUSIC = "music/gamemusic.wav";
     private static final String WINMUSIC = "music/winmusic.wav";
+    private static final String GAMEOVERMUSIC = "music/gameovermusic.wav";
 
     private Clip clip;
 
@@ -21,6 +22,8 @@ public class Sound {
         switch (state){
             case 0:
                 loadMusic(WINMUSIC);
+            case 1:
+                loadMusic(GAMEOVERMUSIC);
         }
     }
 

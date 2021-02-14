@@ -217,11 +217,12 @@ public class Game {
             grid.setOver("background/timesup");
         } else if (manager.playerDead()) {
             grid.setOver("background/youlost.png");
+            sound.reload(1);
         } else {
             grid.setOver("background/youwon.png");
             sound.reload(0);
-            sound.playSound();
         }
+        sound.setLoop(true);
     }
 
     /**
