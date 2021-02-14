@@ -53,10 +53,10 @@ public class Player extends Entity {
 
     public void collide(Entity other){
         if(other instanceof AbstractCovidinho){
-            /*if(!mask)
+            if(!mask)
                 health--;
             else
-                mask = false;*/
+                mask = false;
 
             if(health == 0){
                 kill();
