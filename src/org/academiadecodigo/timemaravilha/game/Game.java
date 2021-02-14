@@ -31,6 +31,7 @@ public class Game {
     private Timer timer;
     private Timer seconds;
     private int time = 200;//Internal timer
+    private boolean resetBackground = false;
 
     /**
      * Init this game's instance.
@@ -172,12 +173,8 @@ public class Game {
             manager.moveAll(); //move everything
             manager.checkDespawn(); //check if there are entities to be despawned
             manager.checkSpawn();//check if there are entities to be spawned
-            gui.reDraw();
-            if(seconds.timerOver()){
-                time--;
-                seconds.reset();
-                gui.updateTime(time);
-            }
+            reloadBackground();
+            guiUpdate();
             sleep(17); //FPS basically
             if (manager.caughtEnoughVaccines() || manager.playerDead() || timer.timerOver()) {//got the vaccines, died or time's up
                 gameOver = true;
@@ -237,6 +234,29 @@ public class Game {
             Thread.sleep(value);
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void reloadBackground(){
+        if(time == 100 && !resetBackground){
+            grid.reloadPic("background/BKG01_B.png");
+            resetBackground = true;
+        }
+        if(time == 99){
+            resetBackground = false;
+        }
+        if(time == 50 && !resetBackground){
+            grid.reloadPic("background/BKG02.png");
+            resetBackground = true;
+        }
+    }
+
+    private void guiUpdate(){
+        gui.reDraw();
+        if(seconds.timerOver()){
+            time--;
+            seconds.reset();
+            gui.updateTime(time);
         }
     }
 

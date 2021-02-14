@@ -2,7 +2,7 @@ package org.academiadecodigo.timemaravilha.game;
 
 public enum Difficulty {
     EASY(60000, 10000, 12000, 15000, 15000,
-            5000, 15000,7500,10000,10000),
+            5000, 15000,7500,10000,30000),
 
     MEDIUM(60000, 7500, 9500, 11000, 15000,
             10000, 15000,12000,10000,35000),

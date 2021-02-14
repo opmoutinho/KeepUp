@@ -10,5 +10,6 @@ public interface Grid {
     public void setPic(String string);
     public void setOver(String s);
     public void resetOver();
+    public void reloadPic(String s);
 
 }

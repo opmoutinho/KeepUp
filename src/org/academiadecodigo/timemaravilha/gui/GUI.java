@@ -75,7 +75,7 @@ public class GUI {
             vaccine[i].delete();
         mask.delete();
         heart.delete();
-        prevPlayerLife=-1;
+        prevPlayerLife=0;
     }
 
 }

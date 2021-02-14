@@ -30,6 +30,10 @@ public class SimpleGfxGrid extends AbstractGrid{
         over.draw();
     }
 
+    public void reloadPic(String name){
+        pic.load(name);
+    }
+
     public void resetOver(){
         over.delete();
         over = null;
