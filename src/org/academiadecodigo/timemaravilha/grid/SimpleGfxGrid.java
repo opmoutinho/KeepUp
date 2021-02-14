@@ -26,7 +26,7 @@ public class SimpleGfxGrid extends AbstractGrid{
     }
 
     public void setOver(String name){
-        over = new Picture(0,0,name);
+        over = new Picture(PADDINGX,0,name);
         over.draw();
     }
 
