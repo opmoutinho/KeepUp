@@ -287,10 +287,12 @@ public class Game {
             gameState = GameState.PAUSE;
             Timer.pauseTime();
             sound.stopSound();
+            grid.setOver("background/paused.png");
         } else {
             gameState = GameState.GAME;
             Timer.unPauseTime();
             sound.playSound(false);
+            grid.resetOver();
         }
     }
 
