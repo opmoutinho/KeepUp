@@ -72,4 +72,5 @@ public abstract class Entity {
     public void reset(){
         position.hide();
     }
+
 }

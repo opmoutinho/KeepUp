@@ -93,4 +93,8 @@ public class Player extends Entity {
     protected int loadCondition() {
         return mask ? 1 : 0;
     }
+
+    public boolean isMask(){
+        return mask;
+    }
 }

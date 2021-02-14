@@ -80,9 +80,9 @@ public class SpriteManager {
         private static final String ANDRE = "sprites/player/andre/";
         private static final String RENATA = "sprites/player/renata/";
         private static final String PAULO = "sprites/player/paulo/";
-        private static final String MASK = "sprites/Powerups/Mask.png";
-        private static final String POWERUP = "sprites/Powerups/PowerUP.png";
-        private static final String VACCINE = "sprites/Powerups/Vaccine.png";
+        private static final String MASK = "sprites/powerups/Mask.png";
+        private static final String POWERUP = "sprites/powerups/PowerUP.png";
+        private static final String VACCINE = "sprites/powerups/Vaccine.png";
 
         public static final Map<EntityType, String[][]> map = new HashMap<>();
         private static SpriteMap instance;

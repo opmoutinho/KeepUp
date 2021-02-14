@@ -192,7 +192,7 @@ public class EntityManager {
         inactiveEntities.add(entity);
     }
 
-    public boolean vaccines(){
+    public boolean caughtEnoughVaccines(){
         return player.getVaccineCounter() == 2;
     }
 
@@ -206,6 +206,10 @@ public class EntityManager {
 
     public int getHealth(){
         return player.getHealth();
+    }
+
+    public boolean playerWithMask(){
+        return player.isMask();
     }
 
     public void reset(){

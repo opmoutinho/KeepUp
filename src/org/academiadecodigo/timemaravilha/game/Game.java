@@ -1,9 +1,10 @@
 package org.academiadecodigo.timemaravilha.game;
 
-import org.academiadecodigo.timemaravilha.Sound;
+import org.academiadecodigo.timemaravilha.sound.Sound;
 import org.academiadecodigo.timemaravilha.entities.EntityManager;
 import org.academiadecodigo.timemaravilha.grid.Grid;
 import org.academiadecodigo.timemaravilha.grid.SimpleGfxGrid;
+import org.academiadecodigo.timemaravilha.gui.GUI;
 import org.academiadecodigo.timemaravilha.sprite.SpriteManager;
 
 /**
@@ -35,8 +36,6 @@ public class Game {
      */
     public void init(){
         attributeInit();
-        startMenuLoop();
-        sleep(500);
         start();
     }
 
@@ -45,12 +44,15 @@ public class Game {
      */
     private void start() {
         while(!quit) {
+            startMenuLoop();
+            sleep(500);
             startInit();
             game();
             sleep(500);
             retryLoop();
             sleep(500);
         }
+        sound.close();
     }
 
     /**
@@ -62,15 +64,12 @@ public class Game {
         manager = EntityManager.getInstance();
         grid = new SimpleGfxGrid(800,400);
         map = SpriteManager.SpriteMap.getInstance(); //start the spritemap
-        timer = new Timer(202000);
+        timer = new Timer(200000);
         keyboard = new MyKeyboard(); //keyboard
-        keyboard.init();
         keysPressed = keyboard.getKeysPressed();
         manager.setGrid(grid);
-        grid.setPic("background/instructions.png");
         sound = new Sound();
-        sound.setLoop(true);
-        sound.playSound();
+        gui = new GUI ();
     }
 
     /**
@@ -81,7 +80,6 @@ public class Game {
     private void startInit(){
         keyboard.gameInit();
         grid.setPic("background/difficulty.png");
-        gui = new GUI ((SimpleGfxGrid) grid,manager);
         initialMenuLoop();
         sleep(500);
         playerPickLoop();
@@ -91,6 +89,9 @@ public class Game {
      * The loop to choose show the Instruction menu
      */
     private void startMenuLoop(){
+        sound.setLoop(true);
+        grid.setPic("background/instructions.png");
+        keyboard.init();
         while(gameState == GameState.INSTRUCTION_MENU){
             if(keysPressed[0])
                 gameState = GameState.INITIAL_MENU;
@@ -164,12 +165,12 @@ public class Game {
      */
     private void gameLoop(){
         while (!gameOver) {
-            gui.reDraw();
             manager.moveAll(); //move everything
             manager.checkDespawn(); //check if there are entities to be despawned
             manager.checkSpawn(); //check if there are entities to be spawned
+            gui.reDraw();
             sleep(17); //FPS basically
-            if (manager.vaccines() || manager.playerDead() || timer.timerOver()) {//got the vaccines, died or time's up
+            if (manager.caughtEnoughVaccines() || manager.playerDead() || timer.timerOver()) {//got the vaccines, died or time's up
                 gameOver = true;
                 gameState = GameState.GAME_OVER;
             }
@@ -182,18 +183,19 @@ public class Game {
     private void retryLoop(){
         keyboard.resetInit();
         while (gameState == GameState.GAME_OVER) {
-            gui.reDrawOver();
             if (keysPressed[0]) {
                 quit = true;
                 break;
             }
             if (keysPressed[3]) {
-                gameState = GameState.INITIAL_MENU;
+                gameState = GameState.INSTRUCTION_MENU;
                 manager.reset();
                 map.reset();
                 gameOver = false;
                 difficulty = null;
                 grid.resetOver();
+                sound.close();
+                sound = new Sound();
             }
             Thread.yield();
         }
@@ -209,6 +211,8 @@ public class Game {
             grid.setOver("background/youlost.png");
         } else {
             grid.setOver("background/youwon.png");
+            sound.reload(0);
+            sound.playSound();
         }
     }
 
