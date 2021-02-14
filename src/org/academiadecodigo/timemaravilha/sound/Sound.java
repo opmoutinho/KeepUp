@@ -86,8 +86,8 @@ public class Sound {
             closeStream(musicInputStream);
         }
         if(clipAux != null){
-            BooleanControl muted = isMuted(clip);
-            if(!muted.getValue())
+            BooleanControl muted = isMuted(clipAux);
+            if(muted.getValue())
                 mute();
             clipAux.close();
         }
