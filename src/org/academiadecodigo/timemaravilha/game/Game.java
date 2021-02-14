@@ -47,12 +47,12 @@ public class Game {
     private void start() {
         while(!quit) {
             startMenuLoop();
-            sleep(500);
+            sleep(250);
             startInit();
             game();
-            sleep(500);
+            sleep(250);
             retryLoop();
-            sleep(500);
+            sleep(250);
         }
         sound.close();
     }
