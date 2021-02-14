@@ -23,15 +23,26 @@ public class SpriteManager {
     private Picture[][] spriteArr; //Our sprites
     private GridPosition position; //The position (has the sprite)
     private boolean flipped; //If it's supposed to be flipped or not
-    private int index;
-    private Game.Timer timer;
+    private int index; //The index of the next picture
+    private Game.Timer timer;//When am I allowed to change sprites
 
+    /**
+     * The constructor
+     * @param type - the entity type
+     * @param position - the position
+     * @requires type != null && position != null
+     *
+     */
     public SpriteManager(EntityType type, GridPosition position){
         init(type);
         this.position = position;
         timer = new Game.Timer(125);
     }
 
+    /**
+     * Loads the next frame on position
+     * @param state - what the state of the entity
+     */
     public void loadNextFrame(int state){
         if(timer.timerOver()) {
             position.loadNextFrame(spriteArr[state][index]);
@@ -40,10 +51,18 @@ public class SpriteManager {
         }
     }
 
+    /**
+     * Is this entity flipped?
+     * @return true if it's flipped
+     */
     public boolean isFlipped(){
         return flipped;
     }
 
+    /**
+     * Set all the sprites to flipped
+     * @param flipped - if it's flipped
+     */
     public void setFlipped(boolean flipped) {
         for(Picture[] picArr: spriteArr){
             for(Picture pic : picArr){
@@ -53,10 +72,15 @@ public class SpriteManager {
         this.flipped = flipped;
     }
 
+    /**
+     *
+     * @param type
+     */
+
     private void init(EntityType type){
         int i = 0;
         int j = 0;
-        String[][] aux = SpriteMap.map.get(type);
+        String[][] aux = SpriteMap.map.get(type);//To get all the strings mapped to each entity
         spriteArr = new Picture[aux.length][];
         for(String[] s: aux){
             spriteArr[i] = new Picture[aux[i].length];
