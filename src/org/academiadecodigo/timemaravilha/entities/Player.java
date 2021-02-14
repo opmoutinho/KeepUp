@@ -62,22 +62,16 @@ public class Player extends Entity {
                 kill();
                 EntityManager.getInstance().setInactive(this);
             }
-            System.out.println("Player Collided with Covidinho");
 
         } else if (other instanceof Mask) {
             mask = true;
-            System.out.println("Player Collided with Mask");
 
         }else if (other instanceof Immunity){
             health = Math.min(4, health+1);
-            System.out.println("Player Collided with Immunity");
 
         }else if (other instanceof Vaccine){
             vaccineCounter++;
-            System.out.println("Player Collided with Vaccine");
 
-        }else {
-            System.out.println("Player Didn't collided!? :O ");
         }
     }
 

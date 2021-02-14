@@ -17,11 +17,9 @@ public class AbstractPowerUp extends DespawnableEntity {
     public void collide(Entity other) {
         if(other instanceof Player){
             despawn();
-            System.out.println("Immunity collided with Player");
 
         }else if (other instanceof AbstractCovidinho) {
             despawn();
-            System.out.println("Immunity Collided with Covidinho");
         }
     }
 }

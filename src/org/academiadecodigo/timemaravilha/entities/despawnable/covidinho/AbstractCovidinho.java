@@ -55,11 +55,8 @@ public abstract class AbstractCovidinho extends DespawnableEntity {
     public void collide(Entity other){
         if(other instanceof Player){
             despawn();
-            System.out.println("Covidinho Collided with Player");
         } else if (other instanceof Mask){
             rooted = true;
-        } else {
-            System.out.println("Covidinho Collided with another Covidinho");
         }
     }
 
