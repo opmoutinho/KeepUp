@@ -53,7 +53,7 @@ public abstract class AbstractCovidinho extends DespawnableEntity {
     }
 
     public void collide(Entity other){
-        if(other instanceof Player){
+        if(other instanceof Player || other instanceof Vaccine){
             despawn();
         } else if (other instanceof Mask){
             rooted = true;

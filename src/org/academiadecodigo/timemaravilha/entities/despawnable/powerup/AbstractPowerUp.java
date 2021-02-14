@@ -19,7 +19,8 @@ public class AbstractPowerUp extends DespawnableEntity {
             despawn();
 
         }else if (other instanceof AbstractCovidinho) {
-            despawn();
+            if(!(this instanceof Vaccine))
+                despawn();
         }
     }
 }
