@@ -170,15 +170,19 @@ public class Game {
      */
     private void gameLoop(){
         while (!gameOver) {
-            manager.moveAll(); //move everything
-            manager.checkDespawn(); //check if there are entities to be despawned
-            manager.checkSpawn();//check if there are entities to be spawned
-            reloadBackground();
-            guiUpdate();
-            sleep(17); //FPS basically
-            if (manager.caughtEnoughVaccines() || manager.playerDead() || timer.timerOver()) {//got the vaccines, died or time's up
-                gameOver = true;
-                gameState = GameState.GAME_OVER;
+            try {
+                manager.moveAll(); //move everything
+                manager.checkDespawn(); //check if there are entities to be despawned
+                manager.checkSpawn();//check if there are entities to be spawned
+                reloadBackground();
+                guiUpdate();
+                sleep(17); //FPS basically
+                if (manager.caughtEnoughVaccines() || manager.playerDead() || timer.timerOver()) {//got the vaccines, died or time's up
+                    gameOver = true;
+                    gameState = GameState.GAME_OVER;
+                }
+            } catch (Exception e){
+                System.err.println(e.getMessage());
             }
         }
     }
@@ -214,7 +218,8 @@ public class Game {
      */
     private void drawGameResult(){
         if(timer.timerOver()) {
-            grid.setOver("background/timesup");
+            grid.setOver("background/timesup.png");
+            sound.reload(-1);
         } else if (manager.playerDead()) {
             grid.setOver("background/youlost.png");
             sound.reload(1);

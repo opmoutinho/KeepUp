@@ -26,7 +26,8 @@ public class GUI {
 
         heart = new Picture(SimpleGfxGrid.PADDINGX + 636,7, "sprites/lives/heart.png");
 
-        mask = new Picture(SimpleGfxGrid.PADDINGX + 672, 41, "sprites/powerups/Mask.png");
+        mask = new Picture(SimpleGfxGrid.PADDINGX + 637, 9, "sprites/powerups/Mask.png");
+        mask.grow(5, 2);
 
         timerNum = new Picture[3][10];
         for(int i = 0; i < 3; i++){
