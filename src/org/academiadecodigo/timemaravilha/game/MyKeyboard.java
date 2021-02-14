@@ -6,6 +6,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.timemaravilha.entities.Player;
 
+import java.awt.event.KeyEvent;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -39,11 +40,18 @@ public class MyKeyboard implements KeyboardHandler {
         event.setKey(KeyboardEvent.KEY_SPACE);
         keyboard.addEventListener(event);
         events.add(event);
+
+        event = new KeyboardEvent();
+        event.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        event.setKey(KeyEvent.VK_ESCAPE);
+        keyboard.addEventListener(event);
     }
 
     public void gameInit(){
         for(KeyboardEvent event : events)
             keyboard.removeEventListener(event);
+        events.clear();
+
         Arrays.fill(keysPressed, false);
         KeyboardEvent event = new KeyboardEvent();
         event.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
@@ -97,6 +105,8 @@ public class MyKeyboard implements KeyboardHandler {
     public void movementInit(){
         for(KeyboardEvent event : events)
             keyboard.removeEventListener(event);
+        events.clear();
+
         Arrays.fill(keysPressed, false);
         KeyboardEvent event = new KeyboardEvent();
         event.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
@@ -150,6 +160,8 @@ public class MyKeyboard implements KeyboardHandler {
     public void resetInit(){
         for(KeyboardEvent event : events)
             keyboard.removeEventListener(event);
+        events.clear();
+
         Arrays.fill(keysPressed, false);
         KeyboardEvent event = new KeyboardEvent();
         event.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
@@ -196,7 +208,6 @@ public class MyKeyboard implements KeyboardHandler {
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
-        //PLAYER MOVEMENT
         if(keyboardEvent.getKey() == KeyboardEvent.KEY_UP || keyboardEvent.getKey() == KeyboardEvent.KEY_Q ||
                 keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE){
             keysPressed[0] = false;
@@ -210,6 +221,8 @@ public class MyKeyboard implements KeyboardHandler {
         if(keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT || keyboardEvent.getKey() == KeyboardEvent.KEY_R){
             keysPressed[3] = false;
         }
-
+        if(keyboardEvent.getKey() == KeyEvent.VK_ESCAPE){
+            System.exit(1);
+        }
     }
 }
