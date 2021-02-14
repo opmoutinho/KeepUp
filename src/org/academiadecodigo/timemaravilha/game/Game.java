@@ -28,8 +28,9 @@ public class Game {
     private boolean quit; //We need to quit
     private boolean gameOver; //The game is over
     private Sound sound;
-
-    private Timer timer; //Internal timer
+    private Timer timer;
+    private Timer seconds;
+    private int time = 200;//Internal timer
 
     /**
      * Init this game's instance.
@@ -65,6 +66,7 @@ public class Game {
         grid = new SimpleGfxGrid(800,400);
         map = SpriteManager.SpriteMap.getInstance(); //start the spritemap
         timer = new Timer(200000);
+        seconds = new Timer(1000);
         keyboard = new MyKeyboard(); //keyboard
         keysPressed = keyboard.getKeysPressed();
         manager.setGrid(grid);
@@ -155,7 +157,9 @@ public class Game {
         sound.playSound();
         keyboard.movementInit();
         timer.reset();
+        seconds.reset();
         manager.init(difficulty);
+        gui.updateTime(time);
         gameLoop();
         drawGameResult();
     }
@@ -167,8 +171,13 @@ public class Game {
         while (!gameOver) {
             manager.moveAll(); //move everything
             manager.checkDespawn(); //check if there are entities to be despawned
-            manager.checkSpawn(); //check if there are entities to be spawned
+            manager.checkSpawn();//check if there are entities to be spawned
             gui.reDraw();
+            if(seconds.timerOver()){
+                time--;
+                seconds.reset();
+                gui.updateTime(time);
+            }
             sleep(17); //FPS basically
             if (manager.caughtEnoughVaccines() || manager.playerDead() || timer.timerOver()) {//got the vaccines, died or time's up
                 gameOver = true;
@@ -196,6 +205,8 @@ public class Game {
                 grid.resetOver();
                 sound.close();
                 sound = new Sound();
+                time = 200;
+                gui.clear();
             }
             Thread.yield();
         }

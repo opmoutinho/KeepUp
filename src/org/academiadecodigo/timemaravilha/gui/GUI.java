@@ -2,6 +2,7 @@ package org.academiadecodigo.timemaravilha.gui;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.timemaravilha.entities.EntityManager;
+import org.academiadecodigo.timemaravilha.game.Game;
 import org.academiadecodigo.timemaravilha.grid.SimpleGfxGrid;
 
 public class GUI {
@@ -11,6 +12,7 @@ public class GUI {
     private Picture heart;
     private Picture[] vaccine;
     private Picture mask;
+    private Picture[][] timerNum;
     private int prevPlayerLife;
 
     public GUI(){
@@ -25,6 +27,13 @@ public class GUI {
         heart = new Picture(SimpleGfxGrid.PADDINGX + 636,7, "sprites/lives/heart.png");
 
         mask = new Picture(SimpleGfxGrid.PADDINGX + 672, 41, "sprites/powerups/Mask.png");
+
+        timerNum = new Picture[3][10];
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j<10; j++)
+                timerNum[i][j] = new Picture(SimpleGfxGrid.PADDINGX + 690 + (36*i),64,"sprites/numbers/num"+j+
+                                                                                                                ".png");
+        }
     }
 
     public void reDraw() {
@@ -46,6 +55,27 @@ public class GUI {
         } else {
             mask.delete();
         }
+    }
+
+    public void updateTime(int time){
+        for(int i = 2; i >= 0; i--){
+            for(int j = 0; j <= 9; j++){
+                timerNum[i][j].delete();
+            }
+            timerNum[i][time%10].draw();
+            time/=10;
+        }
+    }
+
+    public void clear(){
+        for(int i = 0; i< lifeCount.length; i++){
+            lifeCount[i].delete();
+        }
+        for(int i = 0; i < vaccine.length; i++)
+            vaccine[i].delete();
+        mask.delete();
+        heart.delete();
+        prevPlayerLife=-1;
     }
 
 }
