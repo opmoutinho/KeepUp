@@ -7,6 +7,9 @@ import org.academiadecodigo.timemaravilha.grid.SimpleGfxGrid;
 import org.academiadecodigo.timemaravilha.gui.GUI;
 import org.academiadecodigo.timemaravilha.sprite.SpriteManager;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * The Game
  *
@@ -68,7 +71,7 @@ public class Game {
         map = SpriteManager.SpriteMap.getInstance(); //start the spritemap
         timer = new Timer(200000);
         seconds = new Timer(1000);
-        keyboard = new MyKeyboard(); //keyboard
+        keyboard = new MyKeyboard(this); //keyboard
         keysPressed = keyboard.getKeysPressed();
         manager.setGrid(grid);
         sound = new Sound();
@@ -93,11 +96,22 @@ public class Game {
      */
     private void startMenuLoop(){
         sound.setLoop(true);
-        grid.setPic("background/instructions.png");
+        grid.setPic("background/instructions/instructionsSemSpaceBar.png");
+        Timer timer = new Timer(340);
+        boolean change = true;
         keyboard.init();
         while(gameState == GameState.INSTRUCTION_MENU){
             if(keysPressed[0])
                 gameState = GameState.INITIAL_MENU;
+            if(timer.timerOver() && change){
+                grid.setPic("background/instructions/instructionsSpaceBar2.png");
+                change = false;
+                timer.reset();
+            } else if(timer.timerOver() && !change) {
+                grid.setPic("background/instructions/instructionsSemSpaceBar.png");
+                change = true;
+                timer.reset();
+            }
             Thread.yield();
         }
     }
@@ -155,7 +169,7 @@ public class Game {
      */
     private void game(){
         sound.setLoop(false);
-        sound.playSound();
+        sound.playSound(true);
         keyboard.movementInit();
         timer.reset();
         seconds.reset();
@@ -171,16 +185,18 @@ public class Game {
     private void gameLoop(){
         while (!gameOver) {
             try {
-                manager.moveAll(); //move everything
-                manager.checkDespawn(); //check if there are entities to be despawned
-                manager.checkSpawn();//check if there are entities to be spawned
-                reloadBackground();
-                guiUpdate();
-                sleep(17); //FPS basically
-                if (manager.caughtEnoughVaccines() || manager.playerDead() || timer.timerOver()) {//got the vaccines, died or time's up
-                    gameOver = true;
-                    gameState = GameState.GAME_OVER;
+                if(gameState != GameState.PAUSE) {
+                    manager.moveAll(); //move everything
+                    manager.checkDespawn(); //check if there are entities to be despawned
+                    manager.checkSpawn();//check if there are entities to be spawned
+                    reloadBackground();
+                    guiUpdate();
+                    if (manager.caughtEnoughVaccines() || manager.playerDead() || timer.timerOver()) {//got the vaccines, died or time's up
+                        gameOver = true;
+                        gameState = GameState.GAME_OVER;
+                    }
                 }
+                sleep(17); //FPS basically
             } catch (Exception e){
                 System.err.println(e.getMessage());
             }
@@ -266,18 +282,37 @@ public class Game {
         }
     }
 
+    public void pauseGame(){
+        if(gameState == GameState.GAME) {
+            gameState = GameState.PAUSE;
+            Timer.pauseTime();
+            sound.stopSound();
+        } else {
+            gameState = GameState.GAME;
+            Timer.unPauseTime();
+            sound.playSound(false);
+        }
+    }
+
+    public void mute(){
+        sound.mute();
+    }
+
     /**
      * Internal Timer class.
      * Used across the program, but don't want to pollute the game structure with another Class
      */
     public static class Timer{
 
+        private static final Set<Timer> timerInstances = new HashSet<>();
         private long startTime;
         private final long timeInterval;
+        private static long pauseTime;
 
         public Timer(long timeInterval){
             this.startTime = System.currentTimeMillis();
             this.timeInterval = timeInterval;
+            timerInstances.add(this);
         }
 
         public boolean timerOver(){
@@ -286,6 +321,17 @@ public class Game {
 
         public void reset(){
             startTime = System.currentTimeMillis();
+        }
+
+        public static void pauseTime(){
+            pauseTime = System.currentTimeMillis();
+        }
+
+        public static void unPauseTime(){
+            for(Timer timer : timerInstances){
+                timer.startTime+=(System.currentTimeMillis()-pauseTime);
+            }
+            pauseTime = 0;
         }
 
     }

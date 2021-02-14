@@ -9,6 +9,7 @@ import org.academiadecodigo.timemaravilha.entities.Player;
 import java.awt.event.KeyEvent;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 public class MyKeyboard implements KeyboardHandler {
@@ -16,11 +17,13 @@ public class MyKeyboard implements KeyboardHandler {
     private boolean[] keysPressed;
     private Keyboard keyboard;
     private Set<KeyboardEvent> events;
+    private Game game;
 
-    public MyKeyboard(){
-        keysPressed = new boolean[4];
+    public MyKeyboard(Game game){
+        keysPressed = new boolean[5];
         keyboard = new Keyboard(this);
         events = new HashSet<>();
+        this.game = game;
     }
 
     public boolean[] getKeysPressed() {
@@ -28,6 +31,10 @@ public class MyKeyboard implements KeyboardHandler {
     }
 
     public void init(){
+
+        for(KeyboardEvent event : events)
+            keyboard.removeEventListener(event);
+        events.clear();
 
         KeyboardEvent event = new KeyboardEvent();
         event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
@@ -45,12 +52,24 @@ public class MyKeyboard implements KeyboardHandler {
         event.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
         event.setKey(KeyEvent.VK_ESCAPE);
         keyboard.addEventListener(event);
+        events.add(event);
+
+        event = new KeyboardEvent();
+        event.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        event.setKey(KeyboardEvent.KEY_M);
+        keyboard.addEventListener(event);
+        events.add(event);
     }
 
     public void gameInit(){
-        for(KeyboardEvent event : events)
-            keyboard.removeEventListener(event);
-        events.clear();
+        Iterator<KeyboardEvent> it = events.iterator();
+        while(it.hasNext()){
+            KeyboardEvent event = it.next();
+            if(event.getKey() != KeyEvent.VK_ESCAPE && event.getKey() != KeyboardEvent.KEY_M){
+                keyboard.removeEventListener(event);
+                it.remove();
+            }
+        }
 
         Arrays.fill(keysPressed, false);
         KeyboardEvent event = new KeyboardEvent();
@@ -103,9 +122,14 @@ public class MyKeyboard implements KeyboardHandler {
     }
 
     public void movementInit(){
-        for(KeyboardEvent event : events)
-            keyboard.removeEventListener(event);
-        events.clear();
+        Iterator<KeyboardEvent> it = events.iterator();
+        while(it.hasNext()){
+            KeyboardEvent event = it.next();
+            if(event.getKey() != KeyEvent.VK_ESCAPE && event.getKey() != KeyboardEvent.KEY_M){
+                keyboard.removeEventListener(event);
+                it.remove();
+            }
+        }
 
         Arrays.fill(keysPressed, false);
         KeyboardEvent event = new KeyboardEvent();
@@ -155,12 +179,24 @@ public class MyKeyboard implements KeyboardHandler {
         event.setKey(KeyboardEvent.KEY_RIGHT);
         keyboard.addEventListener(event);
         events.add(event);
+
+        event = new KeyboardEvent();
+        event.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        event.setKey(KeyboardEvent.KEY_P);
+        keyboard.addEventListener(event);
+        events.add(event);
+
     }
 
     public void resetInit(){
-        for(KeyboardEvent event : events)
-            keyboard.removeEventListener(event);
-        events.clear();
+        Iterator<KeyboardEvent> it = events.iterator();
+        while(it.hasNext()){
+            KeyboardEvent event = it.next();
+            if(event.getKey() != KeyEvent.VK_ESCAPE && event.getKey() != KeyboardEvent.KEY_M){
+                keyboard.removeEventListener(event);
+                it.remove();
+            }
+        }
 
         Arrays.fill(keysPressed, false);
         KeyboardEvent event = new KeyboardEvent();
@@ -223,6 +259,13 @@ public class MyKeyboard implements KeyboardHandler {
         }
         if(keyboardEvent.getKey() == KeyEvent.VK_ESCAPE){
             System.exit(1);
+        }
+        if(keyboardEvent.getKey() == KeyboardEvent.KEY_P){
+            game.pauseGame();
+        }
+
+        if(keyboardEvent.getKey() == KeyboardEvent.KEY_M){
+            game.mute();
         }
     }
 }

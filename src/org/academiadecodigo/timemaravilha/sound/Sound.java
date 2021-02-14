@@ -33,8 +33,9 @@ public class Sound {
         }
     }
 
-    public void playSound(){
-        clip.setFramePosition(0);
+    public void playSound(boolean restart){
+        if(restart)
+            clip.setFramePosition(0);
         clip.start();
     }
 
@@ -53,13 +54,27 @@ public class Sound {
         clip.stop();
     }
 
+    public BooleanControl isMuted(Clip clip){
+        return (BooleanControl) (clip.getControl(BooleanControl.Type.MUTE));
+    }
+
+    public void mute(){
+        BooleanControl volume = (BooleanControl) clip.getControl(BooleanControl.Type.MUTE);
+
+        if(volume.getValue())
+            volume.setValue(false);
+        else
+            volume.setValue(true);
+
+    }
+
     private void loadMusic(String path){
         Clip clipAux = clip;
         AudioInputStream musicInputStream = null;
-        URL soundURL = getClass().getClassLoader().getResource(path);
+        URL soundURL = getClass().getClassLoader().getResource(path); //Read Jar
         try{
             if(soundURL == null){
-                File file = new File("C:\\AcademiaDeCodigo\\KeepUp\\resources\\"+ path);
+                File file = new File("C:/AcademiaDeCodigo/KeepUp/resources/"+ path); //IntelliJ
                 soundURL = file.toURI().toURL();
             }
             musicInputStream = AudioSystem.getAudioInputStream(soundURL);
@@ -71,7 +86,10 @@ public class Sound {
             closeStream(musicInputStream);
         }
         if(clipAux != null){
-            clipAux.stop();
+            BooleanControl muted = isMuted(clip);
+            if(!muted.getValue())
+                mute();
+            clipAux.close();
         }
     }
 
