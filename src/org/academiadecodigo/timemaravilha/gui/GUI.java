@@ -5,16 +5,22 @@ import org.academiadecodigo.timemaravilha.entities.EntityManager;
 import org.academiadecodigo.timemaravilha.game.Game;
 import org.academiadecodigo.timemaravilha.grid.SimpleGfxGrid;
 
+/**
+ * The class representing the graphical interface
+ */
 public class GUI {
 
-    private EntityManager entityManager = EntityManager.getInstance();
-    private Picture[] lifeCount;
-    private Picture heart;
-    private Picture[] vaccine;
-    private Picture mask;
-    private Picture[][] timerNum;
-    private int prevPlayerLife;
+    private EntityManager entityManager = EntityManager.getInstance(); //to use the powerups sprites
+    private Picture[] lifeCount; //the life count sprite
+    private Picture heart; //the heart sprite
+    private Picture[] vaccine; //the vaccine count
+    private Picture mask; //is the player masked?
+    private Picture[][] timerNum; //The timer sprites
+    private int prevPlayerLife; //the previous frame's player life (so we don't have to redraw)
 
+    /**
+     * Constructor
+     */
     public GUI(){
         lifeCount = new Picture[5];
         for(int i = 0; i < lifeCount.length; i++){
@@ -37,6 +43,9 @@ public class GUI {
         }
     }
 
+    /**
+     * Redraw the GUI based on the current game state
+     */
     public void reDraw() {
         if(entityManager.getPlayerVaccines() != 0){
             vaccine[entityManager.getPlayerVaccines()-1].draw();
@@ -58,6 +67,10 @@ public class GUI {
         }
     }
 
+    /**
+     * Update time
+     * @param time - the current time
+     */
     public void updateTime(int time){
         for(int i = 2; i >= 0; i--){
             for(int j = 0; j <= 9; j++){

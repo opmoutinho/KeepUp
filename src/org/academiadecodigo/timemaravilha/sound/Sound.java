@@ -91,6 +91,12 @@ public class Sound {
                 mute();
             clipAux.close();
         }
+        setVolume();
+    }
+
+    private void setVolume(){
+        FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+        volume.setValue(-10.0f);
     }
 
     private void closeStream(InputStream stream){

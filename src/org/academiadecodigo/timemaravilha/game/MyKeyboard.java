@@ -4,7 +4,6 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
-import org.academiadecodigo.timemaravilha.entities.Player;
 
 import java.awt.event.KeyEvent;
 import java.util.Arrays;
@@ -12,24 +11,43 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+/**
+ * A representation of our Keyboard.
+ *
+ * Uses the simplegraphics lib Keyboard and event handler.
+ */
 public class MyKeyboard implements KeyboardHandler {
 
-    private boolean[] keysPressed;
-    private Keyboard keyboard;
-    private Set<KeyboardEvent> events;
-    private Game game;
+    private boolean[] keysPressed; //The keys being pressed
+    private Keyboard keyboard; //The keyboard
+    private Set<KeyboardEvent> events; //The events being listened (so we can reset them later)
+    private Game game; //The game (so we can mute/pause the game without having to be inside a loop)
 
+    /**
+     * Constructor
+     * @param game - the game instance
+     */
     public MyKeyboard(Game game){
-        keysPressed = new boolean[5];
+        keysPressed = new boolean[4];
         keyboard = new Keyboard(this);
         events = new HashSet<>();
         this.game = game;
     }
 
+    /**
+     * What keys are being pressed?
+     * @return An array of the keys being pressed. Only recognizes 4 keys at a time, mapped to different
+     * values in each iteration
+     */
     public boolean[] getKeysPressed() {
         return keysPressed;
     }
 
+    /**
+     * The first init.
+     *
+     * Space to start the game, M to mute, Esc to escape
+     */
     public void init(){
 
         for(KeyboardEvent event : events)
@@ -61,6 +79,11 @@ public class MyKeyboard implements KeyboardHandler {
         events.add(event);
     }
 
+    /**
+     * The game init.
+     *
+     * Use to browse through the menus
+     */
     public void gameInit(){
         Iterator<KeyboardEvent> it = events.iterator();
         while(it.hasNext()){
@@ -71,7 +94,7 @@ public class MyKeyboard implements KeyboardHandler {
             }
         }
 
-        Arrays.fill(keysPressed, false);
+        Arrays.fill(keysPressed, false); //Reset the array to all false
         KeyboardEvent event = new KeyboardEvent();
         event.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
         event.setKey(KeyboardEvent.KEY_Q);
@@ -121,6 +144,10 @@ public class MyKeyboard implements KeyboardHandler {
         events.add(event);
     }
 
+    /**
+     * The movement handler.
+     * WASD
+     */
     public void movementInit(){
         Iterator<KeyboardEvent> it = events.iterator();
         while(it.hasNext()){
@@ -188,6 +215,9 @@ public class MyKeyboard implements KeyboardHandler {
 
     }
 
+    /**
+     * Resets the keyboard to the start of the game
+     */
     public void resetInit(){
         Iterator<KeyboardEvent> it = events.iterator();
         while(it.hasNext()){
@@ -224,6 +254,9 @@ public class MyKeyboard implements KeyboardHandler {
         events.add(event);
     }
 
+    /**
+     * @see org.academiadecodigo.simplegraphics.keyboard.Keyboard#keyPressed(KeyEvent)
+     */
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
         //PLAYER MOVEMENT
@@ -242,6 +275,9 @@ public class MyKeyboard implements KeyboardHandler {
         }
     }
 
+    /**
+     * @see org.academiadecodigo.simplegraphics.keyboard.Keyboard#keyReleased(KeyEvent)
+     */
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
         if(keyboardEvent.getKey() == KeyboardEvent.KEY_UP || keyboardEvent.getKey() == KeyboardEvent.KEY_Q ||

@@ -73,10 +73,9 @@ public class SpriteManager {
     }
 
     /**
-     *
-     * @param type
+     * Initiates this sprite manager with all the Sprites used by the EntityType
+     * @param type - The entity type
      */
-
     private void init(EntityType type){
         int i = 0;
         int j = 0;
@@ -96,8 +95,12 @@ public class SpriteManager {
         }
     }
 
+    /**
+     * Auxiliary class used to map EntityTypes to the full path of every Sprite they use
+     */
     public static class SpriteMap{
 
+        //The general paths
         private static final String COVIDINHOF = "sprites/covidinho/follow/";
         private static final String COVIDINHOP = "sprites/covidinho/patrolling/";
         private static final String COVIDINHOR = "sprites/covidinho/random/";
@@ -108,10 +111,16 @@ public class SpriteManager {
         private static final String POWERUP = "sprites/powerups/PowerUP.png";
         private static final String VACCINE = "sprites/powerups/Vaccine.png";
 
-        public static final Map<EntityType, String[][]> map = new HashMap<>();
+        //The map
+        private static final Map<EntityType, String[][]> map = new HashMap<>();
+        //Singleton
         private static SpriteMap instance;
+        //Has the players sprites been loaded?
         private boolean playerSet;
 
+        /**
+         * Constructor
+         */
         private SpriteMap(){
             String[][] arr = new String[2][3];
             addInArr(arr,3,COVIDINHOF+"covidinhoFollow");
@@ -141,12 +150,20 @@ public class SpriteManager {
             map.put(EntityType.VACCINE,arr);
         }
 
+        /**
+         * What's the existent instance of SpriteMap?
+         * @return the instance
+         */
         public static SpriteMap getInstance() {
             if(instance == null)
                 instance = new SpriteMap();
             return instance;
         }
 
+        /**
+         * Set the players sprites
+         * @param type - The player type
+         */
         public void setPlayer(PlayerType type){
             String[][] arr = new String[2][8];
             switch(type) {
@@ -164,16 +181,31 @@ public class SpriteManager {
             playerSet = true;
         }
 
+        /**
+         * Are the player's sprites set?
+         * @return - true if they are, false otherwise
+         */
         public boolean isPlayerSet() {
             return playerSet;
         }
 
+        /**
+         * Add the actual full path to the sprite to the array arr
+         * @param arr - the array
+         * @param max - the amount of sprites
+         * @param name - the prefix
+         */
         private void addInArr(String[][] arr, int max, String name){
             for(int i = 1; i <= max; i++){
                 arr[0][i-1] = name+i+".png";
             }
         }
 
+        /**
+         * Add the actual players full path
+         * @param arr - the array
+         * @param name - the path
+         */
         private void addInArrP(String[][] arr, String name){
             for(int i = 0; i < arr.length; i++){
                 for(int j = 1; j <= arr[i].length; j++)
@@ -181,6 +213,9 @@ public class SpriteManager {
             }
         }
 
+        /**
+         * Reset the player entry so it can be set while playing the game again
+         */
         public void reset(){
             map.remove(EntityType.PLAYER);
             playerSet = false;

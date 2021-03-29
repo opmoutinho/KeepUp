@@ -1,14 +1,15 @@
 package org.academiadecodigo.timemaravilha.entities;
 
-import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.AbstractCovidinho;
-import org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.SimpleCovidinho;
 import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Immunity;
 import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Mask;
 import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Vaccine;
 import org.academiadecodigo.timemaravilha.grid.Direction;
 import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
+/**
+ * Representation of our Player
+ */
 public class Player extends Entity {
 
     private int health = 3;
@@ -16,14 +17,24 @@ public class Player extends Entity {
     private boolean[] keysPressed;
     private int vaccineCounter;
 
+    /**
+     * @see Entity#Entity(GridPosition, int, int, EntityType)
+     */
     public Player (GridPosition playerPos,int dimensionX, int dimensionY){
         super(playerPos,dimensionX,dimensionY,EntityType.PLAYER);
     }
 
+    /**
+     * Sets keysPressed to keysPressed
+     * @param keysPressed - the array of keysPressed
+     */
     public void setKeysPressed(boolean[] keysPressed) {
         this.keysPressed = keysPressed;
     }
 
+    /**
+     * @see Entity#move()
+     */
     @Override
     public void move() {
         if(isDead())
@@ -46,11 +57,17 @@ public class Player extends Entity {
         }
     }
 
+    /**
+     * @see Entity#chooseDir()
+     */
     @Override
-    public Direction chooseDir() {
-        return null;
+    protected Direction chooseDir() {
+        throw new UnsupportedOperationException("The player's direction is chosen based on input");
     }
 
+    /**
+     * @see Entity#collidedWith(Entity)
+     */
     public void collide(Entity other){
         if(other instanceof AbstractCovidinho){
             if(!mask)
@@ -75,19 +92,34 @@ public class Player extends Entity {
         }
     }
 
+    /**
+     * What's this players HP
+     * @return the HP
+     */
     public int getHealth(){
         return health;
     }
 
+    /**
+     * How many vaccines has the player captured
+     * @return
+     */
     public int getVaccineCounter() {
         return vaccineCounter;
     }
 
+    /**
+     * @see Entity#loadCondition()
+     */
     @Override
     protected int loadCondition() {
         return mask ? 1 : 0;
     }
 
+    /**
+     * Is the player masked
+     * @return true if he is, false otherwise
+     */
     public boolean isMask(){
         return mask;
     }

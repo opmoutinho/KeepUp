@@ -16,18 +16,25 @@ import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 import java.util.*;
 
 public class EntityManager {
-    private static EntityManager instance;
-    private Player player;
-    private Set <Entity> entities;
-    private Set <Entity> inactiveEntities;
-    private Grid grid;
-    private CollisionDetector collisionDetector;
 
+    private static EntityManager instance; //singleton
+    private Player player; //the player
+    private Set <Entity> entities; //the entities in game
+    private Set <Entity> inactiveEntities; //inactive entities
+    private Grid grid; //the grid of the game
+    private CollisionDetector collisionDetector; //the collision detector
+
+    /**
+     * Despawn timer values for various entities
+     */
     private long maskDespawn;
     private long immunityDespawn;
     private long vaccineDespawn;
     private long covidinhoDespawn;
 
+    /**
+     * Intervals for entity spawn + timers
+     */
     private long maskInterval;
     private Game.Timer maskTimer;
 
@@ -46,17 +53,27 @@ public class EntityManager {
     private long tcovidinhoInterval;
     private Game.Timer tcovidinhoTimer;
 
-
+    /**
+     * Constructor
+     */
     private EntityManager () {
         entities = new HashSet<>();
         inactiveEntities = new HashSet<>();
         this.collisionDetector = new CollisionDetector(entities);
     }
 
+    /**
+     * Sets the grid of this instance to grid
+     * @param grid - the grid
+     */
     public void setGrid(Grid grid) {
         this.grid = grid;
     }
 
+    /**
+     * What's the instance created?
+     * @return the instance
+     */
     public static EntityManager getInstance(){
         if(instance == null){
             instance = new EntityManager();
@@ -64,8 +81,13 @@ public class EntityManager {
         return instance;
     }
 
+    /**
+     * Loads the difficulty settings
+     * @param difficulty - the chosen difficulty
+     */
     public void init(Difficulty difficulty){
         loadSettings(difficulty);
+        //start spawn timers
         maskTimer = new Game.Timer(maskInterval);
         vaccineTimer = new Game.Timer(vaccineInterval);
         immunityTimer = new Game.Timer(immunityInterval);
@@ -74,6 +96,11 @@ public class EntityManager {
         tcovidinhoTimer = new Game.Timer(tcovidinhoInterval);
     }
 
+    /**
+     * Aux method
+     * Sets the various properties according to difficulty
+     * @param difficulty
+     */
     private void loadSettings(Difficulty difficulty){
         long[] mask = difficulty.maskSetting();
         long[] immunity = difficulty.immunitySetting();
@@ -95,6 +122,10 @@ public class EntityManager {
         tcovidinhoInterval = covidinho[3];
     }
 
+    /**
+     * Aux method to spawn entities.
+     * @param entityType - the type of entity to spawn
+     */
     private void createEntity (EntityType entityType){
         if(player == null)
             return;
@@ -132,6 +163,10 @@ public class EntityManager {
 
     }
 
+    /**
+     * Creates the player. Passes keyspressed to player so it can move according to inputs
+     * @param keyspressed - the keys pressed by the user
+     */
     public void createPlayer(boolean[] keyspressed){
         if(player != null)
             return;
@@ -140,10 +175,17 @@ public class EntityManager {
         entities.add(player);
     }
 
+    /**
+     * Check collisions with this entity
+     * @param entity
+     */
     public void checkCollision(Entity entity){
         collisionDetector.checkCollision(entity);
     }
 
+    /**
+     * Moves all active entities in the game, calculating if there were collisions in the process
+     */
     public void moveAll () {
             for (Entity entity : entities) {
                 entity.move();
@@ -157,6 +199,9 @@ public class EntityManager {
             inactiveEntities.clear();
     }
 
+    /**
+     * Check if there are entities to despawn
+     */
     public void checkDespawn(){
         for(Entity entity: entities){
             if(entity instanceof DespawnableEntity)
@@ -166,6 +211,9 @@ public class EntityManager {
         inactiveEntities.clear();
     }
 
+    /**
+     * Check if there are entities to be spawn
+     */
     public void checkSpawn(){
         if(scovidinhoTimer.timerOver()){
             createEntity(EntityType.COVIDINHOSIMPLES);
@@ -187,31 +235,58 @@ public class EntityManager {
         }
     }
 
+    /**
+     * Set this entity as inactive
+     * @param entity - the entity to set as inactive
+     */
     public void setInactive(Entity entity) {
 
         inactiveEntities.add(entity);
     }
 
+    /**
+     * Has the player caught enough vaccines to end the game
+     * @return - true if he did, false otherwise
+     */
     public boolean caughtEnoughVaccines(){
         return player.getVaccineCounter() == 2;
     }
 
+    /**
+     * How many vaccines does the player have?
+     * @return - #of vaccines
+     */
     public int getPlayerVaccines(){
         return player.getVaccineCounter();
     }
 
+    /**
+     * Is the player dead?
+     * @return true if he is, false otherwise
+     */
     public boolean playerDead(){
         return player.isDead();
     }
 
+    /**
+     * How many HP does the player have?
+     * @return #of HP
+     */
     public int getHealth(){
         return player.getHealth();
     }
 
+    /**
+     * Is the player masked?
+     * @return - true if he is, false otherwise
+     */
     public boolean playerWithMask(){
         return player.isMask();
     }
 
+    /**
+     * Reset the game
+     */
     public void reset(){
         for(Entity entity: entities)
             entity.reset();
