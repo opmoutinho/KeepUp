@@ -7,12 +7,21 @@ import org.academiadecodigo.timemaravilha.entities.despawnable.DespawnableEntity
 import org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.AbstractCovidinho;
 import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
-public class AbstractPowerUp extends DespawnableEntity {
+/**
+ * An implementation of a powerup
+ */
+public abstract class AbstractPowerUp extends DespawnableEntity {
 
+    /**
+     * @see DespawnableEntity#DespawnableEntity(GridPosition, int, int, EntityType, long)
+     */
     public AbstractPowerUp(GridPosition position, int dimensionX, int dimensionY, EntityType type, long despawnTime) {
         super(position, dimensionX, dimensionY, type, despawnTime);
     }
 
+    /**
+     * @see Entity#collide(Entity)
+     */
     @Override
     public void collide(Entity other) {
         if(other instanceof Player){

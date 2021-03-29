@@ -1,25 +1,32 @@
 package org.academiadecodigo.timemaravilha.entities.despawnable.covidinho;
 
 import org.academiadecodigo.timemaravilha.entities.Entity;
-import org.academiadecodigo.timemaravilha.entities.EntityManager;
 import org.academiadecodigo.timemaravilha.entities.EntityType;
 import org.academiadecodigo.timemaravilha.entities.Player;
 import org.academiadecodigo.timemaravilha.entities.despawnable.DespawnableEntity;
 import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.AbstractPowerUp;
-import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Immunity;
 import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Mask;
 import org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Vaccine;
 import org.academiadecodigo.timemaravilha.grid.Direction;
 import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
+/**
+ * A representation of a Covidinho
+ */
 public abstract class AbstractCovidinho extends DespawnableEntity {
 
-    private boolean rooted;
+    private boolean rooted; //is this entity rooted?
 
+    /**
+     * @see DespawnableEntity#DespawnableEntity(GridPosition, int, int, EntityType, long)
+     */
     public AbstractCovidinho(GridPosition position, int dimensionX, int dimensionY, EntityType type, long despawnTime) {
         super(position, dimensionX, dimensionY, type, despawnTime);
     }
 
+    /**
+     * @see DespawnableEntity#move()
+     */
     @Override
     public void move() {
         if (!isDead() && !rooted) {
@@ -29,10 +36,20 @@ public abstract class AbstractCovidinho extends DespawnableEntity {
         }
     }
 
+    /**
+     * @see DespawnableEntity#chooseDir()
+     */
+    @Override
     protected Direction chooseDir(){
         return randomDir();
     }
 
+    /**
+     * Aux method to choos a random direction.
+     * Has a 90% to keep moving in the same direction (plane, if it's in the field's border) as the previous iteration,
+     * and a 10% to change plane
+     * @return - a random direction
+     */
     protected Direction randomDir(){
         Direction dir;
         if(getDirection() == Direction.NEUTRAL) {
@@ -52,6 +69,10 @@ public abstract class AbstractCovidinho extends DespawnableEntity {
         return dir;
     }
 
+    /**
+     * @see DespawnableEntity#collide(Entity)
+     */
+    @Override
     public void collide(Entity other){
         if(other instanceof Player || other instanceof Vaccine){
             despawn();
@@ -60,6 +81,10 @@ public abstract class AbstractCovidinho extends DespawnableEntity {
         }
     }
 
+    /**
+     * @see DespawnableEntity#loadCondition()
+     */
+    @Override
     protected int loadCondition(){
         return rooted ? 1 : 0;
     }

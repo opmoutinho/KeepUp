@@ -6,14 +6,25 @@ import org.academiadecodigo.timemaravilha.entities.Player;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Class responsible to check collisions
+ */
 public class CollisionDetector {
 
-     private Set <Entity> entities;
+     private Set <Entity> entities; //all the active entities
 
+     /**
+      * Constructor
+      * @param entities - the active entities set
+      */
      public CollisionDetector (Set<Entity> entities){
           this.entities = entities;
      }
 
+     /**
+      * Checks if there are any entities colliding with entity
+      * @param entity - the entity to check collision with
+      */
      public void checkCollision (Entity entity){
           for (Entity e : entities){
                if (e == entity) {

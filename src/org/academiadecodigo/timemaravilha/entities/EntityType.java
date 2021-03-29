@@ -1,7 +1,7 @@
 package org.academiadecodigo.timemaravilha.entities;
 
 /**
- * Enum of the varius Entity types
+ * Enum of the various Entity types
  */
 public enum EntityType {
     COVIDINHOSIMPLES,
