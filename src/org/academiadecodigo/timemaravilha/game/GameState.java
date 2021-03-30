@@ -1,5 +1,8 @@
 package org.academiadecodigo.timemaravilha.game;
 
+/**
+ * Enum representing the Game State
+ */
 public enum GameState {
     INSTRUCTION_MENU,
     INITIAL_MENU,

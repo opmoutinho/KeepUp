@@ -1,5 +1,8 @@
 package org.academiadecodigo.timemaravilha.grid;
 
+/**
+ * A Enum representing the direction
+ */
 public enum Direction {
 
     UP,
@@ -8,7 +11,10 @@ public enum Direction {
     RIGHT,
     NEUTRAL;
 
-
+    /**
+     * What's the opposite direction to this direction?
+     * @return - the opposite direction
+     */
     public Direction opposite(){
         Direction result = NEUTRAL;
         switch (this){
@@ -28,6 +34,10 @@ public enum Direction {
         return result;
     }
 
+    /**
+     * What's the directions if I want to change plane?
+     * @return - the new directions
+     */
     public Direction[] changePlane(){
         Direction[] result = new Direction[2];
         if(this == UP || this == DOWN) {

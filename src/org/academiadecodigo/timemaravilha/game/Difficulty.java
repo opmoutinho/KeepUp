@@ -1,5 +1,8 @@
 package org.academiadecodigo.timemaravilha.game;
 
+/**
+ * Enum representing the Difficulty
+ */
 public enum Difficulty {
     EASY(60000, 10000, 12000, 15000, 15000,
             5000, 15000,7500,10000,30000),
@@ -13,11 +16,13 @@ public enum Difficulty {
     CARCRASH(40000, 3000, 4000, 6000, 15000,
             20000, 15000,25000,10000,60000);
 
+    //Despawn times
     private long covidinhoDespawn;
     private long immunityDespawn;
     private long vaccineDespawn;
     private long maskDespawn;
 
+    //Spawn times
     private long scovidinhoSpawn;
     private long pcovidinhoSpawn;
     private long tcovidinhoSpawn;
@@ -43,18 +48,34 @@ public enum Difficulty {
         this.vaccineSpawn = vaccineSpawn;
     }
 
+    /**
+     * What's the settings for this difficulty (Covidinho wise)
+     * @return - the settings
+     */
     public long[] covidinhoSetting(){
         return new long[]{covidinhoDespawn,scovidinhoSpawn,pcovidinhoSpawn,tcovidinhoSpawn};
     }
 
+    /**
+     * What's the settings for this difficulty (Mask wise)
+     * @return - the settings
+     */
     public long[] maskSetting(){
         return  new long[]{maskDespawn,maskSpawn};
     }
 
+    /**
+     * What's the settings for this difficulty (Immunity wise)
+     * @return - the settings
+     */
     public long[] immunitySetting(){
         return new long[]{immunityDespawn,immuntySpawn};
     }
 
+    /**
+     * What's the settings for this difficulty (Vaccine wise)
+     * @return - the settings
+     */
     public long[] vaccineSetting(){
         return new long[]{vaccineDespawn,vaccineSpawn};
     }
