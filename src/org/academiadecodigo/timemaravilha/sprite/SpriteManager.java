@@ -30,7 +30,6 @@ public class SpriteManager {
      * The constructor
      * @param type - the entity type
      * @param position - the position
-     * @requires type != null && position != null
      *
      */
     public SpriteManager(EntityType type, GridPosition position){

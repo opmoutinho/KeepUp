@@ -19,14 +19,14 @@ public class Sound {
     private Clip clip; // the sound clip
 
     /**
-     * loads the game music
+     * Loads the game music
      */
     public Sound() {
         loadMusic(GAMEMUSIC);
     }
 
     /**
-     * reloads the music
+     * Reloads the music
      * @param state the music file to load base on the state
      */
     public void reload(int state){
@@ -44,8 +44,8 @@ public class Sound {
     }
 
     /**
-     * start the sound
-     * @param restart if the clip is suposed to be restarted or not
+     * Start the sound
+     * @param restart if the clip is supposed to be restarted or not
      */
     public void playSound(boolean restart){
         if(restart)
@@ -54,7 +54,7 @@ public class Sound {
     }
 
     /**
-     * sets a loop to the clip
+     * Sets a loop to the clip
      * @param loop if the clip is supposed to be looping
      */
     public void setLoop(boolean loop){
@@ -65,21 +65,21 @@ public class Sound {
     }
 
     /**
-     * ends the clip
+     * Ends the clip
      */
     public void close(){
         clip.close();
     }
 
     /**
-     * stops the sound
+     * Stops the sound
      */
     public void stopSound(){
         clip.stop();
     }
 
     /**
-     * gets the mute control for the clip
+     * Gets the mute control for the clip
      * @param clip the clip to get the control from
      * @return the control
      */
@@ -88,7 +88,7 @@ public class Sound {
     }
 
     /**
-     * mutes the sound
+     * Mutes the sound
      */
     public void mute(){
         BooleanControl volume = (BooleanControl) clip.getControl(BooleanControl.Type.MUTE);
@@ -101,7 +101,7 @@ public class Sound {
     }
 
     /**
-     * loads the music file
+     * Loads the music file
      * @param path the path to load the music file from
      */
     private void loadMusic(String path){
@@ -131,7 +131,7 @@ public class Sound {
     }
 
     /**
-     * sets the volume to the clip
+     * Sets the volume to the clip
      */
     private void setVolume(){
         FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
@@ -139,7 +139,7 @@ public class Sound {
     }
 
     /**
-     * closes the stream
+     * Closes the stream
      * @param stream the stream to close
      */
     private void closeStream(InputStream stream){

@@ -1,0 +1,723 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="215.87009680922029" y="2118.0">org.academiadecodigo.timemaravilha.grid.Grid</node>
+    <node x="89.33333333333326" y="3688.0">org.academiadecodigo.timemaravilha.grid.SimpleGfxGrid</node>
+    <node x="1391.8444395680617" y="4400.5">org.academiadecodigo.timemaravilha.gui.GUI</node>
+    <node x="1396.5563207165833" y="2461.5">org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.AbstractCovidinho</node>
+    <node x="686.0392621009028" y="2987.0">org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.SimpleCovidinho</node>
+    <node x="3125.6516476785787" y="5657.0">org.academiadecodigo.timemaravilha.Main</node>
+    <node x="952.3063207165835" y="1629.0">org.academiadecodigo.timemaravilha.entities.Player</node>
+    <node x="1018.9975954342359" y="311.0">org.academiadecodigo.timemaravilha.grid.position.GridPosition</node>
+    <node x="239.0" y="2964.5">org.academiadecodigo.timemaravilha.grid.AbstractGrid</node>
+    <node x="17.623723907363" y="2395.0">org.academiadecodigo.timemaravilha.grid.position.AbstractPosition</node>
+    <node x="2739.4606382530706" y="2766.0">org.academiadecodigo.timemaravilha.game.Difficulty</node>
+    <node x="1977.4309523809522" y="618.0">org.academiadecodigo.timemaravilha.collision.Collidable</node>
+    <node x="1275.3861062347285" y="1991.0">org.academiadecodigo.timemaravilha.entities.despawnable.powerup.AbstractPowerUp</node>
+    <node x="1123.4563207165836" y="2184.5">org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Mask</node>
+    <node x="713.8688207165835" y="1319.5">org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Immunity</node>
+    <node x="2485.9493811485218" y="0.0">org.academiadecodigo.timemaravilha.grid.Direction</node>
+    <node x="0.0" y="2909.0">org.academiadecodigo.timemaravilha.grid.position.SimpleGfxPosition</node>
+    <node x="3065.6516476785787" y="4892.0">org.academiadecodigo.timemaravilha.game.Game</node>
+    <node x="2901.9806311485218" y="4345.0">org.academiadecodigo.timemaravilha.sound.Sound</node>
+    <node x="1675.0414397642026" y="2975.5">org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.PatrollingCovidinho</node>
+    <node x="1873.7862239073631" y="1164.0">org.academiadecodigo.timemaravilha.entities.Entity</node>
+    <node x="3466.2106382530706" y="4434.0">org.academiadecodigo.timemaravilha.game.GameState</node>
+    <node x="1942.3059523809522" y="854.5">org.academiadecodigo.timemaravilha.collision.CollisionBox</node>
+    <node x="2251.5073488551116" y="1662.0">org.academiadecodigo.timemaravilha.entities.despawnable.DespawnableEntity</node>
+    <node x="2321.473505900129" y="1308.5">org.academiadecodigo.timemaravilha.entities.despawnable.Despawnable</node>
+    <node x="3208.2106382530706" y="4400.0">org.academiadecodigo.timemaravilha.game.MyKeyboard</node>
+    <node x="2894.85914057403" y="1230.5">org.academiadecodigo.timemaravilha.game.Game.Timer</node>
+    <node x="1441.0944395680617" y="3402.0">org.academiadecodigo.timemaravilha.entities.EntityManager</node>
+    <node x="142.33333333333326" y="4467.0">org.academiadecodigo.timemaravilha.game.PlayerType</node>
+    <node x="1301.672595434236" y="833.0">org.academiadecodigo.timemaravilha.entities.EntityType</node>
+    <node x="1997.0414397642026" y="1695.0">org.academiadecodigo.timemaravilha.collision.CollisionDetector</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.academiadecodigo.timemaravilha.entities.Player" target="org.academiadecodigo.timemaravilha.entities.EntityType">
+      <point x="16.416666666666515" y="-116.0" />
+      <point x="1067.22298738325" y="1559.0" />
+      <point x="1130.0146540499168" y="1559.0" />
+      <point x="1130.0146540499168" y="1134.0" />
+      <point x="1367.4725954342357" y="1134.0" />
+      <point x="-28.200000000000045" y="115.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.game.Game" target="org.academiadecodigo.timemaravilha.game.MyKeyboard">
+      <point x="51.2380952380953" y="-357.5" />
+      <point x="3251.389742916674" y="4812.0" />
+      <point x="3292.9606382530706" y="4812.0" />
+      <point x="-28.25" y="138.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.EntityManager" target="org.academiadecodigo.timemaravilha.entities.Player">
+      <point x="-17.40000000000009" y="-446.5" />
+      <point x="1539.6944395680616" y="3292.0" />
+      <point x="982.5392621009028" y="3292.0" />
+      <point x="982.5392621009028" y="1961.0" />
+      <point x="1022.6634635737262" y="1961.0" />
+      <point x="-28.142857142857338" y="116.0" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.PatrollingCovidinho" target="org.academiadecodigo.timemaravilha.entities.Entity">
+      <point x="25.083333333333258" y="-38.5" />
+      <point x="1850.6247730975358" y="2746.0" />
+      <point x="1861.049263475887" y="2746.0" />
+      <point x="1861.049263475887" y="1609.0" />
+      <point x="1978.5134966346357" y="1609.0" />
+      <point x="-23.27272727272748" y="182.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.powerup.AbstractPowerUp" target="org.academiadecodigo.timemaravilha.entities.Player">
+      <point x="-65.25" y="-38.5" />
+      <point x="1384.1361062347285" y="1891.0" />
+      <point x="1135.234892145155" y="1891.0" />
+      <point x="84.42857142857156" y="116.0" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.grid.position.GridPosition" target="org.academiadecodigo.timemaravilha.grid.Direction">
+      <point x="0.0" y="-93.5" />
+      <point x="1119.4975954342358" y="291.0" />
+      <point x="2557.5049367040774" y="291.0" />
+      <point x="-20.444444444444343" y="115.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.PatrollingCovidinho" target="org.academiadecodigo.timemaravilha.entities.EntityType">
+      <point x="-25.083333333333258" y="-38.5" />
+      <point x="1800.4581064308693" y="2746.0" />
+      <point x="1793.799263475887" y="2746.0" />
+      <point x="1793.799263475887" y="1124.0" />
+      <point x="1442.672595434236" y="1124.0" />
+      <point x="47.0" y="115.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Mask" target="org.academiadecodigo.timemaravilha.entities.EntityType">
+      <point x="0.0" y="-27.0" />
+      <point x="1234.9563207165836" y="2098.0" />
+      <point x="1264.8861062347285" y="2098.0" />
+      <point x="1264.8861062347285" y="1144.0" />
+      <point x="1386.2725954342359" y="1144.0" />
+      <point x="-9.399999999999864" y="115.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.game.MyKeyboard" target="org.academiadecodigo.timemaravilha.game.Game">
+      <point x="84.75" y="138.5" />
+      <point x="3405.9606382530706" y="4832.0" />
+      <point x="3277.0087905357213" y="4832.0" />
+      <point x="76.85714285714289" y="-357.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Immunity" target="org.academiadecodigo.timemaravilha.entities.despawnable.powerup.AbstractPowerUp">
+      <point x="-30.875" y="27.0" />
+      <point x="806.4938207165835" y="1589.0" />
+      <point x="857.2438207165835" y="1589.0" />
+      <point x="857.2438207165835" y="1911.0" />
+      <point x="1297.1361062347285" y="1911.0" />
+      <point x="-152.25" y="-38.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.Player" target="org.academiadecodigo.timemaravilha.entities.Entity">
+      <point x="49.25" y="-116.0" />
+      <point x="1100.0563207165835" y="1569.0" />
+      <point x="1885.4225875437266" y="1569.0" />
+      <point x="-116.36363636363649" y="182.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.DespawnableEntity" target="org.academiadecodigo.timemaravilha.grid.position.GridPosition">
+      <point x="22.25" y="-83.0" />
+      <point x="2451.7573488551116" y="1559.0" />
+      <point x="2493.973505900129" y="1559.0" />
+      <point x="2493.973505900129" y="538.0" />
+      <point x="1202.2623013165885" y="538.0" />
+      <point x="82.7647058823527" y="93.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.game.Game" target="org.academiadecodigo.timemaravilha.game.GameState">
+      <point x="128.09523809523807" y="-357.5" />
+      <point x="3328.2468857738168" y="4872.0" />
+      <point x="3608.7106382530706" y="4872.0" />
+      <point x="47.5" y="104.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.Player" target="org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.AbstractCovidinho">
+      <point x="28.142857142857338" y="116.0" />
+      <point x="1078.9491778594409" y="1971.0" />
+      <point x="1112.9563207165836" y="1971.0" />
+      <point x="1112.9563207165836" y="2365.0" />
+      <point x="1449.8063207165833" y="2365.0" />
+      <point x="-124.25" y="-94.0" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.grid.position.SimpleGfxPosition" target="org.academiadecodigo.timemaravilha.grid.SimpleGfxGrid">
+      <point x="0.0" y="105.0" />
+      <point x="109.5" y="3382.0" />
+      <point x="131.83333333333326" y="3382.0" />
+      <point x="-42.5" y="-160.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.game.Game" target="org.academiadecodigo.timemaravilha.sound.Sound">
+      <point x="-12.80952380952374" y="-357.5" />
+      <point x="3187.342123869055" y="4782.0" />
+      <point x="3088.7306311485218" y="4782.0" />
+      <point x="62.25" y="193.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.game.Game" target="org.academiadecodigo.timemaravilha.gui.GUI">
+      <point x="-76.85714285714278" y="-357.5" />
+      <point x="3123.294504821436" y="4832.0" />
+      <point x="1546.3444395680617" y="4832.0" />
+      <point x="51.5" y="138.0" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.grid.position.SimpleGfxPosition" target="org.academiadecodigo.timemaravilha.grid.Grid">
+      <point x="82.125" y="-105.0" />
+      <point x="191.625" y="2746.0" />
+      <point x="237.123723907363" y="2746.0" />
+      <point x="237.123723907363" y="2375.0" />
+      <point x="274.08438252350606" y="2375.0" />
+      <point x="-23.28571428571422" y="93.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.game.Game" target="org.academiadecodigo.timemaravilha.game.Difficulty">
+      <point x="0.0" y="-357.5" />
+      <point x="3200.1516476785787" y="4772.0" />
+      <point x="3161.4806311485218" y="4772.0" />
+      <point x="3161.4806311485218" y="3382.0" />
+      <point x="3074.4606382530706" y="3382.0" />
+      <point x="134.0" y="248.0" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.gui.GUI" target="org.academiadecodigo.timemaravilha.entities.EntityManager">
+      <point x="68.66666666666652" y="-138.0" />
+      <point x="1563.5111062347282" y="4320.0" />
+      <point x="1528.0944395680617" y="4320.0" />
+      <point x="-29.0" y="446.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.DespawnableEntity" target="org.academiadecodigo.timemaravilha.game.Game.Timer">
+      <point x="155.75" y="-83.0" />
+      <point x="2585.2573488551116" y="1589.0" />
+      <point x="2930.67164057403" y="1589.0" />
+      <point x="-59.6875" y="116.0" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.EntityManager" target="org.academiadecodigo.timemaravilha.game.Game.Timer">
+      <point x="98.59999999999991" y="-446.5" />
+      <point x="1655.6944395680616" y="3372.0" />
+      <point x="2728.9606382530706" y="3372.0" />
+      <point x="2728.9606382530706" y="1609.0" />
+      <point x="2978.42164057403" y="1609.0" />
+      <point x="-11.9375" y="116.0" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.EntityManager" target="org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Mask">
+      <point x="-5.7999999999999545" y="-446.5" />
+      <point x="1551.2944395680618" y="3282.0" />
+      <point x="1179.2063207165836" y="3282.0" />
+      <point x="-55.75" y="27.0" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.grid.SimpleGfxGrid" target="org.academiadecodigo.timemaravilha.grid.AbstractGrid">
+      <point x="14.166666666666515" y="-160.5" />
+      <point x="188.49999999999977" y="3362.0" />
+      <point x="279.0" y="3362.0" />
+      <point x="-40.0" y="49.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.AbstractCovidinho" target="org.academiadecodigo.timemaravilha.grid.position.GridPosition">
+      <point x="17.75" y="-94.0" />
+      <point x="1591.8063207165833" y="2335.0" />
+      <point x="1828.049263475887" y="2335.0" />
+      <point x="1828.049263475887" y="598.0" />
+      <point x="1131.3211248460007" y="598.0" />
+      <point x="11.823529411764866" y="93.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.Entity" target="org.academiadecodigo.timemaravilha.grid.Direction">
+      <point x="109.71428571428578" y="-182.5" />
+      <point x="2111.500509621649" y="1144.0" />
+      <point x="2642.713231208053" y="1144.0" />
+      <point x="2642.713231208053" y="281.0" />
+      <point x="2598.393825592966" y="281.0" />
+      <point x="20.444444444444343" y="115.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.powerup.AbstractPowerUp" target="org.academiadecodigo.timemaravilha.entities.Entity">
+      <point x="65.25" y="-38.5" />
+      <point x="1514.6361062347285" y="1951.0" />
+      <point x="1839.049263475887" y="1951.0" />
+      <point x="1839.049263475887" y="1589.0" />
+      <point x="1931.9680420891812" y="1589.0" />
+      <point x="-69.81818181818198" y="182.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.EntityManager" target="org.academiadecodigo.timemaravilha.game.Difficulty">
+      <point x="110.19999999999982" y="-446.5" />
+      <point x="1667.2944395680615" y="3382.0" />
+      <point x="2806.4606382530706" y="3382.0" />
+      <point x="-134.0" y="248.0" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Immunity" target="org.academiadecodigo.timemaravilha.entities.EntityType">
+      <point x="61.75" y="-27.0" />
+      <point x="899.1188207165835" y="1104.0" />
+      <point x="1311.072595434236" y="1104.0" />
+      <point x="-84.59999999999991" y="115.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.grid.SimpleGfxGrid" target="org.academiadecodigo.timemaravilha.grid.position.SimpleGfxPosition">
+      <point x="-70.83333333333348" y="-160.5" />
+      <point x="103.49999999999977" y="3382.0" />
+      <point x="36.5" y="3382.0" />
+      <point x="-73.0" y="105.0" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.EntityManager" target="org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Immunity">
+      <point x="-75.39999999999986" y="-446.5" />
+      <point x="1481.6944395680619" y="3342.0" />
+      <point x="520.4833333333333" y="3342.0" />
+      <point x="520.4833333333333" y="1589.0" />
+      <point x="744.7438207165835" y="1589.0" />
+      <point x="-92.625" y="27.0" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.DespawnableEntity" target="org.academiadecodigo.timemaravilha.grid.Direction">
+      <point x="66.75" y="-83.0" />
+      <point x="2496.2573488551116" y="1569.0" />
+      <point x="2653.713231208053" y="1569.0" />
+      <point x="2653.713231208053" y="271.0" />
+      <point x="2618.8382700374104" y="271.0" />
+      <point x="40.88888888888869" y="115.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.PatrollingCovidinho" target="org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.AbstractCovidinho">
+      <point x="-75.25" y="-38.5" />
+      <point x="1750.2914397642026" y="2746.0" />
+      <point x="1707.1813207165833" y="2746.0" />
+      <point x="133.125" y="94.0" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.powerup.AbstractPowerUp" target="org.academiadecodigo.timemaravilha.entities.EntityType">
+      <point x="21.75" y="-38.5" />
+      <point x="1471.1361062347285" y="1144.0" />
+      <point x="1405.072595434236" y="1144.0" />
+      <point x="9.400000000000091" y="115.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.AbstractCovidinho" target="org.academiadecodigo.timemaravilha.entities.Player">
+      <point x="-159.75" y="-94.0" />
+      <point x="1414.3063207165833" y="2375.0" />
+      <point x="1007.6642621009026" y="2375.0" />
+      <point x="1007.6642621009026" y="1971.0" />
+      <point x="1050.8063207165835" y="1971.0" />
+      <point x="0.0" y="116.0" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.AbstractCovidinho" target="org.academiadecodigo.timemaravilha.entities.despawnable.DespawnableEntity">
+      <point x="124.25" y="-94.0" />
+      <point x="1698.3063207165833" y="2365.0" />
+      <point x="2448.07789057403" y="2365.0" />
+      <point x="2448.07789057403" y="1971.0" />
+      <point x="2459.1740155217785" y="1971.0" />
+      <point x="29.666666666666742" y="83.0" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.AbstractCovidinho" target="org.academiadecodigo.timemaravilha.grid.Direction">
+      <point x="159.75" y="-94.0" />
+      <point x="1733.8063207165833" y="2375.0" />
+      <point x="2664.713231208053" y="2375.0" />
+      <point x="2664.713231208053" y="261.0" />
+      <point x="2639.2827144818552" y="261.0" />
+      <point x="61.333333333333485" y="115.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Mask" target="org.academiadecodigo.timemaravilha.entities.despawnable.powerup.AbstractPowerUp">
+      <point x="44.59999999999991" y="-27.0" />
+      <point x="1279.5563207165835" y="2088.0" />
+      <point x="1333.3861062347285" y="2088.0" />
+      <point x="-116.0" y="38.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.DespawnableEntity" target="org.academiadecodigo.timemaravilha.entities.EntityType">
+      <point x="-66.75" y="-83.0" />
+      <point x="2362.7573488551116" y="1559.0" />
+      <point x="2264.6993811485218" y="1559.0" />
+      <point x="2264.6993811485218" y="1084.0" />
+      <point x="1480.2725954342359" y="1084.0" />
+      <point x="84.60000000000014" y="115.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.gui.GUI" target="org.academiadecodigo.timemaravilha.grid.SimpleGfxGrid">
+      <point x="-68.66666666666674" y="-138.0" />
+      <point x="1426.177772901395" y="4320.0" />
+      <point x="216.83333333333326" y="4320.0" />
+      <point x="42.5" y="160.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.game.Game" target="org.academiadecodigo.timemaravilha.game.Game.Timer">
+      <point x="25.619047619047706" y="-357.5" />
+      <point x="3225.7706952976264" y="4752.0" />
+      <point x="3197.7106382530706" y="4752.0" />
+      <point x="3197.7106382530706" y="1599.0" />
+      <point x="3026.17164057403" y="1599.0" />
+      <point x="35.8125" y="116.0" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.AbstractCovidinho" target="org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Mask">
+      <point x="-88.75" y="-94.0" />
+      <point x="1485.3063207165833" y="2355.0" />
+      <point x="1290.7063207165836" y="2355.0" />
+      <point x="55.75" y="27.0" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.grid.position.AbstractPosition" target="org.academiadecodigo.timemaravilha.grid.Direction">
+      <point x="-78.375" y="-160.5" />
+      <point x="43.748723907363" y="2375.0" />
+      <point x="47.1875" y="2375.0" />
+      <point x="47.1875" y="271.0" />
+      <point x="2516.6160478151883" y="271.0" />
+      <point x="-61.333333333333485" y="115.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.grid.SimpleGfxGrid" target="org.academiadecodigo.timemaravilha.grid.position.GridPosition">
+      <point x="70.83333333333348" y="-160.5" />
+      <point x="245.16666666666674" y="3382.0" />
+      <point x="487.48333333333335" y="3382.0" />
+      <point x="487.48333333333335" y="1114.0" />
+      <point x="684.4938207165835" y="1114.0" />
+      <point x="684.4938207165835" y="538.0" />
+      <point x="1048.5564189636475" y="538.0" />
+      <point x="-70.94117647058829" y="93.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.game.Game" target="org.academiadecodigo.timemaravilha.game.PlayerType">
+      <point x="-115.2857142857141" y="-357.5" />
+      <point x="3084.8659333928645" y="4862.0" />
+      <point x="237.33333333333326" y="4862.0" />
+      <point x="0.0" y="71.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.powerup.AbstractPowerUp" target="org.academiadecodigo.timemaravilha.grid.position.GridPosition">
+      <point x="-21.75" y="-38.5" />
+      <point x="1427.6361062347285" y="1881.0" />
+      <point x="1159.8063207165835" y="1881.0" />
+      <point x="1159.8063207165835" y="1549.0" />
+      <point x="1039.8063207165835" y="1549.0" />
+      <point x="1039.8063207165835" y="598.0" />
+      <point x="1119.4975954342358" y="598.0" />
+      <point x="0.0" y="93.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.powerup.AbstractPowerUp" target="org.academiadecodigo.timemaravilha.entities.despawnable.DespawnableEntity">
+      <point x="152.25" y="-38.5" />
+      <point x="1601.6361062347285" y="1971.0" />
+      <point x="2340.5073488551116" y="1971.0" />
+      <point x="-89.0" y="83.0" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.collision.CollisionBox" target="org.academiadecodigo.timemaravilha.grid.position.GridPosition">
+      <point x="86.625" y="-94.0" />
+      <point x="2144.4309523809525" y="813.0" />
+      <point x="2210.9309523809525" y="813.0" />
+      <point x="2210.9309523809525" y="548.0" />
+      <point x="1190.438771904824" y="548.0" />
+      <point x="70.94117647058829" y="93.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.grid.position.AbstractPosition" target="org.academiadecodigo.timemaravilha.grid.position.GridPosition">
+      <point x="-26.125" y="-160.5" />
+      <point x="95.998723907363" y="2375.0" />
+      <point x="91.625" y="2375.0" />
+      <point x="91.625" y="1094.0" />
+      <point x="568.4938207165835" y="1094.0" />
+      <point x="568.4938207165835" y="518.0" />
+      <point x="1024.9093601401182" y="518.0" />
+      <point x="-94.58823529411757" y="93.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.Entity" target="org.academiadecodigo.timemaravilha.entities.EntityType">
+      <point x="-109.71428571428578" y="-182.5" />
+      <point x="1892.0719381930774" y="1114.0" />
+      <point x="1461.4725954342357" y="1114.0" />
+      <point x="65.79999999999995" y="115.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.Player" target="org.academiadecodigo.timemaravilha.entities.EntityManager">
+      <point x="-84.42857142857156" y="116.0" />
+      <point x="966.377749288012" y="1941.0" />
+      <point x="664.5392621009028" y="1941.0" />
+      <point x="664.5392621009028" y="3322.0" />
+      <point x="1504.8944395680617" y="3322.0" />
+      <point x="-52.200000000000045" y="-446.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.EntityManager" target="org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.PatrollingCovidinho">
+      <point x="5.7999999999999545" y="-446.5" />
+      <point x="1562.8944395680617" y="3292.0" />
+      <point x="1825.5414397642026" y="3292.0" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.collision.Collidable" target="org.academiadecodigo.timemaravilha.grid.position.GridPosition">
+      <point x="0.0" y="-82.5" />
+      <point x="2088.9309523809525" y="558.0" />
+      <point x="1178.6152424930592" y="558.0" />
+      <point x="59.11764705882342" y="93.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.AbstractCovidinho" target="org.academiadecodigo.timemaravilha.entities.EntityType">
+      <point x="-17.75" y="-94.0" />
+      <point x="1556.3063207165833" y="2325.0" />
+      <point x="1633.8861062347282" y="2325.0" />
+      <point x="1633.8861062347282" y="1134.0" />
+      <point x="1423.8725954342358" y="1134.0" />
+      <point x="28.200000000000045" y="115.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Immunity" target="org.academiadecodigo.timemaravilha.grid.position.GridPosition">
+      <point x="-61.75" y="-27.0" />
+      <point x="775.6188207165835" y="578.0" />
+      <point x="1095.8505366107065" y="578.0" />
+      <point x="-23.647058823529278" y="93.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.powerup.AbstractPowerUp" target="org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.AbstractCovidinho">
+      <point x="116.0" y="38.5" />
+      <point x="1565.3861062347285" y="2098.0" />
+      <point x="1516.5563207165835" y="2098.0" />
+      <point x="1516.5563207165835" y="2375.0" />
+      <point x="1520.8063207165833" y="2375.0" />
+      <point x="-53.25" y="-94.0" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.Main" target="org.academiadecodigo.timemaravilha.game.Game">
+      <point x="37.25" y="-27.0" />
+      <point x="3237.4016476785787" y="5632.0" />
+      <point x="3267.4016476785787" y="5632.0" />
+      <point x="67.25" y="357.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.grid.Grid" target="org.academiadecodigo.timemaravilha.grid.position.GridPosition">
+      <point x="0.0" y="-93.5" />
+      <point x="297.3700968092203" y="1104.0" />
+      <point x="579.4938207165835" y="1104.0" />
+      <point x="579.4938207165835" y="528.0" />
+      <point x="1036.7328895518826" y="528.0" />
+      <point x="-82.76470588235316" y="93.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.EntityManager" target="org.academiadecodigo.timemaravilha.grid.position.GridPosition">
+      <point x="-87.0" y="-446.5" />
+      <point x="1470.0944395680617" y="3352.0" />
+      <point x="498.48333333333335" y="3352.0" />
+      <point x="498.48333333333335" y="1124.0" />
+      <point x="695.4938207165835" y="1124.0" />
+      <point x="695.4938207165835" y="548.0" />
+      <point x="1060.3799483754124" y="548.0" />
+      <point x="-59.11764705882342" y="93.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.SimpleCovidinho" target="org.academiadecodigo.timemaravilha.grid.position.GridPosition">
+      <point x="-107.25" y="-27.0" />
+      <point x="721.7892621009028" y="2746.0" />
+      <point x="509.48333333333335" y="2746.0" />
+      <point x="509.48333333333335" y="1134.0" />
+      <point x="706.4938207165835" y="1134.0" />
+      <point x="706.4938207165835" y="558.0" />
+      <point x="1072.2034777871768" y="558.0" />
+      <point x="-47.29411764705901" y="93.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.Entity" target="org.academiadecodigo.timemaravilha.grid.position.GridPosition">
+      <point x="-73.14285714285734" y="-182.5" />
+      <point x="1928.6433667645058" y="1104.0" />
+      <point x="1896.6809523809522" y="1104.0" />
+      <point x="1896.6809523809522" y="588.0" />
+      <point x="1143.144654257765" y="588.0" />
+      <point x="23.647058823529278" y="93.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.AbstractCovidinho" target="org.academiadecodigo.timemaravilha.entities.Entity">
+      <point x="53.25" y="-94.0" />
+      <point x="1627.3063207165833" y="2345.0" />
+      <point x="1850.049263475887" y="2345.0" />
+      <point x="1850.049263475887" y="1599.0" />
+      <point x="1955.2407693619086" y="1599.0" />
+      <point x="-46.545454545454504" y="182.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.EntityManager" target="org.academiadecodigo.timemaravilha.collision.CollisionDetector">
+      <point x="40.59999999999991" y="-446.5" />
+      <point x="1597.6944395680616" y="3322.0" />
+      <point x="2142.57789057403" y="3322.0" />
+      <point x="2142.57789057403" y="1951.0" />
+      <point x="2156.7914397642026" y="1951.0" />
+      <point x="53.25" y="50.0" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.EntityManager" target="org.academiadecodigo.timemaravilha.entities.EntityType">
+      <point x="-63.799999999999955" y="-446.5" />
+      <point x="1493.2944395680618" y="3332.0" />
+      <point x="531.4833333333333" y="3332.0" />
+      <point x="531.4833333333333" y="1599.0" />
+      <point x="1050.8063207165835" y="1599.0" />
+      <point x="1050.8063207165835" y="1114.0" />
+      <point x="1329.8725954342358" y="1114.0" />
+      <point x="-65.79999999999995" y="115.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.game.Game" target="org.academiadecodigo.timemaravilha.grid.SimpleGfxGrid">
+      <point x="-128.09523809523807" y="-357.5" />
+      <point x="3072.0564095833406" y="4872.0" />
+      <point x="131.83333333333326" y="4872.0" />
+      <point x="-42.5" y="160.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.EntityManager" target="org.academiadecodigo.timemaravilha.entities.despawnable.DespawnableEntity">
+      <point x="63.80000000000018" y="-446.5" />
+      <point x="1620.894439568062" y="3342.0" />
+      <point x="2521.9945572406964" y="3342.0" />
+      <point x="2521.9945572406964" y="1971.0" />
+      <point x="2518.5073488551116" y="1971.0" />
+      <point x="89.0" y="83.0" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.PatrollingCovidinho" target="org.academiadecodigo.timemaravilha.grid.Direction">
+      <point x="125.41666666666674" y="-38.5" />
+      <point x="1950.9581064308693" y="2746.0" />
+      <point x="2675.713231208053" y="2746.0" />
+      <point x="2675.713231208053" y="251.0" />
+      <point x="2659.7271589262996" y="251.0" />
+      <point x="81.77777777777794" y="115.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.grid.position.AbstractPosition" target="org.academiadecodigo.timemaravilha.grid.Grid">
+      <point x="78.375" y="-160.5" />
+      <point x="200.498723907363" y="2365.0" />
+      <point x="250.79866823779184" y="2365.0" />
+      <point x="-46.57142857142844" y="93.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.EntityManager" target="org.academiadecodigo.timemaravilha.grid.Grid">
+      <point x="-110.19999999999982" y="-446.5" />
+      <point x="1446.894439568062" y="3372.0" />
+      <point x="465.48333333333335" y="3372.0" />
+      <point x="465.48333333333335" y="2355.0" />
+      <point x="343.9415253806487" y="2355.0" />
+      <point x="46.57142857142844" y="93.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.grid.position.SimpleGfxPosition" target="org.academiadecodigo.timemaravilha.grid.Direction">
+      <point x="-82.125" y="-105.0" />
+      <point x="27.375" y="2746.0" />
+      <point x="7.123723907363001" y="2746.0" />
+      <point x="7.123723907363001" y="261.0" />
+      <point x="2496.171603370744" y="261.0" />
+      <point x="-81.77777777777783" y="115.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.PatrollingCovidinho" target="org.academiadecodigo.timemaravilha.grid.position.GridPosition">
+      <point x="75.25" y="-38.5" />
+      <point x="1900.7914397642026" y="2736.0" />
+      <point x="2618.0073488551116" y="2736.0" />
+      <point x="2618.0073488551116" y="528.0" />
+      <point x="1214.0858307283534" y="528.0" />
+      <point x="94.58823529411757" y="93.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Mask" target="org.academiadecodigo.timemaravilha.grid.position.GridPosition">
+      <point x="-89.20000000000005" y="-27.0" />
+      <point x="1145.7563207165836" y="2098.0" />
+      <point x="1054.3142621009029" y="2098.0" />
+      <point x="1054.3142621009029" y="1921.0" />
+      <point x="689.9938207165835" y="1921.0" />
+      <point x="689.9938207165835" y="1144.0" />
+      <point x="728.4938207165835" y="1144.0" />
+      <point x="728.4938207165835" y="568.0" />
+      <point x="1084.0270071989416" y="568.0" />
+      <point x="-35.470588235294144" y="93.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.grid.position.SimpleGfxPosition" target="org.academiadecodigo.timemaravilha.grid.position.AbstractPosition">
+      <point x="-27.375" y="-105.0" />
+      <point x="82.125" y="2746.0" />
+      <point x="69.873723907363" y="2746.0" />
+      <point x="-52.25" y="160.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.Player" target="org.academiadecodigo.timemaravilha.grid.position.GridPosition">
+      <point x="-16.416666666666515" y="-116.0" />
+      <point x="1034.389654049917" y="1559.0" />
+      <point x="971.5979873832503" y="1559.0" />
+      <point x="971.5979873832503" y="588.0" />
+      <point x="1107.674066022471" y="588.0" />
+      <point x="-11.823529411764866" y="93.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.DespawnableEntity" target="org.academiadecodigo.timemaravilha.entities.Entity">
+      <point x="-111.25" y="-83.0" />
+      <point x="2318.2573488551116" y="1569.0" />
+      <point x="2118.149860271" y="1569.0" />
+      <point x="116.36363636363649" y="182.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.Player" target="org.academiadecodigo.timemaravilha.grid.Direction">
+      <point x="-82.08333333333348" y="-116.0" />
+      <point x="968.72298738325" y="1579.0" />
+      <point x="700.9938207165835" y="1579.0" />
+      <point x="700.9938207165835" y="1084.0" />
+      <point x="557.4938207165835" y="1084.0" />
+      <point x="557.4938207165835" y="281.0" />
+      <point x="2537.060492259633" y="281.0" />
+      <point x="-40.88888888888869" y="115.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.game.Game.Timer" target="org.academiadecodigo.timemaravilha.game.Game">
+      <point x="83.5625" y="116.0" />
+      <point x="3073.92164057403" y="1579.0" />
+      <point x="3455.7106382530706" y="1579.0" />
+      <point x="3455.7106382530706" y="4852.0" />
+      <point x="3302.627838154769" y="4852.0" />
+      <point x="102.47619047619037" y="-357.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.collision.CollisionDetector" target="org.academiadecodigo.timemaravilha.entities.Entity">
+      <point x="-53.25" y="-50.0" />
+      <point x="2050.2914397642026" y="1609.0" />
+      <point x="2025.0589511800906" y="1609.0" />
+      <point x="23.27272727272748" y="182.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.DespawnableEntity" target="org.academiadecodigo.timemaravilha.entities.despawnable.Despawnable">
+      <point x="-22.25" y="-83.0" />
+      <point x="2407.2573488551116" y="1609.0" />
+      <point x="2402.473505900129" y="1609.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.grid.AbstractGrid" target="org.academiadecodigo.timemaravilha.grid.Grid">
+      <point x="0.0" y="-49.5" />
+      <point x="319.0" y="2375.0" />
+      <point x="297.3700968092203" y="2375.0" />
+      <point x="0.0" y="93.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.DespawnableEntity" target="org.academiadecodigo.timemaravilha.entities.EntityManager">
+      <point x="148.33333333333348" y="83.0" />
+      <point x="2577.840682188445" y="1971.0" />
+      <point x="2532.9945572406964" y="1971.0" />
+      <point x="2532.9945572406964" y="3352.0" />
+      <point x="1632.4944395680618" y="3352.0" />
+      <point x="75.40000000000009" y="-446.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.game.Game" target="org.academiadecodigo.timemaravilha.grid.Grid">
+      <point x="-102.47619047619037" y="-357.5" />
+      <point x="3097.6754572023883" y="4852.0" />
+      <point x="409.5" y="4852.0" />
+      <point x="409.5" y="2365.0" />
+      <point x="320.6558110949345" y="2365.0" />
+      <point x="23.28571428571422" y="93.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.SimpleCovidinho" target="org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.AbstractCovidinho">
+      <point x="35.75" y="-27.0" />
+      <point x="864.7892621009028" y="2736.0" />
+      <point x="1440.9313207165833" y="2736.0" />
+      <point x="-133.125" y="94.0" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.Player" target="org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Immunity">
+      <point x="-49.25" y="-116.0" />
+      <point x="1001.5563207165835" y="1569.0" />
+      <point x="929.9938207165835" y="1569.0" />
+      <point x="92.625" y="27.0" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.collision.CollisionBox" target="org.academiadecodigo.timemaravilha.collision.Collidable">
+      <point x="-28.875" y="-94.0" />
+      <point x="2028.9309523809522" y="813.0" />
+      <point x="2033.1809523809522" y="813.0" />
+      <point x="-55.75" y="82.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.game.Game" target="org.academiadecodigo.timemaravilha.entities.EntityManager">
+      <point x="-64.04761904761881" y="-357.5" />
+      <point x="3136.10402863096" y="4822.0" />
+      <point x="1608.3444395680617" y="4822.0" />
+      <point x="1608.3444395680617" y="4320.0" />
+      <point x="1586.0944395680617" y="4320.0" />
+      <point x="29.0" y="446.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.Player" target="org.academiadecodigo.timemaravilha.entities.despawnable.powerup.Mask">
+      <point x="56.28571428571422" y="116.0" />
+      <point x="1107.0920350022977" y="1961.0" />
+      <point x="1133.4491778594406" y="1961.0" />
+      <point x="1133.4491778594406" y="2088.0" />
+      <point x="1190.3563207165837" y="2088.0" />
+      <point x="-44.59999999999991" y="-27.0" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.EntityManager" target="org.academiadecodigo.timemaravilha.entities.Entity">
+      <point x="52.19999999999982" y="-446.5" />
+      <point x="1609.2944395680615" y="3332.0" />
+      <point x="2220.5414397642026" y="3332.0" />
+      <point x="2220.5414397642026" y="1589.0" />
+      <point x="2071.604405725545" y="1589.0" />
+      <point x="69.81818181818198" y="182.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.Entity" target="org.academiadecodigo.timemaravilha.collision.CollisionBox">
+      <point x="36.57142857142844" y="-182.5" />
+      <point x="2038.3576524787916" y="1124.0" />
+      <point x="2115.5559523809525" y="1124.0" />
+      <point x="57.75" y="94.0" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.SimpleCovidinho" target="org.academiadecodigo.timemaravilha.entities.EntityType">
+      <point x="-35.75" y="-27.0" />
+      <point x="793.2892621009028" y="2736.0" />
+      <point x="542.4833333333333" y="2736.0" />
+      <point x="542.4833333333333" y="1931.0" />
+      <point x="941.8063207165835" y="1931.0" />
+      <point x="941.8063207165835" y="1609.0" />
+      <point x="1061.8063207165835" y="1609.0" />
+      <point x="1061.8063207165835" y="1124.0" />
+      <point x="1348.672595434236" y="1124.0" />
+      <point x="-47.0" y="115.5" />
+    </edge>
+    <edge source="org.academiadecodigo.timemaravilha.entities.EntityManager" target="org.academiadecodigo.timemaravilha.entities.despawnable.covidinho.SimpleCovidinho">
+      <point x="-29.0" y="-446.5" />
+      <point x="1528.0944395680617" y="3302.0" />
+      <point x="829.0392621009028" y="3302.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.40000000000000013" x="1586.999999999999" y="1513.3333333333326" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
