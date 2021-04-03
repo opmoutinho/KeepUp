@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class TargetCovidinho extends AbstractCovidinho {
 
-    protected GridPosition target; // The target of this covidinho
+    protected GridPosition target; //The target of this covidinho
 
     /**
      * @see AbstractCovidinho#AbstractCovidinho(GridPosition, int, int, EntityType, long)
@@ -21,7 +21,7 @@ public class TargetCovidinho extends AbstractCovidinho {
     public TargetCovidinho(GridPosition position, int dimensionX, int dimensionY, long despawnTime) {
         super(position, dimensionX, dimensionY, EntityType.COVIDINHOTARGET, despawnTime);
     }
-    
+
     public TargetCovidinho(GridPosition position, int dimensionX, int dimensionY, EntityType type, long despawnTime) {
         super(position, dimensionX, dimensionY, type, despawnTime);
     }
