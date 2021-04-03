@@ -45,7 +45,7 @@ public abstract class AbstractCovidinho extends DespawnableEntity {
     }
 
     /**
-     * Aux method to choos a random direction.
+     * Aux method to choose a random direction.
      * Has a 90% to keep moving in the same direction (plane, if it's in the field's border) as the previous iteration,
      * and a 10% to change plane
      * @return - a random direction

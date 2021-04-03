@@ -3,13 +3,16 @@ package org.academiadecodigo.timemaravilha.grid.position;
 import org.academiadecodigo.timemaravilha.grid.Direction;
 import org.academiadecodigo.timemaravilha.grid.Grid;
 
+/**
+ * An abstract class representing position && dimension
+ */
 public abstract class AbstractPosition implements GridPosition {
 
-    private int col;
-    private int row;
-    private int dimensionX;
-    private int dimensionY;
-    private Grid grid;
+    private int col; // the column size to this position
+    private int row; // the row size to this position
+    private int dimensionX; // dimension from the starting position right
+    private int dimensionY; // dimension from the starting position down
+    private Grid grid; // the grid where this position will be displayed
 
     /**
      * The constructor

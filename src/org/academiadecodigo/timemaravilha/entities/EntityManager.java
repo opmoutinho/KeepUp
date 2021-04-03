@@ -15,6 +15,9 @@ import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 
 import java.util.*;
 
+/**
+ * Class representing the Manager of all Entities in game
+ */
 public class EntityManager {
 
     private static EntityManager instance; //singleton

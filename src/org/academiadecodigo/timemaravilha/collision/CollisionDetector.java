@@ -1,9 +1,7 @@
 package org.academiadecodigo.timemaravilha.collision;
 
 import org.academiadecodigo.timemaravilha.entities.Entity;
-import org.academiadecodigo.timemaravilha.entities.Player;
 
-import java.util.List;
 import java.util.Set;
 
 /**

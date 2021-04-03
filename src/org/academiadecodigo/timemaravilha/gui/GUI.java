@@ -2,7 +2,6 @@ package org.academiadecodigo.timemaravilha.gui;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.timemaravilha.entities.EntityManager;
-import org.academiadecodigo.timemaravilha.game.Game;
 import org.academiadecodigo.timemaravilha.grid.SimpleGfxGrid;
 
 /**
@@ -81,6 +80,9 @@ public class GUI {
         }
     }
 
+    /**
+     * Resets the GUI
+     */
     public void clear(){
         for(int i = 0; i< lifeCount.length; i++){
             lifeCount[i].delete();

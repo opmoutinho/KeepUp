@@ -39,7 +39,7 @@ public interface Collidable {
 
     /**
      * Has this Collidable collided with another?
-     * @param other - the other
+     * @param other - the other collidable
      * @return true if it has, false otherwise
      */
     public boolean collidedWith(Collidable other);

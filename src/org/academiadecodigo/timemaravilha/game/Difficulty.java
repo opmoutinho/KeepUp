@@ -30,6 +30,19 @@ public enum Difficulty {
     private long vaccineSpawn;
     private long immuntySpawn;
 
+    /**
+     * Constructor
+     * @param covidinhoDespawn - the time do despawn covidinho
+     * @param scovidinhoSpawn - the time before a simple covidinho can spawn again
+     * @param pcovidinhoSpawn - the time before a patrolling covidinho can spawn again
+     * @param tcovidinhoSpawn - the time before a target covidinho can spawn again
+     * @param maskDespawn - the time to despawn a mask
+     * @param maskSpawn - the time before a mask can spawn again
+     * @param immunityDespawn - the time to despawn immunity
+     * @param immunitySpawn - the time before an immunity can spawn again
+     * @param vaccineDespawn - the time to despawn a vaccine
+     * @param vaccineSpawn - the time before a vaccine can spawn again
+     */
     Difficulty(long covidinhoDespawn, long scovidinhoSpawn, long pcovidinhoSpawn, long tcovidinhoSpawn,
                long maskDespawn, long maskSpawn, long immunityDespawn, long immunitySpawn, long vaccineDespawn,
                long vaccineSpawn){

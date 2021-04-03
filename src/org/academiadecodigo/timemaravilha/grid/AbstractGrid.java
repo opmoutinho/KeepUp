@@ -6,8 +6,8 @@ package org.academiadecodigo.timemaravilha.grid;
  */
 public abstract class AbstractGrid implements Grid {
 
-    private int cols;
-    private int rows;
+    private int cols; // the column size of this grid
+    private int rows; // the row size of this grid
 
     /**
      * The constructor
