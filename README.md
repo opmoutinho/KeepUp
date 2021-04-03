@@ -12,7 +12,7 @@ Final Project's diagram: Project folder, diagram.uml
 We were challenged in our 4th week of bootcamp (<Academia de Código_>) to build a game in 7 days (nights, actually,
 as we still had classes during the day).
 
-#Who are we?
+# Who are we?
 
 We are a group of strangers made friends during this bootcamp, that really complement each other.
 Never have we ever had such a great experience while working in a group before, and soon clicked. We've been good friends since,
@@ -36,7 +36,7 @@ For someone who had 0 previous experience in the area, really grew after losing 
 
 Overall, a wonderful team, who couldn't have asked to be in better hands ^^
 
-#Why Keep Up?
+# Why Keep Up?
 
 This game was developed during the COVID pandemic (circa 1 year post the outbreak), and we were really sad that this
 got our physical classes cancelled. It was also at the same time that the anti-vaccine movements really started taking place.
