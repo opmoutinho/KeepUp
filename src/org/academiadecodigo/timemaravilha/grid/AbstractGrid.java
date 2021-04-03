@@ -6,13 +6,13 @@ package org.academiadecodigo.timemaravilha.grid;
  */
 public abstract class AbstractGrid implements Grid {
 
-    private int cols; // the column size of this grid
-    private int rows; // the row size of this grid
+    private int cols; //The column size of this grid
+    private int rows; //The row size of this grid
 
     /**
-     * The constructor
-     * @param cols - number of Cols
-     * @param rows - number of rows
+     * Constructor
+     * @param cols - The number of Cols
+     * @param rows - The number of rows
      */
     public AbstractGrid(int cols, int rows){
         this.cols = cols;

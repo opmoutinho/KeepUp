@@ -8,15 +8,15 @@ import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
 public class CollisionBox implements Collidable {
 
     private GridPosition position; //the position
-    //the dimensions
+    //The dimensions
     private int dimensionX;
     private int dimensionY;
 
     /**
      * Constructor
-     * @param position - the position
-     * @param dimensionX - the dimension in the X axis (down, from position)
-     * @param dimensionY - the dimension in the Y axis (right, from position)
+     * @param position - The position
+     * @param dimensionX - The dimension in the X axis (down, from position)
+     * @param dimensionY - The dimension in the Y axis (right, from position)
      */
     public CollisionBox(GridPosition position, int dimensionX, int dimensionY){
         this.position = position;
@@ -81,6 +81,5 @@ public class CollisionBox implements Collidable {
 
         return result;
     }
-
 
 }

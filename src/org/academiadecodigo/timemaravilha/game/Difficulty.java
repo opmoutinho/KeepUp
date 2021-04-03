@@ -32,16 +32,16 @@ public enum Difficulty {
 
     /**
      * Constructor
-     * @param covidinhoDespawn - the time do despawn covidinho
-     * @param scovidinhoSpawn - the time before a simple covidinho can spawn again
-     * @param pcovidinhoSpawn - the time before a patrolling covidinho can spawn again
-     * @param tcovidinhoSpawn - the time before a target covidinho can spawn again
-     * @param maskDespawn - the time to despawn a mask
-     * @param maskSpawn - the time before a mask can spawn again
-     * @param immunityDespawn - the time to despawn immunity
-     * @param immunitySpawn - the time before an immunity can spawn again
-     * @param vaccineDespawn - the time to despawn a vaccine
-     * @param vaccineSpawn - the time before a vaccine can spawn again
+     * @param covidinhoDespawn - The time do despawn covidinho
+     * @param scovidinhoSpawn - The time before a simple covidinho can spawn again
+     * @param pcovidinhoSpawn - The time before a patrolling covidinho can spawn again
+     * @param tcovidinhoSpawn - The time before a target covidinho can spawn again
+     * @param maskDespawn - The time to despawn a mask
+     * @param maskSpawn - The time before a mask can spawn again
+     * @param immunityDespawn - The time to despawn immunity
+     * @param immunitySpawn - The time before an immunity can spawn again
+     * @param vaccineDespawn - The time to despawn a vaccine
+     * @param vaccineSpawn - The time before a vaccine can spawn again
      */
     Difficulty(long covidinhoDespawn, long scovidinhoSpawn, long pcovidinhoSpawn, long tcovidinhoSpawn,
                long maskDespawn, long maskSpawn, long immunityDespawn, long immunitySpawn, long vaccineDespawn,
@@ -63,7 +63,7 @@ public enum Difficulty {
 
     /**
      * What's the settings for this difficulty (Covidinho wise)
-     * @return - the settings
+     * @return the settings
      */
     public long[] covidinhoSetting(){
         return new long[]{covidinhoDespawn,scovidinhoSpawn,pcovidinhoSpawn,tcovidinhoSpawn};
@@ -71,7 +71,7 @@ public enum Difficulty {
 
     /**
      * What's the settings for this difficulty (Mask wise)
-     * @return - the settings
+     * @return the settings
      */
     public long[] maskSetting(){
         return  new long[]{maskDespawn,maskSpawn};
@@ -79,7 +79,7 @@ public enum Difficulty {
 
     /**
      * What's the settings for this difficulty (Immunity wise)
-     * @return - the settings
+     * @return the settings
      */
     public long[] immunitySetting(){
         return new long[]{immunityDespawn,immuntySpawn};
@@ -87,7 +87,7 @@ public enum Difficulty {
 
     /**
      * What's the settings for this difficulty (Vaccine wise)
-     * @return - the settings
+     * @return the settings
      */
     public long[] vaccineSetting(){
         return new long[]{vaccineDespawn,vaccineSpawn};

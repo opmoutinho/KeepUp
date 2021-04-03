@@ -9,11 +9,11 @@ import java.util.Set;
  */
 public class CollisionDetector {
 
-     private Set <Entity> entities; //all the active entities
+     private Set <Entity> entities; //All the active entities
 
      /**
       * Constructor
-      * @param entities - the active entities set
+      * @param entities - The active entities set
       */
      public CollisionDetector (Set<Entity> entities){
           this.entities = entities;
@@ -21,7 +21,7 @@ public class CollisionDetector {
 
      /**
       * Checks if there are any entities colliding with entity
-      * @param entity - the entity to check collision with
+      * @param entity - The entity to check collision with
       */
      public void checkCollision (Entity entity){
           for (Entity e : entities){
@@ -39,4 +39,5 @@ public class CollisionDetector {
 
           }
      }
+
 }

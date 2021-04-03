@@ -7,16 +7,16 @@ import java.io.InputStream;
 import java.net.URL;
 
 /**
- *  the Sound Class
+ *  The Sound Class
  */
 public class Sound {
 
-    private static final String GAMEMUSIC = "music/gamemusic.wav"; //the game music file path
-    private static final String WINMUSIC = "music/winmusic.wav"; // the win music file path
-    private static final String GAMEOVERMUSIC = "music/gameovermusic.wav"; // the game over (when you lose) music file path
-    private static final String TIMESUPMUSIC = "music/timesupmusic.wav"; // the time's up music file path
+    private static final String GAMEMUSIC = "music/gamemusic.wav"; //The game music file path
+    private static final String WINMUSIC = "music/winmusic.wav"; // The win music file path
+    private static final String GAMEOVERMUSIC = "music/gameovermusic.wav"; //The game over (when you lose) music file path
+    private static final String TIMESUPMUSIC = "music/timesupmusic.wav"; //The time's up music file path
 
-    private Clip clip; // the sound clip
+    private Clip clip; //The sound clip
 
     /**
      * Loads the game music
@@ -27,7 +27,7 @@ public class Sound {
 
     /**
      * Reloads the music
-     * @param state the music file to load base on the state
+     * @param state - The music file to load base on the state
      */
     public void reload(int state){
         switch (state){
@@ -45,7 +45,7 @@ public class Sound {
 
     /**
      * Start the sound
-     * @param restart if the clip is supposed to be restarted or not
+     * @param restart - If the clip is supposed to be restarted or not
      */
     public void playSound(boolean restart){
         if(restart)
@@ -55,7 +55,7 @@ public class Sound {
 
     /**
      * Sets a loop to the clip
-     * @param loop if the clip is supposed to be looping
+     * @param loop - If the clip is supposed to be looping
      */
     public void setLoop(boolean loop){
         if(loop)
@@ -80,7 +80,7 @@ public class Sound {
 
     /**
      * Gets the mute control for the clip
-     * @param clip the clip to get the control from
+     * @param clip - The clip to get the control from
      * @return the control
      */
     public BooleanControl getMuteControl(Clip clip){
@@ -102,7 +102,7 @@ public class Sound {
 
     /**
      * Loads the music file
-     * @param path the path to load the music file from
+     * @param path - The path to load the music file from
      */
     private void loadMusic(String path){
         Clip clipAux = clip;
@@ -140,7 +140,7 @@ public class Sound {
 
     /**
      * Closes the stream
-     * @param stream the stream to close
+     * @param stream - The stream to close
      */
     private void closeStream(InputStream stream){
         try{

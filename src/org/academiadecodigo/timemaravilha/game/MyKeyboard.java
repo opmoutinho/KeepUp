@@ -25,7 +25,7 @@ public class MyKeyboard implements KeyboardHandler {
 
     /**
      * Constructor
-     * @param game - the game instance
+     * @param game - The game instance
      */
     public MyKeyboard(Game game){
         keysPressed = new boolean[4];
@@ -36,7 +36,7 @@ public class MyKeyboard implements KeyboardHandler {
 
     /**
      * What keys are being pressed?
-     * @return An array of the keys being pressed. Only recognizes 4 keys at a time, mapped to different
+     * @return an array of the keys being pressed. Only recognizes 4 keys at a time, mapped to different
      * values in each iteration
      */
     public boolean[] getKeysPressed() {
@@ -304,4 +304,5 @@ public class MyKeyboard implements KeyboardHandler {
             game.mute();
         }
     }
+
 }

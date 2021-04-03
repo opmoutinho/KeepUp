@@ -15,10 +15,10 @@ public abstract class AbstractPosition implements GridPosition {
     private Grid grid; // the grid where this position will be displayed
 
     /**
-     * The constructor
-     * @param col - the col
-     * @param row - the row
-     * @param grid - the grid this position is inserted
+     * Constructor
+     * @param col - The col
+     * @param row - The row
+     * @param grid - The grid this position is inserted
      */
     public AbstractPosition(int col, int row, Grid grid){
         this.col = col;
@@ -82,8 +82,10 @@ public abstract class AbstractPosition implements GridPosition {
     }
 
     /**
-     * Aux method. move this position up units units
-     * @param units the units
+     * Aux method
+     *
+     * Move this position up units units
+     * @param units - The units
      */
     private void moveUp(int units){
         if(units < 0)
@@ -92,7 +94,9 @@ public abstract class AbstractPosition implements GridPosition {
     }
 
     /**
-     * Aux method. move this position down units units
+     * Aux method
+     *
+     * Move this position down units units
      * @param units the units
      */
     private void moveDown(int units){
@@ -102,7 +106,9 @@ public abstract class AbstractPosition implements GridPosition {
     }
 
     /**
-     * Aux method. move this position left units units
+     * Aux method
+     *
+     * Move this position left units units
      * @param units the units
      */
     private void moveLeft(int units){
@@ -112,7 +118,9 @@ public abstract class AbstractPosition implements GridPosition {
     }
 
     /**
-     * Aux method. move this position right units units
+     * Aux method
+     *
+     * Move this position right units units
      * @param units the units
      */
     private void moveRight(int units){

@@ -31,4 +31,5 @@ public class PatrollingCovidinho extends TargetCovidinho{
         }
         return dir;
     }
+
 }

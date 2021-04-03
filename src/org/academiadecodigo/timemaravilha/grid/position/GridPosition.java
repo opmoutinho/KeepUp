@@ -54,5 +54,4 @@ public interface GridPosition {
      */
     public void hide();
 
-
 }

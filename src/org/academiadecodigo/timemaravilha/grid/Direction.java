@@ -13,7 +13,7 @@ public enum Direction {
 
     /**
      * What's the opposite direction to this direction?
-     * @return - the opposite direction
+     * @return the opposite direction
      */
     public Direction opposite(){
         Direction result = NEUTRAL;
@@ -36,7 +36,7 @@ public enum Direction {
 
     /**
      * What's the directions if I want to change plane?
-     * @return - the new directions
+     * @return the new directions
      */
     public Direction[] changePlane(){
         Direction[] result = new Direction[2];
@@ -49,4 +49,5 @@ public enum Direction {
         }
         return result;
     }
+
 }

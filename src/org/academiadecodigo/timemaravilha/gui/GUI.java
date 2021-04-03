@@ -68,7 +68,7 @@ public class GUI {
 
     /**
      * Update time
-     * @param time - the current time
+     * @param time - The current time
      */
     public void updateTime(int time){
         for(int i = 2; i >= 0; i--){

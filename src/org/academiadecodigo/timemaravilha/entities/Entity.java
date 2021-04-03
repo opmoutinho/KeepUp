@@ -10,18 +10,18 @@ import org.academiadecodigo.timemaravilha.grid.position.GridPosition;
  */
 public abstract class Entity {
 
-    private CollisionBox collisionBox; //The collision box
-    private  GridPosition position; //the position
-    private boolean dead; //is this entity dead
-    private Direction direction; //last direction moved
+    private CollisionBox collisionBox; //The Collision box
+    private  GridPosition position; // The position
+    private boolean dead; //Is this entity dead ?
+    private Direction direction; //Last direction moved
     protected SpriteManager spriteManager; //The sprite manager
 
     /**
      * Constructor
-     * @param position - the position
-     * @param dimensionX - the dimension from position, down
-     * @param dimensionY - the dimesion from position, right
-     * @param type - the type of Entity
+     * @param position - The position
+     * @param dimensionX - The dimension from position, down
+     * @param dimensionY - The dimension from position, right
+     * @param type - The type of Entity
      */
     public Entity(GridPosition position, int dimensionX, int dimensionY, EntityType type){
         this.position = position;
@@ -61,8 +61,8 @@ public abstract class Entity {
 
     /**
      * Has this entity collided with other?
-     * @param other - the other Entity
-     * @return - true if it did, false otherwise
+     * @param other - The other Entity
+     * @return true if it did, false otherwise
      */
     public boolean collidedWith(Entity other){
         return collisionBox.collidedWith(other.collisionBox);
@@ -70,13 +70,13 @@ public abstract class Entity {
 
     /**
      * Cause this entity to collide with the other Entity
-     * @param other - the other Entity
+     * @param other - The other Entity
      */
     public abstract void collide(Entity other);
 
     /**
      * Is this entity dead?
-     * @return - true if it is, false otherwise
+     * @return true if it is, false otherwise
      */
     public boolean isDead() {
         return dead;
@@ -92,7 +92,7 @@ public abstract class Entity {
 
     /**
      * Set the direction to direction.
-     * @param direction - the direction to set
+     * @param direction - The direction to set
      */
     public void setDirection(Direction direction) {
         this.direction = direction;
@@ -114,7 +114,7 @@ public abstract class Entity {
 
     /**
      * Returns the load condition for the sprite.
-     * @return 0 if it's normal, 1 for special effects (only appliable for player)
+     * @return 0 if it's normal, 1 for special effects (only applicable for player)
      */
     protected int loadCondition(){
         return 0;

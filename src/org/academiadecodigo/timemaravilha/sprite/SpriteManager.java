@@ -27,9 +27,9 @@ public class SpriteManager {
     private Game.Timer timer;//When am I allowed to change sprites
 
     /**
-     * The constructor
-     * @param type - the entity type
-     * @param position - the position
+     * Constructor
+     * @param type - The entity type
+     * @param position - The position
      *
      */
     public SpriteManager(EntityType type, GridPosition position){
@@ -40,7 +40,7 @@ public class SpriteManager {
 
     /**
      * Loads the next frame on position
-     * @param state - what the state of the entity
+     * @param state - What the state of the entity
      */
     public void loadNextFrame(int state){
         if(timer.timerOver()) {
@@ -60,7 +60,7 @@ public class SpriteManager {
 
     /**
      * Set all the sprites to flipped
-     * @param flipped - if it's flipped
+     * @param flipped - If it's flipped
      */
     public void setFlipped(boolean flipped) {
         for(Picture[] picArr: spriteArr){
@@ -182,7 +182,7 @@ public class SpriteManager {
 
         /**
          * Are the player's sprites set?
-         * @return - true if they are, false otherwise
+         * @return true if they are, false otherwise
          */
         public boolean isPlayerSet() {
             return playerSet;
@@ -190,9 +190,9 @@ public class SpriteManager {
 
         /**
          * Add the actual full path to the sprite to the array arr
-         * @param arr - the array
-         * @param max - the amount of sprites
-         * @param name - the prefix
+         * @param arr - The array
+         * @param max - The amount of sprites
+         * @param name - The prefix
          */
         private void addInArr(String[][] arr, int max, String name){
             for(int i = 1; i <= max; i++){
@@ -202,8 +202,8 @@ public class SpriteManager {
 
         /**
          * Add the actual players full path
-         * @param arr - the array
-         * @param name - the path
+         * @param arr - The array
+         * @param name - The path
          */
         private void addInArrP(String[][] arr, String name){
             for(int i = 0; i < arr.length; i++){
@@ -219,7 +219,6 @@ public class SpriteManager {
             map.remove(EntityType.PLAYER);
             playerSet = false;
         }
-
     }
 
 }

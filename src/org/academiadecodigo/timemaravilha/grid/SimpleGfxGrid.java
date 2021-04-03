@@ -57,7 +57,9 @@ public class SimpleGfxGrid extends AbstractGrid{
     }
 
     /**
-     * Aux method. Translates col to a position in the field
+     * Aux method
+     *
+     * Translates col to a position in the field
      * @param col - the col #
      * @return - The actual position in the grid
      */
@@ -66,7 +68,9 @@ public class SimpleGfxGrid extends AbstractGrid{
     }
 
     /**
-     * Aux method. Translates row to a position in the field
+     * Aux method
+     *
+     * Translates row to a position in the field
      * @param row - the row #
      * @return - The actual position in the grid
      */
@@ -84,5 +88,6 @@ public class SimpleGfxGrid extends AbstractGrid{
 
         return new SimpleGfxPosition(randomCol,randomRow,this);
     }
+
 }
 

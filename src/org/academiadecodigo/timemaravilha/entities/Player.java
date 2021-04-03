@@ -26,7 +26,7 @@ public class Player extends Entity {
 
     /**
      * Sets keysPressed to keysPressed
-     * @param keysPressed - the array of keysPressed
+     * @param keysPressed - The array of keysPressed
      */
     public void setKeysPressed(boolean[] keysPressed) {
         this.keysPressed = keysPressed;
@@ -123,4 +123,5 @@ public class Player extends Entity {
     public boolean isMask(){
         return mask;
     }
+
 }

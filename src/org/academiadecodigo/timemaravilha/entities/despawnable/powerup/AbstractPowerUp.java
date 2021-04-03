@@ -32,4 +32,5 @@ public abstract class AbstractPowerUp extends DespawnableEntity {
                 despawn();
         }
     }
+
 }

@@ -16,7 +16,7 @@ public abstract class DespawnableEntity extends Entity implements Despawnable {
 
     /**
      * @see Entity#Entity(GridPosition, int, int, EntityType)
-     * @param despawnTime - time (in ms) that allows this entity to be despawned
+     * @param despawnTime - Time (in ms) that allows this entity to be despawned
      */
     public DespawnableEntity(GridPosition position, int dimensionX, int dimensionY, EntityType type, long despawnTime) {
         super(position,dimensionX,dimensionY, type);

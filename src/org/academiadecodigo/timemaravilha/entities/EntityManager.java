@@ -20,12 +20,12 @@ import java.util.*;
  */
 public class EntityManager {
 
-    private static EntityManager instance; //singleton
-    private Player player; //the player
-    private Set <Entity> entities; //the entities in game
-    private Set <Entity> inactiveEntities; //inactive entities
-    private Grid grid; //the grid of the game
-    private CollisionDetector collisionDetector; //the collision detector
+    private static EntityManager instance; //Singleton
+    private Player player; //The player
+    private Set <Entity> entities; //The entities in game
+    private Set <Entity> inactiveEntities; //Inactive entities
+    private Grid grid; //The grid of the game
+    private CollisionDetector collisionDetector; //The collision detector
 
     /**
      * Despawn timer values for various entities
@@ -67,7 +67,7 @@ public class EntityManager {
 
     /**
      * Sets the grid of this instance to grid
-     * @param grid - the grid
+     * @param grid - The grid
      */
     public void setGrid(Grid grid) {
         this.grid = grid;
@@ -86,11 +86,11 @@ public class EntityManager {
 
     /**
      * Loads the difficulty settings
-     * @param difficulty - the chosen difficulty
+     * @param difficulty - The chosen difficulty
      */
     public void init(Difficulty difficulty){
         loadSettings(difficulty);
-        //start spawn timers
+        //Start spawn timers
         maskTimer = new Game.Timer(maskInterval);
         vaccineTimer = new Game.Timer(vaccineInterval);
         immunityTimer = new Game.Timer(immunityInterval);
@@ -102,7 +102,7 @@ public class EntityManager {
     /**
      * Aux method
      * Sets the various properties according to difficulty
-     * @param difficulty
+     * @param difficulty - The chosen difficulty
      */
     private void loadSettings(Difficulty difficulty){
         long[] mask = difficulty.maskSetting();
@@ -127,7 +127,7 @@ public class EntityManager {
 
     /**
      * Aux method to spawn entities.
-     * @param entityType - the type of entity to spawn
+     * @param entityType - The type of entity to spawn
      */
     private void createEntity (EntityType entityType){
         if(player == null)
@@ -168,7 +168,7 @@ public class EntityManager {
 
     /**
      * Creates the player. Passes keyspressed to player so it can move according to inputs
-     * @param keyspressed - the keys pressed by the user
+     * @param keyspressed - The keys pressed by the user
      */
     public void createPlayer(boolean[] keyspressed){
         if(player != null)
@@ -180,7 +180,7 @@ public class EntityManager {
 
     /**
      * Check collisions with this entity
-     * @param entity
+     * @param entity  - The entity to check the collisions
      */
     public void checkCollision(Entity entity){
         collisionDetector.checkCollision(entity);
@@ -240,7 +240,7 @@ public class EntityManager {
 
     /**
      * Set this entity as inactive
-     * @param entity - the entity to set as inactive
+     * @param entity - The entity to set as inactive
      */
     public void setInactive(Entity entity) {
 
@@ -249,7 +249,7 @@ public class EntityManager {
 
     /**
      * Has the player caught enough vaccines to end the game
-     * @return - true if he did, false otherwise
+     * @return true if he did, false otherwise
      */
     public boolean caughtEnoughVaccines(){
         return player.getVaccineCounter() == 2;
@@ -257,7 +257,7 @@ public class EntityManager {
 
     /**
      * How many vaccines does the player have?
-     * @return - #of vaccines
+     * @return #of vaccines
      */
     public int getPlayerVaccines(){
         return player.getVaccineCounter();
@@ -281,7 +281,7 @@ public class EntityManager {
 
     /**
      * Is the player masked?
-     * @return - true if he is, false otherwise
+     * @return true if he is, false otherwise
      */
     public boolean playerWithMask(){
         return player.isMask();
