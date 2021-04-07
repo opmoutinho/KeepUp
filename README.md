@@ -45,4 +45,5 @@ got our physical classes cancelled. It was also at the same time that the anti-v
 With all this in mind, we decided to make a game that encapsulated the whole feeling of "protect yourself", "vaccines are our friends"
 and to keep our mood up during these dire times (the vibrant colours, the upbeat music), while beating this game's villain - COVID.
 
+# How to run?
 
