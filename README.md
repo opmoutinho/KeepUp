@@ -47,3 +47,4 @@ and to keep our mood up during these dire times (the vibrant colours, the upbeat
 
 # How to run?
 
+Check the Application Executables folder :)
