@@ -10,7 +10,7 @@ Initial Project's diagram: https://app.creately.com/diagram/A7MmJYFgPun/
 
 Final Project's diagram: Diagram folder, diagram.uml
 
-#Project's setting
+# Project's setting
 
 We were challenged in our 4th week of bootcamp (<Academia de Código_>) to build a game in 7 days (nights, actually,
 as we still had classes during the day).
